@@ -1,0 +1,218 @@
+input[type=checkbox]{
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+input[type=checkbox].round {
+  -webkit-appearance: none; /* Remove default appearance */
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc; /* Border color */
+}
+input[type=checkbox].round:checked {
+  background-color: #2196F3; /* Change background color when checked */
+}
+
+.td-s{
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  text-align: center;
+}
+
+.td-m{
+  width: 70px;
+  min-width: 70px;
+  max-width: 70px;
+  text-align: center;
+}
+
+.sidebar small{
+  font-size: 15px;
+}
+
+.sidebar > div{
+  justify-content: start;
+  padding: 20px 0;
+}
+
+.sidebar ul{
+  width: 100%;
+}
+
+.sidebar .nav button{
+  width: 100%;
+  text-align: start;
+  justify-content: start;
+}
+
+.layout-children{
+  width: 100%;
+}
+
+.min-container{
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 10px;
+  margin: auto;
+}
+
+table strong{
+  display: none;
+}
+
+@media screen and (max-width:1200px){
+  .container {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (max-width:992px){
+  .modal-content{
+    height: 88vh;
+  }
+
+  .sidebar{
+    width: auto !important;
+    min-width: auto !important;
+    max-width: auto !important;
+  } 
+
+  .sidebar svg{
+    font-size: 25px;
+  }
+
+  .sidebar ul button{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    justify-content: center;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .sidebar button{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .sidebar button, .sidebar button:hover, .sidebar button:active{
+    background-color: inherit !important;
+    border: inherit;
+  }
+
+  .sidebar button, .sidebar button img,  .sidebar button svg{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .sidebar{
+    height: var(--sidebar-heiht);
+    min-height: var(--sidebar-heiht);
+    max-height: var(--sidebar-heiht);
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .sidebar > div{
+    width: 100%;
+    height: auto !important;
+  }
+
+  .layout-children .vh-100{
+    height: calc(100vh - var(--sidebar-heiht));
+    min-height: calc(100vh - var(--sidebar-heiht));
+    max-height: calc(100vh - var(--sidebar-heiht));
+  }
+
+  .sidebar ul{
+    justify-content: space-evenly;
+  }
+
+  .sidebar > div{
+    padding: 0;
+  }
+
+  .sidebar ul button{
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    margin: auto !important;
+    justify-content: center !important;
+  }
+
+  .sidebar > div{
+    padding: 0 15px !important;
+    justify-content: center !important;
+  }
+
+  .sidebar small{
+    font-size: 11px;
+  }
+
+  .sidebar svg{
+    font-size: 20px;
+  }
+
+  .sidebar .btn-head{
+    display: none !important;
+  }
+
+  table thead{
+    display: none;
+  }
+
+  table tr, table td{
+    display: block;
+    width: 100%;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  table tr{
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px 0 !important;
+  }
+  
+  table td{
+    border: none;
+  }
+
+  table strong{
+    margin-right: 15px;
+    display: inline-block;
+  }
+
+  table .menu{
+    position: absolute;
+  }
+
+  .w-md-100{
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width:575px){
+  .hide-sm, .hide-sm.d-flex, .hide-sm.d-block {
+    display: none !important;
+  }
+
+  .w-sm-100{
+    width: 100%;
+  }
+}
