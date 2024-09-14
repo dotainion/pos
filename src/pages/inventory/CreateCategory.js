@@ -12,13 +12,7 @@ export const CreateCategory = () =>{
             </div>
             <hr></hr>
             <input className="form-control my-3" placeholder="Name"/>
-            <select className="form-control my-3">
-                <option>Category</option>
-            </select>
             <input className="form-control my-3" placeholder="Price"/>
-            <select className="form-control my-3">
-                <option>Set this item as nonetaxable</option>
-            </select>
             <textarea className="form-control my-3" placeholder="Item description"/>
         </div>
     )

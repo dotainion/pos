@@ -34,7 +34,7 @@ export const PosCategoryBar = () =>{
                 <button onClick={()=>navigate(routes.pos().nested().discounts())} className="btn btn-sm mb-2 me-2 btn-danger">Discounts</button>
                 <button onClick={()=>navigate(routes.pos().nested().customers())} className="btn btn-sm mb-2 me-2 btn-primary">Customer</button>
                 <button onClick={()=>navigate(routes.pos().nested().products())} className="btn btn-sm mb-2 me-2 btn-warning">Items</button>
-                <button className="btn btn-sm mb-2 me-2 btn-success">Search Carts</button>
+                <button onClick={()=>navigate(routes.order().nested().orders())} className="btn btn-sm mb-2 me-2 btn-success">Search Carts</button>
             </div>
         </div>
     )

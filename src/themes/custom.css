@@ -31,27 +31,20 @@ input[type=checkbox].round:checked {
   text-align: center;
 }
 
-.sidebar small{
-  font-size: 15px;
+header{
+  max-height: 45px;
+  overflow: hidden;
 }
 
-.sidebar > div{
-  justify-content: start;
-  padding: 20px 0;
-}
-
-.sidebar ul{
+.layout-children, .layout{
   width: 100%;
+  padding-top: 45px;
 }
 
-.sidebar .nav button{
-  width: 100%;
-  text-align: start;
-  justify-content: start;
-}
-
-.layout-children{
-  width: 100%;
+.layout .vh-100, .layout-children .vh-100{
+  height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
 }
 
 .min-container{
@@ -65,6 +58,10 @@ table strong{
   display: none;
 }
 
+.z-index-1{
+  z-index: 9999;
+}
+
 @media screen and (max-width:1200px){
   .container {
     width: 100%;
@@ -76,101 +73,9 @@ table strong{
   .modal-content{
     height: 88vh;
   }
-
-  .sidebar{
-    width: auto !important;
-    min-width: auto !important;
-    max-width: auto !important;
-  } 
-
-  .sidebar svg{
-    font-size: 25px;
-  }
-
-  .sidebar ul button{
-    padding-top: 15px;
-    padding-bottom: 15px;
-    justify-content: center;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  .sidebar button{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .sidebar button, .sidebar button:hover, .sidebar button:active{
-    background-color: inherit !important;
-    border: inherit;
-  }
-
-  .sidebar button, .sidebar button img,  .sidebar button svg{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
 }
 
 @media screen and (max-width:767px) {
-  .sidebar{
-    height: var(--sidebar-heiht);
-    min-height: var(--sidebar-heiht);
-    max-height: var(--sidebar-heiht);
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  .sidebar > div{
-    width: 100%;
-    height: auto !important;
-  }
-
-  .layout-children .vh-100{
-    height: calc(100vh - var(--sidebar-heiht));
-    min-height: calc(100vh - var(--sidebar-heiht));
-    max-height: calc(100vh - var(--sidebar-heiht));
-  }
-
-  .sidebar ul{
-    justify-content: space-evenly;
-  }
-
-  .sidebar > div{
-    padding: 0;
-  }
-
-  .sidebar ul button{
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    padding-top: 5px;
-    padding-bottom: 3px;
-    margin: auto !important;
-    justify-content: center !important;
-  }
-
-  .sidebar > div{
-    padding: 0 15px !important;
-    justify-content: center !important;
-  }
-
-  .sidebar small{
-    font-size: 11px;
-  }
-
-  .sidebar svg{
-    font-size: 20px;
-  }
-
-  .sidebar .btn-head{
-    display: none !important;
-  }
-
   table thead{
     display: none;
   }

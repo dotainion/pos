@@ -1,6 +1,7 @@
 import { MdDiscount } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
+import { DiscountOptions } from "../../components/DiscountOptions";
 
 export const CreateDiscount = () =>{
     const navigate = useNavigate();
@@ -12,11 +13,9 @@ export const CreateDiscount = () =>{
             </div>
             <hr></hr>
             <input className="form-control my-3" placeholder="Name"/>
-            <select className="form-control my-3">
-                <option>Discount</option>
-            </select>
-            <input className="form-control my-3" placeholder="Price"/>
-            <select className="form-control my-3">
+            <DiscountOptions/>
+            <select className="form-control form-select my-3">
+                <option>Set this item as taxable</option>
                 <option>Set this item as nonetaxable</option>
             </select>
             <textarea className="form-control my-3" placeholder="Item description"/>

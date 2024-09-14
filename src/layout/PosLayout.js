@@ -1,4 +1,3 @@
-
 export const PosLayout = ({children}) =>{
     return(
         <>

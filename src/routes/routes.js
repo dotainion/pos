@@ -25,6 +25,26 @@ class Inventory{
     }
 }
 
+class Grid{
+    _nested = '';
+    default = () => '';
+    grid = () => this._nested + 'grid';
+    nested = () => {
+        this._nested = this.default().replace('*', '');
+        return this;
+    }
+}
+
+class Order{
+    _nested = '';
+    default = () => '/';
+    orders = () => this._nested + 'orders';
+    nested = () => {
+        this._nested = this.default().replace('*', '');
+        return this;
+    }
+}
+
 class Routes{
     _nested = '';
     default = () => '/';
@@ -32,6 +52,8 @@ class Routes{
     signup = () => this._nested + '/signup';
     inv = () => new Inventory();
     pos = () => new PointOfSale();
+    nav = () => new Grid();
+    order = () => new Order();
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;

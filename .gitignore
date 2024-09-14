@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 /.pnp
+/pos
+/pos-service.zip
+pos-service.zip
+pos.zip
 .pnp.js
 
 # testing

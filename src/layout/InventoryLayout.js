@@ -29,7 +29,7 @@ export const InventoryLayout = ({children}) =>{
         },
     ];
     return(
-        <div className="d-flex flex-row vh-100 py-0 my-0">
+        <div className="layout d-flex flex-row vh-100 py-0 my-0">
             <div className="d-flex flex-column text-nowrap border-end">
                 <div className="d-flex flex-column py-2">
                     {navs.map((nav, key)=>(
