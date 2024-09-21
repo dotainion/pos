@@ -15,11 +15,12 @@ class ItemFactory extends Collector{
         $item = new Item();
         $item->setId($this->uuid($record['id']));
         $item->setCategoryId($this->uuid($record['categoryId']));
-        $item->setItemId($this->uuid($record['itemId']));
         $item->setName((string)$record['name']);
         $item->setAmount((float)$record['amount']);
+        $item->setCost((float)$record['cost']);
         $item->setIsTaxable((bool)$record['isTaxable']);
         $item->setQuantity((int)$record['quantity']);
+        $item->setFavorite((bool)$record['favorite']);
         $item->setDescription((string)$record['description']);
         return $item;
     }

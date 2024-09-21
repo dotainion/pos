@@ -2,30 +2,60 @@
 namespace src\module\order\logic;
 
 use src\infrastructure\Collector;
-use src\module\order\objects\Order;
-use src\module\order\repository\OrderRepository;
+use src\module\order\objects\OrderLink;
+use src\module\order\repository\OrderLinkRepository;
 
 class SetOrderLinks{
-    protected OrderRepository $repo;
+    protected OrderLinkRepository $repo;
 
     public function __construct(){
-        $this->repo = new OrderRepository();
+        $this->repo = new OrderLinkRepository();
     }
 
-    public function set(Order $order):void{
-        $collector = $this->repo->listOrders([
-            'id' => $order->id()
+    public function create(OrderLink $orderLink):void{
+        $collector = $this->repo->listOrderLinks([
+            'orderId' => $orderLink->orderId(),
+            'referenceId' => $orderLink->referenceId()
         ]);
         if($collector->hasItem()){
-            $this->repo->edit($order);
             return;
         }
-        $this->repo->create($order);
+        $this->repo->create($orderLink);
     }
 
-    public function masSet(Collector $links):void{
+    public function delete(OrderLink $orderLink):void{
+        $collector = $this->repo->listOrderLinks([
+            'orderId' => $orderLink->orderId(),
+            'referenceId' => $orderLink->referenceId()
+        ]);
+        if(!$collector->hasItem()){
+            return;
+        }
+        $this->repo->deleteOrderLink($orderLink);
+    }
+
+    public function massControlCreate(Collector $links):void{
+        if(!$links->hasItem()){
+            return;
+        }
+        $collector = $this->repo->listOrderLinks([
+            'orderId' => $links->first()->orderId()
+        ]);
+        $collectorToDelete = new Collector();
+        foreach($collector->list() as $exist){
+            $found = false;
+            foreach($links->list() as $link){
+                if($exist->referenceId()->toString() === $link->referenceId()->toString()){
+                    $found = true;
+                }
+            }
+            !$found && $collectorToDelete->add($exist);
+        }
+        foreach($collectorToDelete->list() as $deleteLink){
+            $this->delete($deleteLink);
+        }
         foreach($links->list() as $link){
-            $this->set($link);
+            $this->create($link);
         }
     }
 }

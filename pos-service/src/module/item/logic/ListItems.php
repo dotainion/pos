@@ -3,7 +3,7 @@ namespace src\module\item\logic;
 
 use src\infrastructure\Collector;
 use src\infrastructure\Id;
-use src\module\item\objects\ItemSearchRequest;
+use src\infrastructure\SearchRequest;
 use src\module\item\repository\ItemRepository;
 
 class ListItems{
@@ -13,26 +13,16 @@ class ListItems{
         $this->repo = new ItemRepository();
     }
 
-    public function bySearchRequest(ItemSearchRequest $req):Collector{
-        $req->hasId() && $collector = $this->byId($req->id());
-        $req->hasItemId() && $collector = $this->byItemId($req->itemId());
-        $req->hasCategoryId() && $collector = $this->byCategoryId($req->categoryId());
-        $req->hasName() && $collector = $this->byName($req->name());
-        if(!$req->hasId() && !$req->hasItemId() && !$req->hasCategoryId() && !$req->hasName()){
+    public function bySearchRequest(SearchRequest $req):Collector{
+        if(!$req->hasArgs()){
             return new Collector();
         }
-        return $collector;
+        return $this->repo->listItems($req->where());
     }
 
     public function byId(Id $id):Collector{
         return $this->repo->listItems([
             'id' => $id,
-        ]);
-    }
-
-    public function byItemId(Id $itemId):Collector{
-        return $this->repo->listItems([
-            'itemId' => $itemId,
         ]);
     }
 
@@ -54,15 +44,6 @@ class ListItems{
         }
         return $this->repo->listItems([
             'id' => $idArray,
-        ]);
-    }
-
-    public function byItemIdArray(array $itemIdArray):Collector{
-        if(empty($itemIdArray)){
-            return new Collector();
-        }
-        return $this->repo->listItems([
-            'itemId' => $itemIdArray,
         ]);
     }
 }

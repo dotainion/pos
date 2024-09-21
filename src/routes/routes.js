@@ -13,12 +13,21 @@ class PointOfSale{
 class Inventory{
     _nested = '';
     default = () => '/inventory/*';
-    products = () => this._nested + 'products';
+    items = () => this._nested + 'items';
+    selectItems = (itemId=':itemId') => this._nested + 'items/' + itemId;
     createItem = () => this._nested + 'create/item';
+    updateItem = (itemId=':itemId') => this._nested + 'update/item/' + itemId;
+    itemSettings = (itemId=':itemId') => this._nested + 'item/settings/' + itemId;
+    itemInformation = (itemId=':itemId') => this._nested + 'item/information/' + itemId;
     createCategory = () => this._nested + 'create/category';
-    createDiscount = () => this._nested + 'create/discount';
+    updateCategory = (categoryId=':categoryId') => this._nested + 'update/category/' + categoryId;
     categories = () => this._nested + 'item/category';
     discounts = () => this._nested + 'item/discount';
+    createDiscount = () => this._nested + 'create/discount';
+    updateDiscount = (discountId=':discountId') => this._nested + 'update/discount/' + discountId;
+    customers = () => this._nested + 'customers';
+    createCustomer = () => this._nested + 'create/customer';
+    updateCustomer = (customerId=':customerId') => this._nested + 'update/customer/' + customerId;
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;

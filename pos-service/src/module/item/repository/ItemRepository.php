@@ -20,7 +20,8 @@ class ItemRepository extends Repository{
             ->add('name', $item->name())
             ->add('categoryId', $this->uuid($item->categoryId()))
             ->add('amount', $item->amount())
-            ->add('itemId', $this->uuid($item->itemId()))
+            ->add('cost', $item->cost())
+            ->add('favorite', $item->favorite())
             ->add('isTaxable', $item->isTaxable())
             ->add('quantity', $item->quantity())
             ->add('description', $item->description());
@@ -28,13 +29,14 @@ class ItemRepository extends Repository{
     }
     
     public function edit(Item $item):void{
-        $this->insert('item') 
+        $this->update('item') 
             ->set('name', $item->name())
             ->set('categoryId', $this->uuid($item->categoryId()))
             ->set('amount', $item->amount())
-            ->set('itemId', $this->uuid($item->itemId()))
+            ->set('cost', $item->cost())
+            ->set('favorite', $item->favorite())
             ->set('isTaxable', $item->isTaxable())
-            ->add('quantity', $item->quantity())
+            ->set('quantity', $item->quantity())
             ->set('description', $item->description())
             ->where('id', $this->uuid($item->id()));
         $this->execute();
@@ -47,13 +49,13 @@ class ItemRepository extends Repository{
             $this->where('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->where('name', $where['name']);
+            $this->like('name', $where['name']);
+        }
+        if(isset($where['favorite'])){
+            $this->where('favorite', (int)$where['favorite']);
         }
         if(isset($where['categoryId'])){
             $this->where('categoryId', $this->uuid($where['categoryId']));
-        }
-        if(isset($where['itemId'])){
-            $this->where('itemId', $this->uuid($where['itemId']));
         }
         $this->execute();
         return $this->factory->map(

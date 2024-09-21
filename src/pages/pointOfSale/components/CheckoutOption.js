@@ -9,7 +9,7 @@ export const CheckoutOption = () =>{
                 <PosCategoryBar/>
             </div>
             <div className="flex-column overflow-y-auto overflow-x-hidden">
-                
+                checkout
             </div>
         </>
     )

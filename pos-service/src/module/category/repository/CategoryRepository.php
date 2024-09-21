@@ -18,15 +18,17 @@ class CategoryRepository extends Repository{
         $this->insert('category')        
             ->add('id', $this->uuid($category->id()))
             ->add('name', $category->name())
-            ->add('amount', $category->amount())
+            ->add('color', $category->color())
+            ->add('inactive', $category->inactive())
             ->add('description', $category->description());
         $this->execute();
     }
     
     public function edit(Category $category):void{
-        $this->insert('category') 
+        $this->update('category') 
             ->set('name', $category->name())
-            ->set('amount', $category->amount())
+            ->set('color', $category->color())
+            ->set('inactive', $category->inactive())
             ->set('description', $category->description())
             ->where('id', $this->uuid($category->id()));
         $this->execute();
@@ -39,7 +41,7 @@ class CategoryRepository extends Repository{
             $this->where('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->where('name', $where['name']);
+            $this->like('name', $where['name']);
         }
         $this->execute();
         return $this->factory->map(

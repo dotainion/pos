@@ -17,6 +17,7 @@ class DiscountFactory extends Collector{
         $item->setName((string)$record['name']);
         $item->setType((int)$record['type']);
         $item->setValue((float)$record['value']);
+        $item->setIsTaxable((bool)$record['isTaxable']);
         $item->setDescription((string)$record['description']);
         return $item;
     }

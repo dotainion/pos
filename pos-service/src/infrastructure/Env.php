@@ -26,7 +26,7 @@ class Env{
     }
 
     public static function uiDir():string{
-        return 'green-energy';
+        return 'pos';
     }
 
     public static function serverName():string{
@@ -77,14 +77,14 @@ class Env{
     }
 
     public static function username():string{
-        return 'ccagrena_susu';
+        return 'ccagrena_pos';
     }
 
     public static function password():string{
-        return 'ccagrena_susu#1';
+        return 'ccagrena_pos#1';
     }
 
     public static function database():string{
-        return 'ccagrena_susu';
+        return 'ccagrena_pos';
     }
 }

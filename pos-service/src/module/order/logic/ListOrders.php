@@ -2,6 +2,7 @@
 namespace src\module\order\logic;
 
 use src\infrastructure\Collector;
+use src\infrastructure\SearchRequest;
 use src\module\order\repository\OrderRepository;
 
 class ListOrders{
@@ -9,6 +10,13 @@ class ListOrders{
 
     public function __construct(){
         $this->repo = new OrderRepository();
+    }
+
+    public function bySearchRequest(SearchRequest $req):Collector{
+        if(!$req->hasArgs()){
+            return new Collector();
+        }
+        return $this->repo->listOrders($req->where());
     }
 
     public function listActive():Collector{

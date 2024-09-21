@@ -7,9 +7,12 @@ import { InventoryRouter } from "./InventoryRouter";
 import { NavGrid } from "../pages/nav/NavGrid";
 import { Orders } from "../pages/pointOfSale/Orders";
 import { PosProvider } from "../providers/PosProvider";
+import { useAuth } from "../providers/AuthProvider";
 
 export const AccessRouter = () =>{
-    if(false){
+    const { isAuthenticated } = useAuth();
+
+    if(!isAuthenticated){
         return <Navigate to={routes.signin()} />
     }
 

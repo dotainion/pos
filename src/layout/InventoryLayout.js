@@ -1,10 +1,10 @@
-import { TbMenuOrder } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../routes/routes";
 import { MdCategory } from "react-icons/md";
 import { FaSitemap } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
 import { MdDiscount } from "react-icons/md";
+import { FaPersonPregnant } from "react-icons/fa6";
 
 export const InventoryLayout = ({children}) =>{
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ export const InventoryLayout = ({children}) =>{
         {
             title: 'Items',
             icon: FaSitemap,
-            onClick: ()=> navigate(routes.inv().products())
+            onClick: ()=> navigate(routes.inv().items())
         },{
             title: 'Create Item',
             icon: IoIosCreate,
@@ -26,7 +26,11 @@ export const InventoryLayout = ({children}) =>{
             title: 'Discounts',
             icon: MdDiscount,
             onClick: ()=> navigate(routes.inv().discounts())
-        },
+        },{
+            title: 'Customers',
+            icon: FaPersonPregnant,
+            onClick: ()=> navigate(routes.inv().customers())
+        }
     ];
     return(
         <div className="layout d-flex flex-row vh-100 py-0 my-0">

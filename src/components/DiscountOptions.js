@@ -1,13 +1,26 @@
-import { useState } from "react"
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import $ from "jquery";
 
-export const DiscountOptions = () =>{
-    const [type, setType] = useState();
+export const DiscountOptions = forwardRef(({}, ref) =>{
+    const [type, setType] = useState(null);
+    const [value, setValue] = useState(null);
 
-    const PERCENTAGE = 'Percentage';
-    const DOLLAR_AMOUNT = 'Dollar Amount';
+    const optionRef = useRef();
+
+    useImperativeHandle(ref, () => ({
+        type, value,
+        update: ({type, value})=>{
+            $(optionRef.current).find('select').val(type).trigger('change');
+            $(optionRef.current).find('input').val(value).trigger('change');
+        }
+    }), [type, value]);
+    
+    const PERCENTAGE = {title: 'Percentage(%)', value: 1};
+    const DOLLAR_AMOUNT = {title: 'Dollar Amount($)', value: 0};
     const DEFAULT_DISPLAY = 'Select a discount type';
 
-    const onChange = (e) =>{
+    const change = (e) =>{
+        if(e.target.value === DEFAULT_DISPLAY) return setType(null);
         setType(e.target.value);
     }
 
@@ -53,24 +66,18 @@ export const DiscountOptions = () =>{
      */
 
     return(
-        <div className="form-control my-3 p-0">
-            <select onChange={onChange} className="form-control form-select border-0 position-relative z-index-1" defaultValue={DEFAULT_DISPLAY}>
-                <option>{PERCENTAGE}</option>
-                <option>{DOLLAR_AMOUNT}</option>
+        <div ref={optionRef} className="form-control my-3 p-0">
+            <select onChange={change} className="form-control form-select border-0 position-relative z-index-1" defaultValue={DEFAULT_DISPLAY}>
+                <option value={PERCENTAGE.value}>{PERCENTAGE.title}</option>
+                <option value={DOLLAR_AMOUNT.value}>{DOLLAR_AMOUNT.title}</option>
                 <option hidden>{DEFAULT_DISPLAY}</option>
             </select>
-            {
-                type 
-                ? <>
-                    <div className="px-2"><div className="border-top"/></div>
-                    <div class="input-group">
-                        {type === DOLLAR_AMOUNT ? <span class="input-group-text bg-transparent border-0">$</span> : null}
-                        <input type="text" class={`form-control border-0 shadow-none ${type === DOLLAR_AMOUNT ? 'ps-0' : ''}`} placeholder={type === PERCENTAGE ? 'Percentage amount 0.00%' : 'Price $0.00'}/>
-                        {type === PERCENTAGE ? <span class="input-group-text bg-transparent border-0">%</span> : null}
-                    </div>
-                </>
-                : null
-            }
+            <div className="px-2"><div className="border-top"/></div>
+            <div className="input-group">
+                {type === DOLLAR_AMOUNT.value ? <span className="input-group-text bg-transparent border-0">$</span> : null}
+                <input onChange={(e)=>setValue(e.target.value)} type="number" className={`form-control border-0 shadow-none ${type === DOLLAR_AMOUNT.value ? 'ps-0' : ''}`} placeholder={type === PERCENTAGE.value ? 'Percentage amount 0.00%' : 'Price $0.00'}/>
+                {type === PERCENTAGE.value ? <span className="input-group-text bg-transparent border-0">%</span> : null}
+            </div>
         </div>
     )
-}
+});

@@ -15,7 +15,8 @@ class CategoryFactory extends Collector{
         $item = new Category();
         $item->setId($this->uuid($record['id']));
         $item->setName((string)$record['name']);
-        $item->setAmount((float)$record['amount']);
+        $item->setColor((string)$record['color']);
+        $item->setInactive((bool)$record['inactive']);
         $item->setDescription((string)$record['description']);
         return $item;
     }

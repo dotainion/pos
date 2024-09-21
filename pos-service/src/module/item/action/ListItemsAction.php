@@ -3,7 +3,7 @@ namespace src\module\item\action;
 
 use src\infrastructure\IAction;
 use src\infrastructure\Request;
-use src\module\item\objects\ItemSearchRequest;
+use src\infrastructure\SearchRequest;
 use src\module\item\service\ListItemsService;
 
 class ListItemsAction extends Request implements IAction{
@@ -16,7 +16,7 @@ class ListItemsAction extends Request implements IAction{
 
     public function execute(){
         return $this->service->process(
-            new ItemSearchRequest()
+            new SearchRequest()
         );
     }
 }

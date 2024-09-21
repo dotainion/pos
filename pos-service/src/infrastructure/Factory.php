@@ -5,6 +5,8 @@ use Exception;
 use Throwable;
 
 trait Factory{
+    protected $DEFAULT_UUID = '00000000-0000-0000-0000-000000000000';
+
     public function map(array $records){
         $this->clear();
         if (!method_exists($this, 'mapResult')){
@@ -24,6 +26,16 @@ trait Factory{
             return false;
         }
         return true;
+    }
+
+    public function isDefaultUuId($uuidBytes):bool{
+        if($uuidBytes === $this->DEFAULT_UUID){
+            return true;
+        }
+        if((new Id())->fromBytes((string)$uuidBytes)->toString() === $this->DEFAULT_UUID){
+            return true;
+        }
+        return false;
     }
 
     public function isValidUUid($uuid):bool{

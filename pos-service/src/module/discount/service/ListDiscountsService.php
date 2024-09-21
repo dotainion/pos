@@ -12,8 +12,8 @@ class ListDiscountsService extends Service{
         $this->discounts = new ListDiscounts();
     }
     
-    public function process(){
-        $collector = $this->discounts->list();
+    public function process($searchRequest){
+        $collector = $this->discounts->bySearchRequest($searchRequest);
         $collector->assertHasItem('No discount found.');
 
         $this->setOutput($collector);

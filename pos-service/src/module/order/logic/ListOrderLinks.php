@@ -2,20 +2,20 @@
 namespace src\module\order\logic;
 
 use src\infrastructure\Collector;
-use src\module\order\repository\OrderRepository;
+use src\module\order\repository\OrderLinkRepository;
 
 class ListOrderLinks{
-    protected OrderRepository $repo;
+    protected OrderLinkRepository $repo;
 
     public function __construct(){
-        $this->repo = new OrderRepository();
+        $this->repo = new OrderLinkRepository();
     }
 
     public function byOrderIdArray(array $orderIdArray):Collector{
         if(empty($orderIdArray)){
             return new Collector();
         }
-        return $this->repo->listOrders([
+        return $this->repo->listOrderLinks([
             'orderId' => $orderIdArray
         ]);
     }

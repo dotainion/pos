@@ -8,10 +8,11 @@ use src\infrastructure\IObjects;
 class Item  implements IObjects{
     protected Id $id;
     protected Id $categoryId;
-    protected ?Id $itemId = null;
     protected string $name;
     protected float $amount;
+    protected float $cost;
     protected bool $isTaxable;
+    protected bool $favorite;
     protected int $quantity;
     protected string $description;
     protected Collector $bundleItems;
@@ -34,16 +35,16 @@ class Item  implements IObjects{
         return $this->categoryId;
     }
 
-    public function itemId():?Id{
-        return $this->itemId;
-    }
-
     public function name():string{
         return $this->name;
     }
 
     public function amount():float{
         return $this->amount;
+    }
+
+    public function cost():float{
+        return $this->cost;
     }
 
     public function isTaxable():bool{
@@ -58,6 +59,10 @@ class Item  implements IObjects{
         return $this->bundleItems;
     }
 
+    public function favorite():bool{
+        return $this->favorite;
+    }
+
     public function setId(string $id):void{
         $this->id->set($id);
     }
@@ -70,19 +75,16 @@ class Item  implements IObjects{
         $this->categoryId->set($categoryId);
     }
 
-    public function setItemId(?string $itemId):void{
-        if($itemId === null){
-            return;
-        }
-        $this->itemId = new Id($itemId);
-    }
-
     public function setName(string $name):void{
         $this->name = $name;
     }
 
     public function setAmount(float $amount):void{
         $this->amount = $amount;
+    }
+
+    public function setCost(float $cost):void{
+        $this->cost = $cost;
     }
 
     public function setIsTaxable(bool $isTaxable):void{
@@ -95,5 +97,9 @@ class Item  implements IObjects{
 
     public function setBundleItems(Collector $bundleItems):void{
         $this->bundleItems = $bundleItems;
+    }
+
+    public function setFavorite(bool $favorite):void{
+        $this->favorite = $favorite;
     }
 }

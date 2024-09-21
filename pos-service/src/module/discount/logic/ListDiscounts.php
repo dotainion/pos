@@ -2,6 +2,7 @@
 namespace src\module\discount\logic;
 
 use src\infrastructure\Collector;
+use src\infrastructure\SearchRequest;
 use src\module\discount\repository\DiscountRepository;
 
 class ListDiscounts{
@@ -9,6 +10,13 @@ class ListDiscounts{
 
     public function __construct(){
         $this->repo = new DiscountRepository();
+    }
+
+    public function bySearchRequest(SearchRequest $req):Collector{
+        if(!$req->hasArgs()){
+            return new Collector();
+        }
+        return $this->repo->listDiscounts($req->where());
     }
 
     public function list():Collector{

@@ -16,8 +16,8 @@ class ListCustomersService extends Service{
         $this->categories = new ListCustomers();
     }
     
-    public function process(){
-        $collector = $this->categories->list();
+    public function process($searchRequest){
+        $collector = $this->categories->bySearchRequest($searchRequest);
         $collector->assertHasItem('No customer found.');
 
         $orderCollector = $this->orders->listActiveByCustomerIdArray($collector->idArray());

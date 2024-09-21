@@ -30,6 +30,7 @@ use src\schema\Schema;
 use src\module\user\action\FetchAddressAction;
 use src\module\user\action\SearchUsersAction;
 use src\module\user\action\SetAddressAction;
+use src\module\user\service\CreateUserService;
 
 class Router{
     protected Https $request;
@@ -59,6 +60,15 @@ class Router{
             $query->query('');
             $query->query('');
             var_dump('None...');*/
+            (new CreateUserService())->process(
+                'John', 
+                'Wick', 
+                'example@example.com', 
+                '', 
+                '', 
+                'User1234#', 
+                'User1234#'
+            );
         });
 
         $this->request->route('/signin', function ($req){

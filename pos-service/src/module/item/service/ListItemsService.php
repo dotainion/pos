@@ -1,10 +1,10 @@
 <?php
 namespace src\module\item\service;
 
+use src\infrastructure\SearchRequest;
 use src\infrastructure\Service;
 use src\module\item\logic\AppendBundleItems;
 use src\module\item\logic\ListItems;
-use src\module\item\objects\ItemSearchRequest;
 
 class ListItemsService extends Service{
     protected ListItems $items;
@@ -16,7 +16,7 @@ class ListItemsService extends Service{
         $this->requirements = new AppendBundleItems();
     }
     
-    public function process(ItemSearchRequest $searchRequest){
+    public function process(SearchRequest $searchRequest){
         $collector = $this->items->bySearchRequest($searchRequest);
         $collector->assertHasItem('No items found.');
 

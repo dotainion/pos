@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { usePos } from "../../../providers/PosProvider";
 import { MdDiscount } from "react-icons/md";
 import { FaEllipsisV } from "react-icons/fa";
+import itemImg from "../../../images/item.jpg";
 
 export const Checkout = () =>{
-    const { customer, cartItems, saveDraft } = usePos();
+    const { customer, cartItems, saveDraft, removeFromCart, setQtyCartItem } = usePos();
 
     const [showOption, setShowOption] = useState();
     const [total, setTotal] = useState(0);
@@ -18,6 +19,10 @@ export const Checkout = () =>{
 
     const onHold = () =>{
         saveDraft();
+    }
+
+    const removeItem = (item) =>{
+        removeFromCart(item);
     }
 
     useEffect(()=>{
@@ -42,9 +47,9 @@ export const Checkout = () =>{
             <div className="d-flex justify-content-between py-3">
                 <div className="text-primary text-nowrap">
                     <div className="text-truncate">{customer?.attributes?.firstName} {customer?.attributes?.lastName}</div>
-                    <div className="small text-muted">1 Item</div>
+                    <div className="small text-muted">{cartItems.filter((p)=>p.type === 'item').length} Item</div>
                 </div>
-                <button onClick={onShowOption} className="btn btn-light shadow-sm"><FaEllipsis/></button>
+                <button className="btn btn-light shadow-sm"><FaEllipsis/></button>
             </div>
             <div className="position-relative">
                 {
@@ -57,7 +62,7 @@ export const Checkout = () =>{
             </div>
             <div className="d-flex justify-content-between border border-bottom-0 rounded-top-3 p-3 pb-2">
                 <div>In-store</div>
-                <button className="btn btn-sm btn-light shadow-sm"><FaEllipsis/></button>
+                <button onClick={onShowOption} className="btn btn-sm btn-light shadow-sm"><FaEllipsis/></button>
             </div>
             <div className="flex-column overflow-y-auto overflow-x-hidden border rounded-bottom-3 px-3 h-100">
                 {cartItems.map((item, key)=>(
@@ -65,39 +70,37 @@ export const Checkout = () =>{
                         {
                             item.type === 'item'
                             ? <div className="d-flex justify-content-between my-2">
-                                <div className="d-flex">
-                                    <div style={{width: '40px', height: '40px'}}>
-                                        <img className="img-fluid rounded-1 w-100 h-100" src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
+                                <div className="d-flex align-items-center w-100">
+                                    <div style={{width: '40px', minWidth: '40px', height: '40px'}}>
+                                        <img className="img-fluid rounded-1 w-100 h-100" src={itemImg} alt=""/>
                                     </div>
-                                    <div className="mx-2">
-                                        <div className="text-truncate">{item.attributes.name}</div>
-                                        <div className="text-truncate small">Natrual</div>
+                                    <div className="bg-light rounded-end-3 text-truncate mx-2 w-75 w-sm-100 me-2" style={{maxWidth: '150px'}}>
+                                        <div className="text-truncate" title={item.attributes.name}>{item.attributes.name}</div>
+                                        <div className="small"><small>Natrual</small></div>
                                     </div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                    <div className="me-1">${item.attributes.amount}</div>
-                                    <div class="btn-group dropstart">
+                                    <div className="small">Qty</div>
+                                    <input className="form-control bg-light shadow-none py-0 px-1 mx-1 no-input-appearance" onChange={(e)=>setQtyCartItem(item, e.target.value)} value={item.quantity} style={{width: '40px'}} type="number"/>
+                                    <div className="me-1 text-nowrap">${item.attributes.amount}</div>
+                                    <div className="dropstart">
                                         <button className="btn btn-sm btn-light p-0 pb-1" data-bs-toggle="dropdown" aria-expanded="false"><FaEllipsisV className="small"/></button>
-                                        <ul class="dropdown-menu">
-                                            <button className="btn btn-sm btn-light w-100 rounded-0">Remove</button>
+                                        <ul className="dropdown-menu">
+                                            <li><button onClick={()=>removeItem(item)} className="btn btn-sm btn-light w-100 rounded-0">Remove</button></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            : <div className="d-flex justify-content-between bg-light my-2">
-                                <div className="d-flex align-items-center">
-                                    <MdDiscount className="fs-2"/>
-                                    <div className="mx-2">
+                            : <div className="d-flex justify-content-between w-100 bg-light my-2">
+                                <div className="d-flex align-items-center w-100">
+                                    <div><MdDiscount className="fs-2"/></div>
+                                    <div className="mx-2 w-100">
                                         <div className="text-truncate small">DISCOUNT</div>
                                         <div className="text-truncate small">{item.attributes.name}</div>
                                     </div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                    <div className="me-1">{item.attributes.type}</div>
-                                    <div class="btn-group dropstart">
+                                    <div className="me-1 text-nowrap">{item.attributes.displayName}</div>
+                                    <div className="dropstart">
                                         <button className="btn btn-sm btn-light p-0 pb-1" data-bs-toggle="dropdown" aria-expanded="false"><FaEllipsisV className="small"/></button>
-                                        <ul class="dropdown-menu">
-                                            <button className="btn btn-sm btn-light w-100 rounded-0">Remove</button>
+                                        <ul className="dropdown-menu">
+                                            <li><button onClick={()=>removeItem(item)} className="btn btn-sm btn-light w-100 rounded-0">Remove</button></li>
                                         </ul>
                                     </div>
                                 </div>

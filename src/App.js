@@ -1,12 +1,14 @@
 import React from "react";
 import { HashRouter } from "react-router-dom";
-import { AuthRouter } from "./routes/AuthRouter";
 import { AuthSwitch } from "./routes/AuthSwitch";
+import { AuthProvider } from "./providers/AuthProvider";
 
 function App() {
   return (
     <HashRouter>
-      <AuthSwitch/>
+        <AuthProvider>
+            <AuthSwitch/>
+        </AuthProvider>
     </HashRouter>
   );
 }

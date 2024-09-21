@@ -9,6 +9,7 @@ import { Customer } from "./Customer";
 import { Discount } from "./Discount";
 import { Item } from "./Item";
 import { Order } from "./Order";
+import { openAuthNotification, closeAuthNotification } from "../information/AuthNotification";
 
 export class Api{
     baseURL;
@@ -33,9 +34,9 @@ export class Api{
 
     initialize(){
         if(process.env.NODE_ENV === 'development'){
-            this.baseURL = 'https://www.caribbeancodingacademygrenada.com/susu-service'
+            this.baseURL = 'https://www.caribbeancodingacademygrenada.com/pos-service'
         }else if(process.env.NODE_ENV === 'production'){
-            this.baseURL = '/susu-service';
+            this.baseURL = '/pos-service';
         }else{
             console.error('Environment not determined.');
         }
@@ -46,22 +47,13 @@ export class Api{
     }
 
     isAuthRoute(){
-        /*if(
-            window.location.href.includes(routes.signIn()) || 
-            window.location.href.includes(routes.register())
-        ){
-            return true;
-        }*/
-        return false;
+        const href = window.location.href;
+        return href.includes(routes.signin()) || href.includes(routes.signup());
     }
 
     parseError(error){
-        /*const notification = $('#login-notification');
-        if(error.status === 401 && !this.isAuthRoute()){
-            notification.show('fast');
-        }else{
-            notification.hide();
-        }*/
+        if(error.status === 401 && !this.isAuthRoute()) openAuthNotification();
+        else closeAuthNotification();
         throw error;
     }
 

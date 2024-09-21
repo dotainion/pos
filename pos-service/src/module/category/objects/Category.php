@@ -7,7 +7,8 @@ use src\infrastructure\IObjects;
 class Category  implements IObjects{
     protected Id $id;
     protected string $name;
-    protected float $amount;
+    protected bool $inactive;
+    protected string $color;
     protected string $description;
 
     public function __construct(){
@@ -22,8 +23,12 @@ class Category  implements IObjects{
         return $this->name;
     }
 
-    public function amount():float{
-        return $this->amount;
+    public function inactive():bool{
+        return $this->inactive;
+    }
+
+    public function color():string{
+        return $this->color;
     }
 
     public function description():string{
@@ -38,8 +43,12 @@ class Category  implements IObjects{
         $this->name = $name;
     }
 
-    public function setAmount(float $amount):void{
-        $this->amount = $amount;
+    public function setInactive(float $inactive):void{
+        $this->inactive = $inactive;
+    }
+
+    public function setColor(string $color):void{
+        $this->color = $color;
     }
 
     public function setDescription(string $description):void{

@@ -4,12 +4,15 @@ namespace src\module\order\objects;
 use src\infrastructure\Collector;
 use src\infrastructure\Id;
 use src\infrastructure\IObjects;
+use src\module\customer\objects\Customer;
+use src\module\order\logic\CalculateOrder;
 
 class Order  implements IObjects{
     protected Id $id;
     protected ?Id $customerId = null;
     protected bool $completed;
     protected bool $canceled;
+    protected ?Customer $customer = null;
     protected Collector $items;
     protected Collector $discounts;
 
@@ -35,6 +38,45 @@ class Order  implements IObjects{
         return $this->canceled;
     }
 
+    public function customer():?Customer{
+        return $this->customer;
+    }
+
+    public function items():Collector{
+        return $this->items;
+    }
+
+    public function discounts():Collector{
+        return $this->discounts;
+    }
+
+    public function orderNumber():string{
+        return end(explode('-', $this->id()->toString()));
+    }
+
+    public function status():string{
+        if($this->canceled()){
+            return 'Canceled';
+        }
+        if($this->completed()){
+            return 'Completed';
+        }
+        return 'Pending';
+    }
+
+    public function total():float{
+        $cal = new CalculateOrder($this);
+        return $cal->totalItemsAmount() - $cal->totalDiscountsAmount();
+    }
+
+    public function subTotal():float{
+        return (new CalculateOrder($this))->totalItemsAmount();
+    }
+
+    public function totalDiscountAmount():float{
+        return (new CalculateOrder($this))->totalDiscountsAmount();
+    }
+
     public function setId(string $id):void{
         $this->id->set($id);
     }
@@ -52,6 +94,10 @@ class Order  implements IObjects{
 
     public function setCanceled(bool $canceled):void{
         $this->canceled = $canceled;
+    }
+
+    public function setCustomer(Customer $customer):void{
+        $this->customer = $customer;
     }
     
     public function setItems(Collector $items):void{

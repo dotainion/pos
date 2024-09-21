@@ -58,8 +58,31 @@ table strong{
   display: none;
 }
 
+.no-input-appearance::-webkit-outer-spin-button,
+.no-input-appearance::-webkit-inner-spin-button, 
+.no-input-appearance{
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+}
+
 .z-index-1{
   z-index: 9999;
+}
+
+.dropstart .dropdown-menu li button{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.fav-btn{
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.fav-btn:hover{
+  background-color: gray !important;
 }
 
 @media screen and (max-width:1200px){
@@ -118,6 +141,8 @@ table strong{
   }
 
   .w-sm-100{
-    width: 100%;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
   }
 }

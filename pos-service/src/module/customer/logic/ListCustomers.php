@@ -2,6 +2,7 @@
 namespace src\module\customer\logic;
 
 use src\infrastructure\Collector;
+use src\infrastructure\SearchRequest;
 use src\module\customer\repository\CustomerRepository;
 
 class ListCustomers{
@@ -9,6 +10,13 @@ class ListCustomers{
 
     public function __construct(){
         $this->repo = new CustomerRepository();
+    }
+
+    public function bySearchRequest(SearchRequest $req):Collector{
+        if(!$req->hasArgs()){
+            return new Collector();
+        }
+        return $this->repo->listCustomers($req->where());
     }
 
     public function list():Collector{

@@ -15,21 +15,21 @@ class OrderLinkRepository extends Repository{
     }
     
     public function create(OrderLink $orderLink):void{
-        $this->insert('order')        
+        $this->insert('orderLink')        
             ->add('orderId', $this->uuid($orderLink->orderId()))
             ->add('referenceId', $this->uuid($orderLink->referenceId()));
         $this->execute();
     }
     
     public function deleteOrderLink(OrderLink $orderLink):void{
-        $this->insert('order')
+        $this->update('orderLink')
             ->where('orderId', $this->uuid($orderLink->orderId()))
             ->where('referenceId', $this->uuid($orderLink->referenceId()));
         $this->execute();
     }
     
-    public function listOrders(array $where = []):Collector{
-        $this->select('order');
+    public function listOrderLinks(array $where = []):Collector{
+        $this->select('orderLink');
 
         if(isset($where['orderId'])){
             $this->where('orderId', $this->uuid($where['orderId']));

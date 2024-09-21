@@ -27,7 +27,7 @@ class CustomerRepository extends Repository{
     }
     
     public function edit(Customer $customer):void{
-        $this->insert('customer') 
+        $this->update('customer') 
             ->set('name', $customer->name())
             ->set('email', $customer->email())
             ->set('phone', $customer->phone())
@@ -45,10 +45,10 @@ class CustomerRepository extends Repository{
             $this->where('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->where('name', $where['name']);
+            $this->like('name', $where['name']);
         }
         if(isset($where['email'])){
-            $this->where('email', $where['email']);
+            $this->like('email', $where['email']);
         }
         $this->execute();
         return $this->factory->map(

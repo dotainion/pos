@@ -79,7 +79,8 @@ class Schema{
         $this->sql->create('category')
             ->column('id')->bindary()
             ->column('name')->string()
-            ->column('amount')->string()
+            ->column('color')->string()
+            ->column('inactive')->bool()
             ->column('description')->book();
         return $this->sql->execute();
     }
@@ -90,7 +91,15 @@ class Schema{
             ->column('name')->string()
             ->column('type')->int()
             ->column('value')->string()
+            ->column('isTaxable')->bool()
             ->column('description')->book();
+        return $this->sql->execute();
+    }
+
+    public function itemLink(){
+        $this->sql->create('itemLink')
+            ->column('parentItemId')->bindary()
+            ->column('itemId')->bindary();
         return $this->sql->execute();
     }
 
@@ -100,9 +109,10 @@ class Schema{
             ->column('name')->string()
             ->column('categoryId')->bindary()
             ->column('amount')->string()
-            ->column('itemId')->bool()//the item this item is under as a bundle
+            ->column('cost')->string()
             ->column('isTaxable')->bool()
             ->column('quantity')->int()
+            ->column('favorite')->bool()
             ->column('description')->book();
         return $this->sql->execute();
     }

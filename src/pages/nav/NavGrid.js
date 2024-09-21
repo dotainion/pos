@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
 import { TbMenuOrder } from "react-icons/tb";
 import { MdAddChart } from "react-icons/md";
+import { MdOutlineInventory } from "react-icons/md";
 
 export const NavGrid = () =>{
     const navigate = useNavigate();
@@ -20,9 +21,9 @@ export const NavGrid = () =>{
             onClick: ()=> navigate(routes.order().nested().orders()),
             description: 'Accesses and manages customer orders, allowing you to view, update, and track order'
         },{
-            title: 'Items',
-            icon: IoReceiptOutline,
-            onClick: ()=> navigate(routes.inv().nested().products()),
+            title: 'Inventory',
+            icon: MdOutlineInventory,
+            onClick: ()=> navigate(routes.inv().nested().items()),
             description: 'Manages product information and inventory, including adding, updating, and tracking'
         },{
             title: 'Notifications',
@@ -33,7 +34,7 @@ export const NavGrid = () =>{
     ];
 
     return(
-        <div className="container">
+        <div className="container vh-100 overflow-auto">
             <div className="my-3 h4">Transaction Overview</div>
             <p>Checkout, Orders, Items, and Notifications: facilitate smooth business operations by handling sales transactions, managing customer orders, updating inventory, and providing real-time alerts.</p>
             <div className="row">

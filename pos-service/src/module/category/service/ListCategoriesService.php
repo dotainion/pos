@@ -12,8 +12,8 @@ class ListCategoriesService extends Service{
         $this->categories = new ListCategories();
     }
     
-    public function process(){
-        $collector = $this->categories->list();
+    public function process($searchRequest){
+        $collector = $this->categories->bySearchRequest($searchRequest);
         $collector->assertHasItem('No category found.');
 
         $this->setOutput($collector);

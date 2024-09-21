@@ -3,6 +3,7 @@ namespace src\module\discount\action;
 
 use src\infrastructure\IAction;
 use src\infrastructure\Request;
+use src\infrastructure\SearchRequest;
 use src\module\discount\service\ListDiscountsService;
 
 class ListDiscountsAction extends Request implements IAction{
@@ -14,6 +15,8 @@ class ListDiscountsAction extends Request implements IAction{
     }
 
     public function execute(){
-        return $this->service->process();
+        return $this->service->process(
+            new SearchRequest()
+        );
     }
 }

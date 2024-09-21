@@ -20,15 +20,17 @@ class DiscountRepository extends Repository{
             ->add('name', $discount->name())
             ->add('type', $discount->type())
             ->add('value', $discount->value())
+            ->add('isTaxable', $discount->isTaxable())
             ->add('description', $discount->description());
         $this->execute();
     }
     
     public function edit(Discount $discount):void{
-        $this->insert('discount') 
+        $this->update('discount') 
             ->set('name', $discount->name())
             ->set('type', $discount->type())
             ->set('value', $discount->value())
+            ->set('isTaxable', $discount->isTaxable())
             ->set('description', $discount->description())
             ->where('id', $this->uuid($discount->id()));
         $this->execute();
@@ -41,7 +43,7 @@ class DiscountRepository extends Repository{
             $this->where('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->where('name', $where['name']);
+            $this->like('name', $where['name']);
         }
         $this->execute();
         return $this->factory->map(

@@ -1,3 +1,7 @@
 .darken-image {
     filter: brightness(0.6);
 }
+
+.backdrop-bg{
+    background-color: rgb(0, 0, 0, 0.3);
+}

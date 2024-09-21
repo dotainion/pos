@@ -45,7 +45,7 @@ class SetOrderService extends Service{
             $this->linkFactory->add($link);
         }
 
-        $this->orderLinks->masSet($this->linkFactory);
+        $this->orderLinks->massControlCreate($this->linkFactory);
 
         $this->setOutput($order);
         return $this;

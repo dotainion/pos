@@ -24,7 +24,7 @@ class OrderRepository extends Repository{
     }
     
     public function edit(Order $order):void{
-        $this->insert('order') 
+        $this->update('order') 
             ->set('customerId', $this->uuid($order->customerId()))
             ->set('completed', $order->completed())
             ->set('canceled', $order->canceled())
@@ -40,6 +40,12 @@ class OrderRepository extends Repository{
         }
         if(isset($where['customerId'])){
             $this->where('customerId', $this->uuid($where['customerId']));
+        }
+        if(!isset($where['completed'])){
+            $this->where('completed',  0);
+        }
+        if(!isset($where['canceled'])){
+            $this->where('canceled', 0);
         }
         if(isset($where['completed'])){
             $this->where('completed', (int)$where['completed']);

@@ -3,6 +3,7 @@ namespace src\module\customer\action;
 
 use src\infrastructure\IAction;
 use src\infrastructure\Request;
+use src\infrastructure\SearchRequest;
 use src\module\customer\service\ListCustomersService;
 
 class ListCustomersAction extends Request implements IAction{
@@ -14,6 +15,8 @@ class ListCustomersAction extends Request implements IAction{
     }
 
     public function execute(){
-        return $this->service->process();
+        return $this->service->process(
+            new SearchRequest()
+        );
     }
 }
