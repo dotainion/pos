@@ -15,6 +15,7 @@ class OrderLinkFactory extends Collector{
         $order = new OrderLink();
         $order->setOrderId($this->uuid($record['orderId']));
         $order->setReferenceId($this->uuid($record['referenceId']));
+        $order->setQuantity((int)$record['quantity']);
         return $order;
     }
 }

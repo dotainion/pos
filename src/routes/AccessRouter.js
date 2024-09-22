@@ -8,6 +8,7 @@ import { NavGrid } from "../pages/nav/NavGrid";
 import { Orders } from "../pages/pointOfSale/Orders";
 import { PosProvider } from "../providers/PosProvider";
 import { useAuth } from "../providers/AuthProvider";
+import { SettingsRouter } from "./SettingsRouter";
 
 export const AccessRouter = () =>{
     const { isAuthenticated } = useAuth();
@@ -21,9 +22,10 @@ export const AccessRouter = () =>{
             <Layout>
                 <Routes>
                     <Route path={routes.inv().default()} element={<InventoryRouter/>} />
-                    <Route path={routes.nav().grid()} element={<NavGrid/>} />
+                    <Route path={routes.nav().default()} element={<NavGrid/>} />
                     <Route path={routes.order().orders()} element={<Orders/>} />
                     <Route path={routes.pos().default()} element={<PointOfSale/>} />
+                    <Route path={routes.setting().default()} element={<SettingsRouter/>} />
                     <Route path={'*'} element={<Navigate to={routes.pos().default()}/>} />
                 </Routes>
             </Layout>

@@ -38,6 +38,9 @@ class ItemLinkRepository extends Repository{
         if(isset($where['itemId'])){
             $this->where('itemId', $this->uuid($where['itemId']));
         }
+        if(isset($where['limit'])){
+            $this->limit($where['limit']);
+        }
         $this->execute();
         return $this->factory->map(
             $this->results()

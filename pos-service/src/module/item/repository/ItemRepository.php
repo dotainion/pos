@@ -57,6 +57,9 @@ class ItemRepository extends Repository{
         if(isset($where['categoryId'])){
             $this->where('categoryId', $this->uuid($where['categoryId']));
         }
+        if(isset($where['limit'])){
+            $this->limit($where['limit']);
+        }
         $this->execute();
         return $this->factory->map(
             $this->results()

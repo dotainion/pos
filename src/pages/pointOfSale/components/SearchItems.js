@@ -93,7 +93,11 @@ export const SearchItems = () =>{
                                     </div>
                                 </div>
                             )):
-                            <div>No items</div>
+                            <div className="p-3">
+                                <div className="h4">No Items Available</div>
+                                <div>There are currently no items to display.</div>
+                                <div>If you need items added, please contact your administrator for assistance. They’ll be able to help you get started!</div>
+                            </div>
                         }
                     </div>
                 </div>

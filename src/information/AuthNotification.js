@@ -21,7 +21,7 @@ export const AuthNotification = () =>{
 
     useEffect(()=>{
         $(window).on('open-require-notification', ()=>{
-            if(!isAuthenticated) return setShow(false);
+            if(isAuthenticated) return setShow(false);
             setShow(true);
         }).on('close-require-notification', ()=>{
             setShow(false);

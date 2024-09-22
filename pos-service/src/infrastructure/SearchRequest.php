@@ -21,7 +21,7 @@ class SearchRequest extends Request{
         return !empty($this->where());
     }
 
-    private function limit():?string{
+    private function limit():?int{
         return $this->get('limit');
     }
 
@@ -49,8 +49,16 @@ class SearchRequest extends Request{
         return $this->get('canceled');
     }
 
+    private function draft():?bool{
+        return $this->get('draft');
+    }
+
     public function favorite():?bool{
         return $this->get('favorite');
+    }
+
+    public function desc():?bool{
+        return $this->get('desc');
     }
 
     public function where():array{

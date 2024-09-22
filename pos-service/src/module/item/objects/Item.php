@@ -14,6 +14,7 @@ class Item  implements IObjects{
     protected bool $isTaxable;
     protected bool $favorite;
     protected int $quantity;
+    protected ?int $cartQuantity = null;
     protected string $description;
     protected Collector $bundleItems;
 
@@ -29,6 +30,10 @@ class Item  implements IObjects{
 
     public function quantity():int{
         return $this->quantity;
+    }
+
+    public function cartQuantity():?int{
+        return $this->cartQuantity;
     }
 
     public function categoryId():Id{
@@ -69,6 +74,10 @@ class Item  implements IObjects{
 
     public function setQuantity(int $quantity):void{
         $this->quantity = $quantity;
+    }
+
+    public function setCartQuantity(int $cartQuantity):void{
+        $this->cartQuantity = $cartQuantity;
     }
 
     public function setCategoryId(string $categoryId):void{

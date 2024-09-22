@@ -5,12 +5,17 @@ import { usePos } from "../../../providers/PosProvider";
 import { MdDiscount } from "react-icons/md";
 import { FaEllipsisV } from "react-icons/fa";
 import itemImg from "../../../images/item.jpg";
+import { utils } from "../../../utils/Utils";
 
 export const Checkout = () =>{
-    const { customer, cartItems, saveDraft, removeFromCart, setQtyCartItem } = usePos();
+    const { order, customer, cartItems, saveDraft, removeFromCart, setQtyCartItem } = usePos();
 
     const [showOption, setShowOption] = useState();
     const [total, setTotal] = useState(0);
+    const [subTotal, setSubTotal] = useState(0);
+    const [taxPercentage, setTaxPercentage] = useState(5);
+    const [totalTax, setTotalTax] = useState(0);
+    const [totalDiscount, setTotalDiscount] = useState(0);
 
     const onShowOption = (e) =>{
         e.stopPropagation();
@@ -29,34 +34,37 @@ export const Checkout = () =>{
         $(window).on('click', ()=>{
             setShowOption(false);
         });
+
+        utils.calculate.setTaxRequirements(taxPercentage, false);
     }, []);
 
     useEffect(()=>{
-        let subTotal = 0;
-        cartItems.forEach((item)=>{
-            if(item.type === 'item'){
-                return subTotal += parseFloat(item.attributes.amount);
-            }
-            //need to be able to calculate discount here...
+        utils.calculate.tax(cartItems, ({totalTax, subTotal, net, totalDiscount})=>{
+            setTotal(net);
+            setSubTotal(subTotal);
+            setTotalTax(totalTax);
+            setTotalDiscount(totalDiscount);
         });
-        setTotal(subTotal);
     }, [cartItems]);
 
     return(
         <>
             <div className="d-flex justify-content-between py-3">
-                <div className="text-primary text-nowrap">
-                    <div className="text-truncate">{customer?.attributes?.firstName} {customer?.attributes?.lastName}</div>
+                <div className="text-primary text-nowrap w-100">
+                    <div className="text-truncate border-bottom mb-2 me-3">{customer?.attributes?.name}</div>
+                    <div className="small text-muted lh-1"><small>Order# <a className="link-primary">{order?.attributes?.orderNumber}</a></small></div>
                     <div className="small text-muted">{cartItems.filter((p)=>p.type === 'item').length} Item</div>
                 </div>
-                <button className="btn btn-light shadow-sm"><FaEllipsis/></button>
+                <div>
+                    <button className="btn btn-light shadow-sm"><FaEllipsis/></button>
+                </div>
             </div>
             <div className="position-relative">
                 {
                 showOption && 
                 <div className="position-absolute w-100 top-0 start-0 bg-white border shadow-sm rounded-3 p-3 z-index-1" onClick={e=>e.stopPropagation()}>
-                    <small>Temporarily save this order while you assist other customers. It will be stored with all current details and can be retrieved and completed later.</small>
-                    <button onClick={onHold} className="btn btn-sm btn-light border">On hold</button>
+                    <button onClick={onHold} className="btn btn-sm btn-light border">Save as draft</button>
+                    <div className="small"><small>Save order so you can come back to it later</small></div>
                 </div>
                 }
             </div>
@@ -108,13 +116,24 @@ export const Checkout = () =>{
                         }
                     </div>
                 ))}
-                <div className="d-flex justify-content-between my-3">
-                    <div>Tax (15%)</div>
-                    <div>$10.21</div>
+                
+            </div>
+            <div>
+                <div className="d-flex justify-content-between small mt-3">
+                    <div>Tax ({taxPercentage}%):</div>
+                    <div>${totalTax}</div>
+                </div>
+                <div className="d-flex justify-content-between small">
+                    <div>Discount:</div>
+                    <div>${totalDiscount}</div>
+                </div>
+                <div className="d-flex justify-content-between small">
+                    <div>Subtotal:</div>
+                    <div>${subTotal}</div>
                 </div>
             </div>
             <div className="d-flex my-4 py-2">
-                <button onClick={onShowOption} className="btn btn-sm btn-light text-primary w-50 me-1 shadow-sm">Save as draft</button>
+                <button onClick={onHold} className="btn btn-sm btn-light text-primary w-50 me-1 shadow-sm">Save as draft</button>
                 <button className="btn btn-sm btn-primary w-50 ms-1 shadow-sm">Charge ${total.toFixed(2)}</button>
             </div>
         </>

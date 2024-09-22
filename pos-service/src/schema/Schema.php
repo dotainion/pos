@@ -64,14 +64,17 @@ class Schema{
             ->column('id')->bindary()
             ->column('customerId')->bindary(true)
             ->column('completed')->bool()
-            ->column('canceled')->bool();
+            ->column('canceled')->bool()
+            ->column('draft')->bool()
+            ->column('date')->timestamp();
         return $this->sql->execute();
     }
 
     public function orderLink(){
         $this->sql->create('orderLink')
             ->column('orderId')->bindary()
-            ->column('referenceId')->bindary();
+            ->column('referenceId')->bindary()
+            ->column('quantity')->int();
         return $this->sql->execute();
     }
 

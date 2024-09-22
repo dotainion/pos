@@ -6,17 +6,22 @@ import { routes } from "../../routes/routes";
 import { useEffect, useState } from "react";
 import { api } from "../../request/Api";
 import { Loader } from "../../components/Loader";
+import { usePos } from "../../providers/PosProvider";
+import { FaEllipsisV } from "react-icons/fa";
+import { utils } from "../../utils/Utils";
 
 export const Orders = () =>{
+    const { addOrder } = usePos();
+
     const [orders, setOrders] = useState([]);
     const [limit, setLimit] = useState(100);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
-    const selectOrder = () =>{
-        //might have customer with order not sure yet...
-        navigate(routes.pos().nested().products());
+    const selectOrder = (order) =>{
+        addOrder(order);
+        navigate(routes.pos().nested().items());
     }
 
     useEffect(()=>{
@@ -28,16 +33,6 @@ export const Orders = () =>{
             setLoading(false);
         });
     }, []);
-
-    /**
-    protected Id $id;
-    protected ?Id $customerId = null;
-    protected bool $completed;
-    protected bool $canceled;
-    protected Collector $items;
-    protected Collector $discounts;
-
-    */
 
     if(loading) return <Loader/>;
     
@@ -57,27 +52,44 @@ export const Orders = () =>{
                             <th>Total</th>
                             <th>Net</th>
                             <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {orders.map((order)=>(
-                            <tr onClick={()=>selectOrder(order)} className="align-items-center pointer" key={order.id}>
+                            <tr className="align-items-center pointer" key={order.id}>
                                 <td>
                                     <div className="d-flex align-items-center">
                                         <AiOutlineBorderlessTable/>
                                         <span className="ms-1" title={order.id}>{order.attributes.orderNumber}</span>
                                     </div>
                                 </td>
-                                <td>Jun, 12 2024</td>
+                                <td>{utils.date.toLocalDateTime(order.attributes.date)}</td>
                                 <td>{order.attributes.customer?.attributes?.name}</td>
-                                <td>{parseFloat(order.attributes.totalDiscountAmount).toFixed(2)}</td>
-                                <td>{parseFloat(order.attributes.subTotal).toFixed(2)}</td>
-                                <td>{parseFloat(order.attributes.total).toFixed(2)}</td>
+                                <td>${order.attributes.totalDiscountAmount.toFixed(2)}</td>
+                                <td>${order.attributes.subTotal.toFixed(2)}</td>
+                                <td>${order.attributes.total.toFixed(2)}</td>
                                 <td>{order.attributes.status}</td>
+                                <td>
+                                    <div className="dropstart">
+                                        <button className="btn btn-sm btn-light p-0 pb-1" data-bs-toggle="dropdown" aria-expanded="false"><FaEllipsisV className="small"/></button>
+                                        <ul className="dropdown-menu">
+                                            <li><button onClick={()=>selectOrder(order)} className="btn btn-sm btn-light w-100 rounded-0">To checkout</button></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                {
+                    !orders.length &&
+                    <div className="p-3">
+                        <div className="h4">No Orders Found</div>
+                        <div>It looks like there are no orders to display at this time.</div>
+                        <div>If you need to place an order, please use the order entry feature. Once added, your orders will appear here!</div>
+                    </div>
+                }
             </div>
         </div>
     )

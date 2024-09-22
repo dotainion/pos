@@ -2,6 +2,7 @@
 namespace src\module\order\logic;
 
 use src\infrastructure\Collector;
+use src\infrastructure\Id;
 use src\module\order\objects\OrderLink;
 use src\module\order\repository\OrderLinkRepository;
 
@@ -18,6 +19,7 @@ class SetOrderLinks{
             'referenceId' => $orderLink->referenceId()
         ]);
         if($collector->hasItem()){
+            $this->repo->edit($orderLink);
             return;
         }
         $this->repo->create($orderLink);
@@ -34,12 +36,9 @@ class SetOrderLinks{
         $this->repo->deleteOrderLink($orderLink);
     }
 
-    public function massControlCreate(Collector $links):void{
-        if(!$links->hasItem()){
-            return;
-        }
+    public function massControlCreate(Collector $links, Id $orderId):void{
         $collector = $this->repo->listOrderLinks([
-            'orderId' => $links->first()->orderId()
+            'orderId' => $orderId
         ]);
         $collectorToDelete = new Collector();
         foreach($collector->list() as $exist){

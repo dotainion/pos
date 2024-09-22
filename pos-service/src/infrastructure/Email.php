@@ -5,6 +5,11 @@ namespace src\infrastructure;
 class Email implements IIdentifier{
     protected ?string $email = null;
 
+    public function __construct(?string $email=null)
+    {
+        ($email !== null) && $this->set($email);
+    }
+
     final public function __toString():string{
         return $this->toString();
     }

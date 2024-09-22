@@ -1,9 +1,23 @@
+import { SettingsRouter } from "./SettingsRouter";
+
+class Settings{
+    _nested = '';
+    default = () => '/setting/*';
+    options = () => this._nested + 'options';
+    taxSetting = () => this._nested + 'tax';
+    nested = () => {
+        this._nested = this.default().replace('*', '');
+        return this;
+    }
+}
+
 class PointOfSale{
     _nested = '';
     default = () => '/pos/*';
     customers = () => this._nested + 'search/customers';
+    createCustomer = () => this._nested + 'create/customer';
     discounts = () => this._nested + 'search/discounts';
-    products = () => this._nested + 'search/products';
+    items = () => this._nested + 'search/items';
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;
@@ -36,7 +50,7 @@ class Inventory{
 
 class Grid{
     _nested = '';
-    default = () => '';
+    default = () => '/nav/*';
     grid = () => this._nested + 'grid';
     nested = () => {
         this._nested = this.default().replace('*', '');
@@ -63,6 +77,7 @@ class Routes{
     pos = () => new PointOfSale();
     nav = () => new Grid();
     order = () => new Order();
+    setting = () => new Settings();
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;

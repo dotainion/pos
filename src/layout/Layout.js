@@ -1,11 +1,4 @@
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { TbMenuOrder } from "react-icons/tb";
-import { IoReceiptOutline } from "react-icons/io5";
-import { MdNotificationsActive } from "react-icons/md";
-import { IoMdMenu } from "react-icons/io";
-import { TbLogout2 } from "react-icons/tb";
-import { routes } from "../routes/routes";
-import { useNavigate } from "react-router-dom";
+import { IoMdSettings } from "react-icons/io";
 import { Topbar } from "./Topbar";
 
 export const Layout = ({children}) =>{

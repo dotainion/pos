@@ -50,6 +50,9 @@ class CustomerRepository extends Repository{
         if(isset($where['email'])){
             $this->like('email', $where['email']);
         }
+        if(isset($where['limit'])){
+            $this->limit($where['limit']);
+        }
         $this->execute();
         return $this->factory->map(
             $this->results()

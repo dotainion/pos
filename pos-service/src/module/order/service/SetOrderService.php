@@ -1,6 +1,7 @@
 <?php
 namespace src\module\order\service;
 
+use src\infrastructure\DateHelper;
 use src\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\order\factory\OrderFactory;
@@ -22,16 +23,20 @@ class SetOrderService extends Service{
         $this->orderLinks = new SetOrderLinks();
     }
     
-    public function process($id, $customerId, $completed, $canceled, $referenceIdArray){
+    public function process($id, $customerId, $completed, $canceled, $date, $referenceIdArray){
 
         $idObj = new Id();
         $idObj->isValid($id) ? $idObj->set($id) : $idObj->new();
+
+        $dateHelper = new DateHelper();
+        $dateHelper->isValid($date) ? $dateHelper->set($date) : $dateHelper->new();
 
         $order = $this->factory->mapResult([
             'id' => $idObj->toString(),
             'customerId' => $customerId,
             'completed' => $completed,
-            'canceled' => $canceled
+            'canceled' => $canceled,
+            'date' => $dateHelper->toString()
         ]);
 
         $this->order->set($order);
@@ -40,12 +45,13 @@ class SetOrderService extends Service{
         foreach($referenceIdArray ?? [] as $referenceId){
             $link = $this->linkFactory->mapResult([
                 'orderId' => $order->id()->toString(),
-                'referenceId' => $referenceId
+                'referenceId' => $referenceId['referenceId'],
+                'quantity' => $referenceId['quantity']
             ]);
             $this->linkFactory->add($link);
         }
 
-        $this->orderLinks->massControlCreate($this->linkFactory);
+        $this->orderLinks->massControlCreate($this->linkFactory, $order->id());
 
         $this->setOutput($order);
         return $this;

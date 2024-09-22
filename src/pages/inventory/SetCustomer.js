@@ -21,7 +21,7 @@ export const SetCustomer = () =>{
     const phoneRef = useRef();
     const genderRef = useRef();
 
-    const saveCategory = (e) =>{
+    const saveCustomer = (e) =>{
         e.stopPropagation();
         e.preventDefault();
         setErrors(null);
@@ -69,10 +69,9 @@ export const SetCustomer = () =>{
     if(loading) return <Loader/>;
 
     return(
-        <form onSubmit={saveCategory}>
+        <form onSubmit={saveCustomer}>
             <div className="d-flex align-items-center text-nowrap w-100 mt-3">
                 <div className="fw-bold w-100">{!!params?.customerId ? 'Update Customer' : 'Create Customer'}</div>
-                <button onClick={()=>navigate(routes.inv().nested().categories())} className="d-flex align-items-center btn btn-sm btn-light text-primary" type="button">Categories<MdCategory className="ms-2"/></button>
             </div>
             <hr></hr>
             {errors ? <div className="text-danger">{errors}</div> : null}

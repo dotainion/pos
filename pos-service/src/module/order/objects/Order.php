@@ -2,6 +2,7 @@
 namespace src\module\order\objects;
 
 use src\infrastructure\Collector;
+use src\infrastructure\DateHelper;
 use src\infrastructure\Id;
 use src\infrastructure\IObjects;
 use src\module\customer\objects\Customer;
@@ -12,18 +13,25 @@ class Order  implements IObjects{
     protected ?Id $customerId = null;
     protected bool $completed;
     protected bool $canceled;
+    protected bool $draft;
     protected ?Customer $customer = null;
     protected Collector $items;
     protected Collector $discounts;
+    protected DateHelper $date;
 
     public function __construct(){
         $this->id = new Id();
         $this->items = new Collector();
         $this->discounts = new Collector();
+        $this->date = new DateHelper();
     }
 
     public function id():Id{
         return $this->id;
+    }
+
+    public function date():DateHelper{
+        return $this->date;
     }
 
     public function customerId():?Id{
@@ -36,6 +44,10 @@ class Order  implements IObjects{
 
     public function canceled():bool{
         return $this->canceled;
+    }
+
+    public function draft():bool{
+        return $this->draft;
     }
 
     public function customer():?Customer{
@@ -94,6 +106,14 @@ class Order  implements IObjects{
 
     public function setCanceled(bool $canceled):void{
         $this->canceled = $canceled;
+    }
+
+    public function setDraft(bool $draft):void{
+        $this->draft = $draft;
+    }
+
+    public function setDate(string $date):void{
+        $this->date->set($date);
     }
 
     public function setCustomer(Customer $customer):void{

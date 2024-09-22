@@ -44,10 +44,17 @@ trait Factory{
 
     public function uuid($uuidBytes){
         try{
+            if($uuidBytes === Id::Default){
+                return null;
+            }
             if($this->isValidUUid($uuidBytes)){
                 return $uuidBytes;
             }
-            return (new Id())->fromBytes((string)$uuidBytes)->toString();
+            $uuid = (new Id())->fromBytes((string)$uuidBytes)->toString();
+            if($uuid === Id::Default){
+                return null;
+            }
+            return $uuid;
         }catch(Throwable $ex){
             return null;
         }

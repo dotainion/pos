@@ -14,9 +14,11 @@ class OrderFactory extends Collector{
     public function mapResult($record):Order{
         $order = new Order();
         $order->setId($this->uuid($record['id']));
-        //$order->setCustomerId($this->uuid($record['customerId']));
+        $order->setCustomerId($this->uuid($record['customerId']));
         $order->setCompleted((bool)$record['completed']);
         $order->setCanceled((bool)$record['canceled']);
+        $order->setDraft((bool)$record['draft']);
+        $order->setDate((string)$record['date']);
         return $order;
     }
 }

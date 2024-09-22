@@ -125,6 +125,7 @@ export const SetItem = () =>{
             <Input title="Expiration Date" type="date" />
             <Texarea ref={descriptionRef} title="Item Description"/>
             <Switch onLabel="Active" offLabel="Inactive" defaultChecked={true}/>
+            <Switch onLabel="Exempt Tax" offLabel="Include Tax"/>
 
             <hr></hr>
             <div className="d-flex justify-content-end py-3">

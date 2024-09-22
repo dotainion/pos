@@ -48,7 +48,7 @@ export const SearchDiscounts = () =>{
 
     const addItem = () =>{
         selected.forEach((select)=> addToCart(select));
-        navigate(routes.pos().nested().products());
+        navigate(routes.pos().nested().items());
     }
 
     useEffect(()=>{
@@ -84,7 +84,11 @@ export const SearchDiscounts = () =>{
                                 <div className="w-25 text-truncate">{discount.attributes.displayName}</div>
                             </label>
                         )):
-                        <div>No discounts</div>
+                        <div className="p-3">
+                            <div className="h4">No Discounts Available</div>
+                            <div>It seems there are no discounts at the moment.</div>
+                            <div>To stay updated, check back regularly! When discounts are available, you’ll find them right here, ready for you to grab your savings!</div>
+                        </div>
                     }
                 </div>
             }

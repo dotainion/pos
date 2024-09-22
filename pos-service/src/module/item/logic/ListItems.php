@@ -33,6 +33,9 @@ class ListItems{
     }
 
     public function byName(string $name):Collector{
+        if(empty($name)){
+            return new Collector();
+        }
         return $this->repo->listItems([
             'name' => $name,
         ]);

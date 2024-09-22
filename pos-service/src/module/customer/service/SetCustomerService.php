@@ -1,6 +1,7 @@
 <?php
 namespace src\module\customer\service;
 
+use src\infrastructure\DateHelper;
 use src\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\customer\factory\CustomerFactory;
@@ -21,13 +22,16 @@ class SetCustomerService extends Service{
         $idObj = new Id();
         $idObj->isValid($id) ? $idObj->set($id) : $idObj->new();
 
+        $dateHelper = new DateHelper();
+        $dateHelper->isValid($date) ? $dateHelper->set($date) :  $dateHelper->new();
+
         $customer = $this->factory->mapResult([
             'id' => $idObj->toString(),
             'name' => $name,
             'email' => $email,
             'phone' => $phone,
             'gender' => $gender,
-            'date' => $date,
+            'date' => $dateHelper->toString(),
             'hide' => $hide,
         ]);
 

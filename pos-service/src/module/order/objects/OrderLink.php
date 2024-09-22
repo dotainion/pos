@@ -6,6 +6,7 @@ use src\infrastructure\Id;
 class OrderLink{
     protected Id $orderId;
     protected Id $referenceId;
+    protected int $quantity;
 
     public function __construct(){
         $this->orderId = new Id();
@@ -20,11 +21,19 @@ class OrderLink{
         return $this->referenceId;
     }
 
+    public function quantity():int{
+        return $this->quantity;
+    }
+
     public function setOrderId(string $orderId):void{
         $this->orderId->set($orderId);
     }
 
     public function setReferenceId(string $referenceId):void{
         $this->referenceId->set($referenceId);
+    }
+
+    public function setQuantity(int $quantity):void{
+        $this->quantity = $quantity;
     }
 }

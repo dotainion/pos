@@ -5,6 +5,7 @@ import { MdFavorite } from "react-icons/md";
 import { MdOutlineBeachAccess } from "react-icons/md";
 import $ from "jquery";
 import { Favorites } from "../components/Favorites";
+import { usePos } from "../providers/PosProvider";
 
 const prod = {
     id: 'prod',
@@ -16,6 +17,8 @@ const prod = {
 };
 
 export const PosCategoryBar = () =>{
+    const { addOrder, addCustomer } = usePos();
+
     const [active, setActive] = useState();
 
     const navigate = useNavigate();
@@ -23,6 +26,11 @@ export const PosCategoryBar = () =>{
     const onSelect = (cat, e) =>{
         e.stopPropagation();
         setActive(cat.title);
+    }
+
+    const newOrder = () =>{
+        addOrder(null);
+        addCustomer(null)
     }
 
     const FAVORITES = 'Favorites';
@@ -64,8 +72,9 @@ export const PosCategoryBar = () =>{
             <div className="mt-2">
                 <button onClick={()=>navigate(routes.pos().nested().discounts())} className="btn btn-sm mb-2 me-2 btn-danger">Discounts</button>
                 <button onClick={()=>navigate(routes.pos().nested().customers())} className="btn btn-sm mb-2 me-2 btn-primary">Customer</button>
-                <button onClick={()=>navigate(routes.pos().nested().products())} className="btn btn-sm mb-2 me-2 btn-warning">Items</button>
-                <button onClick={()=>navigate(routes.order().nested().orders())} className="btn btn-sm mb-2 me-2 btn-success">Search Carts</button>
+                <button onClick={()=>navigate(routes.pos().nested().items())} className="btn btn-sm mb-2 me-2 btn-warning">Items</button>
+                <button onClick={()=>newOrder()} className="btn btn-sm mb-2 me-2 btn-secondary">New Order</button>
+                <button onClick={()=>navigate(routes.order().nested().orders())} className="btn btn-sm mb-2 me-2 btn-success">Search Order</button>
             </div>
         </div>
     )

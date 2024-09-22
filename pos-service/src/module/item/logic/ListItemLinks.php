@@ -19,12 +19,18 @@ class ListItemLinks{
     }
 
     public function byParentItemIdArray(array $parentItemIdArray):Collector{
+        if(empty($parentItemIdArray)){
+            return new Collector();
+        }
         return $this->repo->listItemLinks([
             'parentItemId' => $parentItemIdArray,
         ]);
     }
 
     public function byItemIdArray(array $itemIdArray):Collector{
+        if(empty($itemIdArray)){
+            return new Collector();
+        }
         return $this->repo->listItemLinks([
             'itemId' => $itemIdArray,
         ]);

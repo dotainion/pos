@@ -5,9 +5,13 @@ import { Checkout } from "./components/Checkout";
 import { usePos } from "../../providers/PosProvider";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
+import { api } from "../../request/Api";
+import { TbShoppingCartSearch } from "react-icons/tb";
+import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { MdAddShoppingCart } from "react-icons/md";
 
 export const PointOfSale = () =>{
-    const { lastCustomer, order, addOrder } = usePos();
+    const { lastDraftOrder, order, addOrder } = usePos();
 
     const navigate = useNavigate();
 
@@ -27,48 +31,60 @@ export const PointOfSale = () =>{
     const options = [
         {
             title: 'Search Orders',
+            icon: TbShoppingCartSearch,
             onClick: ()=>navigate(routes.order().nested().orders()),
             descriptions: [
                 'Find and review existing orders using search criteria.'
             ]
         },{
             title: 'New Order',
+            icon: MdAddShoppingCart,
             onClick: ()=>addOrder(),
             descriptions: [
                 'Create a new order to start a fresh transaction.'
             ]
         },
-        ...(lastCustomer ? [{
-            title: 'Last Customer',
-            onClick: ()=>addOrder(lastCustomer),
+        ...(lastDraftOrder ? [{
+            title: 'Last Draft Order',
+            icon: MdOutlineShoppingCartCheckout,
+            onClick: ()=>addOrder(lastDraftOrder),
             descriptions: [
-                `${lastCustomer?.attributes?.firstName} ${lastCustomer?.attributes?.lastName}`,
-                'Order number:',
-                `${'123456789'}`,
+                `${lastDraftOrder.attributes.customer?.attributes?.name || 'No customer'}`,
+                `Order number: ${lastDraftOrder.attributes.orderNumber}`,
             ]
         }] : []),
     ]
 
     return(
-        <div className="container">
+        <div className="container overflow-auto vh-100">
             {
                 !order
-                ? <div className="d-flex align-items-center justify-content-center vh-100">
-                    <div className="d-flex flex-sm-row flex-column justify-content-center">
-                        <div className="row justify-content-center px-2">
-                            {options.map((option, key)=>(
-                                <div className="col-12 col-sm-6 col-md-6 col-lg-4 p-1" key={key}>
-                                    <div onClick={option.onClick} className="card pointer h-100">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{option.title}</h5>
-                                            {option.descriptions.map((description, index)=>(
-                                                <div key={key + index}>{description}</div>
-                                            ))}
-                                        </div>
+                ? <div className="mt-5">
+                    <div className="mb-5 py-4 text-center w-100">
+                        <div className="h4 px-4">Manage Your Orders</div>
+                        <div className="px-4">Easily navigate your order management with the options below.</div>
+                        <div className="px-4">Use Search Orders to find existing orders or click New Order to create a fresh order. Everything you need to streamline your ordering process is right here!</div>
+                        <div className="bg-dark">
+                            <hr></hr>
+                            <hr></hr>
+                        </div>
+                    </div>
+                    <div className="row w-100 p-0 m-0">
+                        {options.map((option, key)=>(
+                            <div className="col-12 col-sm-6 col-md-6 col-lg-4 p-1 text-center" key={key}>
+                                <div onClick={option.onClick} className="card card-hover pointer overflow-hidden h-100">
+                                    <div className="card-body">
+                                        <p className="card-text text-primary my-4">
+                                            <option.icon className="display-5"/>
+                                        </p>
+                                        <h5 className="card-title">{option.title}</h5>
+                                        {option.descriptions.map((description, index)=>(
+                                            <div className="small" key={key + index}>{description}</div>
+                                        ))}
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 : <div className="d-flex">

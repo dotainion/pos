@@ -43,6 +43,9 @@ class CategoryRepository extends Repository{
         if(isset($where['name'])){
             $this->like('name', $where['name']);
         }
+        if(isset($where['limit'])){
+            $this->limit($where['limit']);
+        }
         $this->execute();
         return $this->factory->map(
             $this->results()

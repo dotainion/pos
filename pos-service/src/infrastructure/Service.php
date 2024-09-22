@@ -125,7 +125,7 @@ class Service extends Request{
     }
 
     public function dataType($data){
-        if(is_null($data) || is_bool($data) || is_int($data) || is_array($data)){
+        if(is_null($data) || is_bool($data) || is_int($data) || is_float($data) || is_array($data)){
             return $data;
         }
         return (string)$data;
