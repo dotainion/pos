@@ -9,15 +9,15 @@ export const SettingsLayout = ({children}) =>{
 
     const navs = [
         {
-            title: 'Tax',
+            title: 'Tax Settings',
             icon: GrMoney,
             onClick: ()=> navigate(routes.setting().taxSetting())
         },
     ];
 
     return(
-        <div className="d-flex flex-column vh-100">
-            <div className="">
+        <div className="d-flex flex-column w-100 vh-100">
+            <div className="w-100">
                 <Topbar />
                 <div className="layout d-flex flex-row vh-100 py-0 my-0">
                     <div className="d-flex flex-column text-nowrap border-end">
@@ -30,7 +30,7 @@ export const SettingsLayout = ({children}) =>{
                             ))}
                         </div>
                     </div>
-                    <div className="d-flex flex-column py-0 my-0 vh-100 min-container">{children}</div>
+                    <div className="d-flex flex-column py-0 my-0 w-100 vh-100 overflow-auto">{children}</div>
                 </div>
             </div>
         </div>

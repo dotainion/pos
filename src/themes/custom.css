@@ -67,7 +67,11 @@ table strong{
 }
 
 .z-index-1{
-  z-index: 9999;
+  z-index: 9999 !important;
+}
+
+.z-index-2{
+  z-index: 99999999 !important;
 }
 
 .dropstart .dropdown-menu li button{
@@ -89,7 +93,7 @@ table strong{
   background-color: rgb(0, 0, 0, 0.1) !important;
 }
 
-.group .my-3{
+.group .my-3, .group .my-4{
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -113,6 +117,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   user-select: none;
   z-index: 2000;
   user-select: none !important;
+}
+
+hr{
+  border-color: #6c757d !important;
 }
 
 @media screen and (max-width:1200px){

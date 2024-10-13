@@ -23,7 +23,9 @@ class SetItemAction extends Request implements IAction{
             $this->get('isTaxable'),
             $this->get('quantity'),
             $this->get('description'),
-            $this->get('bundleItemIdArray')
+            $this->get('bundleItemArray'),
+            $this->get('active'),
+            $this->get('inclusive')
         );
     }
 }

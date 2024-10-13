@@ -21,21 +21,16 @@ export const SearchDiscounts = () =>{
 
     const navigate = useNavigate();
 
-    const timeoutRef = useRef();
-
     const onSearch = (e) =>{
         setLoading(true);
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(() => {
-            api.discount.list({name: e.target.value}).then((response)=>{
-                setDiscounts(response.data.data);
-            }).catch((error)=>{
-                setDiscounts([]);
-                setErrors(new ParseError(error).message());
-            }).finally(()=>{
-                setLoading(false);
-            });
-        }, 500);
+        api.discount.list({name: e.target.value}).then((response)=>{
+            setDiscounts(response.data.data);
+        }).catch((error)=>{
+            setDiscounts([]);
+            setErrors(new ParseError(error).message());
+        }).finally(()=>{
+            setLoading(false);
+        });
     }
 
     const addDiscounts = (item, e) =>{

@@ -12,37 +12,18 @@ class ListImage{
         $this->repo = new ImageRepository();
     }
 
-    public function documentByProductId(Id $productId):Collector{
+    public function byId(Id $itemId):Collector{
         return $this->repo->list([
-            'productId' => $productId,
-            'isDocument' => true
+            'id' => $itemId,
         ]);
     }
 
-    public function byProductId(Id $productId):Collector{
-        return $this->repo->list([
-            'productId' => $productId,
-            'isDocument' => false
-        ]);
-    }
-
-    public function byProductIdArray(array $productId):Collector{
-        if(empty($productId)){
+    public function byItemIdArray(array $itemIdArray):Collector{
+        if(empty($itemIdArray)){
             return new Collector();
         }
         return $this->repo->list([
-            'productId' => $productId,
-            'isDocument' => false
-        ]);
-    }
-
-    public function byIdArray(array $id):Collector{
-        if(empty($id)){
-            return new Collector();
-        }
-        return $this->repo->list([
-            'id' => $id,
-            'isDocument' => false
+            'itemId' => $itemIdArray,
         ]);
     }
 }

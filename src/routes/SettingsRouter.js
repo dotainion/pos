@@ -11,7 +11,7 @@ export const SettingsRouter = () =>{
             <Routes>
                 <Route path={routes.setting().taxSetting()} element={<TaxSetting/>} />
                 <Route path={routes.setting().options()} element={<TaxOptions/>} />
-                <Route path={'*'} element={<Navigate to={routes.setting().options()}/>} />
+                <Route path={'*'} element={<Navigate to={routes.setting().taxSetting()}/>} />
             </Routes>
         </SettingsLayout>
     )

@@ -4,6 +4,8 @@ namespace src\module\item\objects;
 use src\infrastructure\Collector;
 use src\infrastructure\Id;
 use src\infrastructure\IObjects;
+use src\module\category\objects\Category;
+use src\module\image\objects\Image;
 
 class Item  implements IObjects{
     protected Id $id;
@@ -14,9 +16,13 @@ class Item  implements IObjects{
     protected bool $isTaxable;
     protected bool $favorite;
     protected int $quantity;
-    protected ?int $cartQuantity = null;
     protected string $description;
     protected Collector $bundleItems;
+    protected ?Category $category = null;
+    protected bool $active;
+    protected bool $inclusive;
+    protected ?ItemLink $itemLink = null;
+    protected ?Image $image = null;
 
     public function __construct(){
         $this->id = new Id();
@@ -32,16 +38,24 @@ class Item  implements IObjects{
         return $this->quantity;
     }
 
-    public function cartQuantity():?int{
-        return $this->cartQuantity;
-    }
-
     public function categoryId():Id{
         return $this->categoryId;
     }
 
+    public function category():?Category{
+        return $this->category;
+    }
+
     public function name():string{
         return $this->name;
+    }
+
+    public function active():bool{
+        return $this->active;
+    }
+
+    public function inclusive():bool{
+        return $this->inclusive;
     }
 
     public function amount():float{
@@ -68,16 +82,20 @@ class Item  implements IObjects{
         return $this->favorite;
     }
 
+    public function itemLink():?ItemLink{
+        return $this->itemLink;
+    }
+
+    public function image():?Image{
+        return $this->image;
+    }
+
     public function setId(string $id):void{
         $this->id->set($id);
     }
 
     public function setQuantity(int $quantity):void{
         $this->quantity = $quantity;
-    }
-
-    public function setCartQuantity(int $cartQuantity):void{
-        $this->cartQuantity = $cartQuantity;
     }
 
     public function setCategoryId(string $categoryId):void{
@@ -108,7 +126,28 @@ class Item  implements IObjects{
         $this->bundleItems = $bundleItems;
     }
 
+    public function setCategory(Category $category):void{
+        $this->category = $category;
+    }
+
     public function setFavorite(bool $favorite):void{
         $this->favorite = $favorite;
+    }
+
+    public function setActive(bool $active):void{
+        $this->active = $active;
+    }
+
+    public function setInclusive(bool $inclusive):void{
+        $this->inclusive = $inclusive;
+    }
+
+    public function setItemLink(ItemLink $itemLink):void{
+        //set here to display the price of the bundle item
+        $this->itemLink = $itemLink;
+    }
+
+    public function setImage(Image $image):void{
+        $this->image = $image;
     }
 }

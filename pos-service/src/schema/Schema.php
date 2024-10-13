@@ -2,7 +2,7 @@
 namespace src\schema;
 
 use Exception;
-use src\database\Table;
+use src\schema\Table;
 
 class Schema{
     protected $sql = null;
@@ -65,16 +65,25 @@ class Schema{
             ->column('customerId')->bindary(true)
             ->column('completed')->bool()
             ->column('canceled')->bool()
-            ->column('draft')->bool()
             ->column('date')->timestamp();
         return $this->sql->execute();
     }
 
-    public function orderLink(){
-        $this->sql->create('orderLink')
+    public function orderLine(){
+        $this->sql->create('orderLine')
+            ->column('id')->bindary()
             ->column('orderId')->bindary()
-            ->column('referenceId')->bindary()
-            ->column('quantity')->int();
+            ->column('referenceId')->bindary()//either items or discounts
+            ->column('quantity')->string();
+        return $this->sql->execute();
+    }
+
+    public function addon(){
+        $this->sql->create('addon')
+            ->column('id')->bindary()
+            ->column('orderLineId')->bindary()
+            ->column('itemId')->bindary()
+            ->column('quantity')->string();
         return $this->sql->execute();
     }
 
@@ -102,7 +111,12 @@ class Schema{
     public function itemLink(){
         $this->sql->create('itemLink')
             ->column('parentItemId')->bindary()
-            ->column('itemId')->bindary();
+            ->column('itemId')->bindary()
+            ->column('amount')->string()
+            ->column('optional')->bool()
+            ->column('priceIncluded')->bool()
+            ->column('taxInclusive')->bool()
+            ->column('increaseQuantity')->bool();
         return $this->sql->execute();
     }
 
@@ -116,7 +130,53 @@ class Schema{
             ->column('isTaxable')->bool()
             ->column('quantity')->int()
             ->column('favorite')->bool()
+            ->column('description')->book()
+            ->column('active')->bool()
+            ->column('inclusive')->bool();
+        return $this->sql->execute();
+    }
+
+    public function tax(){
+        $this->sql->create('tax')
+            ->column('id')->bindary()
+            ->column('name')->string()
+            ->column('categoryId')->bindary(true)
+            ->column('value')->string()
+            ->column('date')->timestamp()
+            ->column('active')->bool()
             ->column('description')->book();
+        return $this->sql->execute();
+    }
+
+    public function image(){
+        $this->sql->create('image')
+            ->column('id')->bindary()
+            ->column('itemId')->bindary()
+            ->column('name')->string()
+            ->column('extention')->string();
+        return $this->sql->execute();
+    }
+
+    public function receipt(){
+        $this->sql->create('receipt')
+            ->column('id')->bindary()
+            ->column('customerId')->bindary(true)
+            ->column('completed')->bool()
+            ->column('canceled')->bool()
+            ->column('date')->timestamp();
+        return $this->sql->execute();
+    }
+
+    public function receiptItem(){
+        $this->sql->create('receiptItem')
+            ->column('id')->bindary()
+            ->column('receiptId')->bindary()
+            ->column('itemId')->bindary()
+            ->column('name')->string()
+            ->column('amount')->string()
+            ->column('quantity')->int()
+            ->column('isTaxable')->bool()
+            ->column('inclusive')->bool();
         return $this->sql->execute();
     }
 

@@ -17,7 +17,6 @@ class OrderFactory extends Collector{
         $order->setCustomerId($this->uuid($record['customerId']));
         $order->setCompleted((bool)$record['completed']);
         $order->setCanceled((bool)$record['canceled']);
-        $order->setDraft((bool)$record['draft']);
         $order->setDate((string)$record['date']);
         return $order;
     }

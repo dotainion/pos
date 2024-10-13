@@ -8,6 +8,7 @@ export class Auth{
     async logout(){
         return await this.api.post('/logout', null);
     }
+    
     async signIn(email, password){
         return await this.api.post('/signin', {email, password});
     }

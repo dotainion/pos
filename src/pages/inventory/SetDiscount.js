@@ -9,10 +9,13 @@ import { Input } from "../../widgets/Input";
 import { Texarea } from "../../widgets/Textarea";
 import { Select } from "../../widgets/Select";
 import { Loader } from "../../components/Loader";
+import { ReRenderer } from "../../components/ReRenderer";
+import { IoMdAdd } from "react-icons/io";
 
 export const SetDiscount = () =>{
     const [errors, setErrors] = useState();
     const [discount, setDiscount] = useState();
+    const [rerender, setRerender] = useState();
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -44,6 +47,12 @@ export const SetDiscount = () =>{
         });
     }
 
+    const renderer = (state) =>{
+        setDiscount(null);
+        disOptionRef.current = {value: null, type: null};
+        setRerender(state);
+    }
+
     useEffect(()=>{
         if(!params?.discountId){
             setLoading(false);
@@ -57,7 +66,7 @@ export const SetDiscount = () =>{
         }).finally(()=>{
             setLoading(false);
         });
-    }, [params]);
+    }, [rerender]);
 
     useEffect(()=>{
         if(!discount || !disOptionRef.current) return;
@@ -73,23 +82,26 @@ export const SetDiscount = () =>{
     if(loading) return <Loader/>;
 
     return(
-        <form onSubmit={saveDiscount}>
-            <div className="d-flex align-items-center text-nowrap w-100 mt-3">
-                <div className="fw-bold w-100">{!!params?.discountId ? 'Update Discounts' : 'Create Discounts'}</div>
-                <button onClick={()=>navigate(routes.inv().nested().discounts())} className="d-flex align-items-center btn btn-sm btn-light text-primary" type="button">Discounts<MdDiscount className="ms-2"/></button>
-            </div>
-            <hr></hr>
-            {errors ? <div className="text-danger">{errors}</div> : null}
-            <Input ref={nameRef} title="Name" />
-            <DiscountOptions ref={disOptionRef}/>
-            <Select ref={isTaxableRef} title="Taxable">
-                <option value={1}>Set this item as taxable</option>
-                <option value={''}>Set this item as nonetaxable</option>
-            </Select>
-            <Texarea ref={descriptionRef} title="Description"/>
-            <div className="d-flex justify-content-end">
-                <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
-            </div>
-        </form>
+        <ReRenderer rerender={renderer}>
+            <form onSubmit={saveDiscount}>
+                <div className="d-flex align-items-center text-nowrap w-100 mt-3">
+                    <div className="fw-bold w-100">{!!params?.discountId ? 'Update Discounts' : 'Create Discounts'}</div>
+                    {!!params?.discountId ? <button onClick={()=>navigate(routes.inv().nested().createDiscount())} className="d-flex align-items-center btn btn-sm btn-light text-primary me-2">Create Discount<IoMdAdd className="ms-2"/></button> : null}
+                    <button onClick={()=>navigate(routes.inv().nested().discounts())} className="d-flex align-items-center btn btn-sm btn-light text-primary" type="button">Discounts<MdDiscount className="ms-2"/></button>
+                </div>
+                <hr></hr>
+                {errors ? <div className="text-danger">{errors}</div> : null}
+                <Input ref={nameRef} title="Name" />
+                <DiscountOptions ref={disOptionRef}/>
+                <Select ref={isTaxableRef} title="Taxable">
+                    <option value={1}>Set this item as taxable</option>
+                    <option value={''}>Set this item as nonetaxable</option>
+                </Select>
+                <Texarea ref={descriptionRef} title="Description"/>
+                <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
+                </div>
+            </form>
+        </ReRenderer>
     )
 }

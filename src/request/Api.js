@@ -10,6 +10,8 @@ import { Discount } from "./Discount";
 import { Item } from "./Item";
 import { Order } from "./Order";
 import { openAuthNotification, closeAuthNotification } from "../information/AuthNotification";
+import { Tax } from "./Tax";
+import { Image } from "./Image";
 
 export class Api{
     baseURL;
@@ -30,6 +32,8 @@ export class Api{
         this.discount = new Discount(this);
         this.item = new Item(this);
         this.order = new Order(this);
+        this.tax = new Tax(this);
+        this.image = new Image(this);
     }
 
     initialize(){

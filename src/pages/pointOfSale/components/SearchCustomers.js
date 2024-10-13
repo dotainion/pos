@@ -20,21 +20,16 @@ export const SearchCustomers = () =>{
 
     const navigate = useNavigate();
 
-    const timeoutRef = useRef();
-
     const onSearch = (e) =>{
         setLoading(true);
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(() => {
-            api.customer.list({name: e.target.value}).then((response)=>{
-                setCustomers(response.data.data);
-            }).catch((error)=>{
-                setCustomers([]);
-                setErrors(new ParseError(error).message());
-            }).finally(()=>{
-                setLoading(false);
-            });
-        }, 500);
+        api.customer.list({name: e.target.value}).then((response)=>{
+            setCustomers(response.data.data);
+        }).catch((error)=>{
+            setCustomers([]);
+            setErrors(new ParseError(error).message());
+        }).finally(()=>{
+            setLoading(false);
+        });
     }
 
     const selectCustomer = (customer) =>{

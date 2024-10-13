@@ -16,56 +16,45 @@ class ImageRepository extends Repository{
     }
     
     public function create(Image $image):void{
-        $this->insert('images')        
-            ->add('id', $this->uuid($image->id()))
-            ->add('name', $image->name())
-            ->add('uniqueName', $image->uniqueName())
-            ->add('productId', $this->uuid($image->productId()))
-            ->add('default', $image->default())
-            ->add('ext', $image->extention())
-            ->add('isDocument', $image->isDocument());
+        $this->insert('image')        
+            ->column('id', $this->uuid($image->id()))
+            ->column('itemId', $this->uuid($image->itemId()))
+            ->column('name', $image->name())
+            ->column('extention', $image->extention());
         $this->execute();
     }
     
     public function edit(Image $image):void{
-        $this->update('images')   
-            ->set('name', $image->name())
-            ->set('uniqueName', $image->uniqueName())
-            ->set('productId', $this->uuid($image->productId()))
-            ->set('default', $image->default())
-            ->set('ext', $image->extention())
-            ->set('isDocument', $image->isDocument())
-            ->where('id', $this->uuid($image->id()));
+        $this->update('image')
+            ->column('itemId', $this->uuid($image->itemId()))
+            ->column('name', $image->name())
+            ->column('extention', $image->extention())
+            ->where()->eq('id', $this->uuid($image->id()));
         $this->execute();
     }
     
     public function deleteImages(Id $id):void{
-        $this->delete('images') 
-            ->where('id', $this->uuid($id));
+        $this->delete('image') 
+            ->where()->eq('id', $this->uuid($id));
         $this->execute();
     }
     
     public function list(array $where):Collector{
-        $this->select('images');
+        $this->select('image');
 
         if(isset($where['id'])){
-            $this->where('id', $this->uuid($where['id']));
+            $this->where()->eq('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->where('name', $where['name']);
+            $this->where()->eq('name', $where['name']);
         }
-        if(isset($where['isDocument'])){
-            $this->where('isDocument', (int)$where['isDocument']);
+        if(isset($where['itemId'])){
+            $this->where()->eq('itemId', $this->uuid($where['itemId']));
         }
-        if(isset($where['productId'])){
-            $this->where('productId', $this->uuid($where['productId']));
+        if(isset($where['extention'])){
+            $this->where()->eq('extention', $where['extention']);
         }
-        if(isset($where['default'])){
-            $this->where('default', $where['default']);
-        }
-        if(isset($where['ext'])){
-            $this->where('ext', $where['ext']);
-        }
+        $this->pagination()->set($where);
         $this->execute();
         return $this->factory->map(
             $this->results()

@@ -2,16 +2,18 @@ import { MdMenu } from "react-icons/md";
 import { routes } from "../routes/routes";
 import { useNavigate } from "react-router-dom";
 import { GoSignOut } from "react-icons/go";
+import { useAuth } from "../providers/AuthProvider";
 
 export const Topbar = () =>{
-    const navigate = useNavigate();
+    const { signOut } = useAuth();
 
+    const navigate = useNavigate();
 
     const options = [
         {
             title: 'Sign out',
             icon: GoSignOut,
-            onClick: ()=>null,
+            onClick: ()=>signOut(),
         }
     ];
     

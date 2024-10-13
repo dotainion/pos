@@ -1,5 +1,3 @@
-import { token } from "../utils/Token";
-
 export class Order{
     constructor(API){
         this.api = API;
@@ -8,6 +6,7 @@ export class Order{
     async set(data){
         return await this.api.post('/set/order', data);
     }
+    
     async list(data){
         return await this.api.get('/list/orders', data);
     }

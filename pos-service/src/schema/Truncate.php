@@ -2,7 +2,7 @@
 namespace src\schema;
 
 use Exception;
-use src\database\Table;
+use src\schema\Table;
 
 class Truncate{
     protected $sql = null;

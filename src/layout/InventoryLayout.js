@@ -44,7 +44,7 @@ export const InventoryLayout = ({children}) =>{
                     ))}
                 </div>
             </div>
-            <div className="d-flex flex-column py-0 my-0 vh-100 min-container">{children}</div>
+            <div className="d-flex flex-column py-0 my-0 vh-100 min-container overflow-auto">{children}</div>
         </div>
     )
 }

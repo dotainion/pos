@@ -20,7 +20,7 @@ class SetOrderAction extends Request implements IAction{
             $this->get('completed'),
             $this->get('canceled'),
             $this->get('date'),
-            $this->get('referenceIdArray')
+            $this->get('orderLineArray')
         );
     }
 }

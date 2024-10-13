@@ -1,29 +1,39 @@
 <?php
 namespace src\module\order\service;
 
+use src\infrastructure\Collector;
 use src\infrastructure\DateHelper;
 use src\infrastructure\Id;
 use src\infrastructure\Service;
+use src\module\order\factory\AddonFactory;
 use src\module\order\factory\OrderFactory;
-use src\module\order\factory\OrderLinkFactory;
+use src\module\order\factory\OrderLineFactory;
+use src\module\order\logic\AppendOrderRequirements;
+use src\module\order\logic\SetAddons;
 use src\module\order\logic\SetOrder;
-use src\module\order\logic\SetOrderLinks;
+use src\module\order\logic\SetOrderLines;
 
 class SetOrderService extends Service{
     protected SetOrder $order;
     protected OrderFactory $factory;
-    protected OrderLinkFactory $linkFactory;
-    protected SetOrderLinks $orderLinks;
+    protected OrderLineFactory $linkFactory;
+    protected SetOrderLines $orderLinks;
+    protected AppendOrderRequirements $requirements;
+    protected AddonFactory $addonFactory;
+    protected SetAddons $addon;
 
     public function __construct(){
         parent::__construct();
         $this->order = new SetOrder();
         $this->factory = new OrderFactory();
-        $this->linkFactory = new OrderLinkFactory();
-        $this->orderLinks = new SetOrderLinks();
+        $this->linkFactory = new OrderLineFactory();
+        $this->orderLinks = new SetOrderLines();
+        $this->requirements = new AppendOrderRequirements();
+        $this->addonFactory = new AddonFactory();
+        $this->addon = new SetAddons();
     }
     
-    public function process($id, $customerId, $completed, $canceled, $date, $referenceIdArray){
+    public function process($id, $customerId, $completed, $canceled, $date, $orderLineArray){
 
         $idObj = new Id();
         $idObj->isValid($id) ? $idObj->set($id) : $idObj->new();
@@ -42,18 +52,32 @@ class SetOrderService extends Service{
         $this->order->set($order);
 
         //the referenceIdArray could be item or discount
-        foreach($referenceIdArray ?? [] as $referenceId){
+        foreach($orderLineArray ?? [] as $orderLine){
             $link = $this->linkFactory->mapResult([
+                'id' => $orderLine['id'],
                 'orderId' => $order->id()->toString(),
-                'referenceId' => $referenceId['referenceId'],
-                'quantity' => $referenceId['quantity']
+                'referenceId' => $orderLine['referenceId'],
+                'quantity' => $orderLine['quantity']
             ]);
             $this->linkFactory->add($link);
+            foreach($orderLine['addonArray'] as $addon){
+                $option = $this->addonFactory->mapResult([
+                    'id' => $addon['id'],
+                    'orderLineId' => $addon['orderLineId'],
+                    'itemId' => $addon['itemId'],
+                    'quantity' => $addon['quantity']
+                ]);
+                $this->addonFactory->add($option);
+            }
         }
 
-        $this->orderLinks->massControlCreate($this->linkFactory, $order->id());
+        $this->orderLinks->massSet($this->linkFactory, $order->id());
+        $this->addon->massSet($this->addonFactory, $this->linkFactory->idArray());
 
-        $this->setOutput($order);
+        $collector = new Collector();
+        $collector->add($order);
+        $this->requirements->appendRequirements($collector);
+        $this->setOutput($collector);
         return $this;
     }
 }

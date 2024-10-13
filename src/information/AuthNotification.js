@@ -1,32 +1,40 @@
 import $ from "jquery";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../routes/routes";
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers/AuthProvider";
+import { api } from "../request/Api";
 
 export const openAuthNotification = () => $(window).trigger('open-require-notification');
 export const closeAuthNotification = () => $(window).trigger('close-require-notification');
 
 export const AuthNotification = () =>{
-    const { isAuthenticated } = useAuth();
+    const { resetAuth } = useAuth();
 
     const [show, setShow] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const hideNotification = () =>{
+        resetAuth();
         setShow(false);
         navigate(routes.signin());
     }
 
     useEffect(()=>{
         $(window).on('open-require-notification', ()=>{
-            if(isAuthenticated) return setShow(false);
             setShow(true);
         }).on('close-require-notification', ()=>{
             setShow(false);
         });
     }, []);
+
+    useEffect(()=>{
+        if(api.isAuthRoute()){
+            setShow(false);
+        }
+    }, [location]);
 
     if(!show) return null;
 

@@ -49,6 +49,7 @@ export const Orders = () =>{
                             <th>Date</th>
                             <th>Customer</th>
                             <th>Total Discount</th>
+                            <th>Tax</th>
                             <th>Total</th>
                             <th>Net</th>
                             <th>Status</th>
@@ -58,6 +59,7 @@ export const Orders = () =>{
                     <tbody>
                         {orders.map((order)=>(
                             <tr className="align-items-center pointer" key={order.id}>
+                                {/**when click on the tr go to another page that have the order and its status and list its items and discounts on a single screen */}
                                 <td>
                                     <div className="d-flex align-items-center">
                                         <AiOutlineBorderlessTable/>
@@ -66,15 +68,19 @@ export const Orders = () =>{
                                 </td>
                                 <td>{utils.date.toLocalDateTime(order.attributes.date)}</td>
                                 <td>{order.attributes.customer?.attributes?.name}</td>
-                                <td>${order.attributes.totalDiscountAmount.toFixed(2)}</td>
-                                <td>${order.attributes.subTotal.toFixed(2)}</td>
-                                <td>${order.attributes.total.toFixed(2)}</td>
+                                <td>${order.attributes.amount.attributes.totalDiscount.toFixed(2)}</td>
+                                <td>${order.attributes.amount.attributes.totalTax.toFixed(2)}</td>
+                                <td>${order.attributes.amount.attributes.totalAmount.toFixed(2)}</td>
+                                <td>${order.attributes.amount.attributes.netTotal.toFixed(2)}</td>
                                 <td>{order.attributes.status}</td>
                                 <td>
                                     <div className="dropstart">
                                         <button className="btn btn-sm btn-light p-0 pb-1" data-bs-toggle="dropdown" aria-expanded="false"><FaEllipsisV className="small"/></button>
                                         <ul className="dropdown-menu">
-                                            <li><button onClick={()=>selectOrder(order)} className="btn btn-sm btn-light w-100 rounded-0">To checkout</button></li>
+                                            {
+                                                !order.attributes.canceled && !order.attributes.completed &&
+                                                <li><button onClick={()=>selectOrder(order)} className="btn btn-sm btn-light w-100 rounded-0">To checkout</button></li>
+                                            }
                                         </ul>
                                     </div>
                                 </td>

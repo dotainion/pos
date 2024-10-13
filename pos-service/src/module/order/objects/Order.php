@@ -5,19 +5,19 @@ use src\infrastructure\Collector;
 use src\infrastructure\DateHelper;
 use src\infrastructure\Id;
 use src\infrastructure\IObjects;
+use src\module\calculation\objects\Amount;
 use src\module\customer\objects\Customer;
-use src\module\order\logic\CalculateOrder;
 
 class Order  implements IObjects{
     protected Id $id;
     protected ?Id $customerId = null;
     protected bool $completed;
     protected bool $canceled;
-    protected bool $draft;
     protected ?Customer $customer = null;
     protected Collector $items;
     protected Collector $discounts;
     protected DateHelper $date;
+    protected Amount $amount;
 
     public function __construct(){
         $this->id = new Id();
@@ -46,8 +46,8 @@ class Order  implements IObjects{
         return $this->canceled;
     }
 
-    public function draft():bool{
-        return $this->draft;
+    public function amount():Amount{
+        return $this->amount;
     }
 
     public function customer():?Customer{
@@ -73,20 +73,7 @@ class Order  implements IObjects{
         if($this->completed()){
             return 'Completed';
         }
-        return 'Pending';
-    }
-
-    public function total():float{
-        $cal = new CalculateOrder($this);
-        return $cal->totalItemsAmount() - $cal->totalDiscountsAmount();
-    }
-
-    public function subTotal():float{
-        return (new CalculateOrder($this))->totalItemsAmount();
-    }
-
-    public function totalDiscountAmount():float{
-        return (new CalculateOrder($this))->totalDiscountsAmount();
+        return 'Draft';
     }
 
     public function setId(string $id):void{
@@ -108,10 +95,6 @@ class Order  implements IObjects{
         $this->canceled = $canceled;
     }
 
-    public function setDraft(bool $draft):void{
-        $this->draft = $draft;
-    }
-
     public function setDate(string $date):void{
         $this->date->set($date);
     }
@@ -126,5 +109,9 @@ class Order  implements IObjects{
     
     public function setDiscounts(Collector $discounts):void{
         $this->discounts = $discounts;
+    }
+
+    public function setAmount(Amount $amount):void{
+        $this->amount = $amount;
     }
 }

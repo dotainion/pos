@@ -18,6 +18,7 @@ class PointOfSale{
     createCustomer = () => this._nested + 'create/customer';
     discounts = () => this._nested + 'search/discounts';
     items = () => this._nested + 'search/items';
+    checkout = () => this._nested + 'checkout';
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;
@@ -28,7 +29,7 @@ class Inventory{
     _nested = '';
     default = () => '/inventory/*';
     items = () => this._nested + 'items';
-    selectItems = (itemId=':itemId') => this._nested + 'items/' + itemId;
+    bundleItems = (itemId=':itemId') => this._nested + 'bundle/item/' + itemId;
     createItem = () => this._nested + 'create/item';
     updateItem = (itemId=':itemId') => this._nested + 'update/item/' + itemId;
     itemSettings = (itemId=':itemId') => this._nested + 'item/settings/' + itemId;

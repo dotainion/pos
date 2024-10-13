@@ -7,10 +7,13 @@ import { ParseError } from "../../utils/ParseError";
 import { Input } from "../../widgets/Input";
 import { Select } from "../../widgets/Select";
 import { Loader } from "../../components/Loader";
+import { ReRenderer } from "../../components/ReRenderer";
+import { IoMdAdd } from "react-icons/io";
 
 export const SetCustomer = () =>{
     const [errors, setErrors] = useState();
     const [customer, setCustomer] = useState();
+    const [rerender, setRerender] = useState();
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -43,6 +46,11 @@ export const SetCustomer = () =>{
         });
     }
 
+    const renderer = (state) =>{
+        setCustomer(null);
+        setRerender(state);
+    }
+
     useEffect(()=>{
         if(!params?.customerId){
             setLoading(false);
@@ -56,7 +64,7 @@ export const SetCustomer = () =>{
         }).finally(()=>{
             setLoading(false);
         });
-    }, [params]);
+    }, [rerender]);
 
     useEffect(()=>{
         if(!customer) return;
@@ -69,22 +77,25 @@ export const SetCustomer = () =>{
     if(loading) return <Loader/>;
 
     return(
-        <form onSubmit={saveCustomer}>
-            <div className="d-flex align-items-center text-nowrap w-100 mt-3">
-                <div className="fw-bold w-100">{!!params?.customerId ? 'Update Customer' : 'Create Customer'}</div>
-            </div>
-            <hr></hr>
-            {errors ? <div className="text-danger">{errors}</div> : null}
-            <Input ref={nameRef} title="Name" />
-            <Input ref={emailRef} title="Email" />
-            <Input ref={phoneRef} title="Phone" />
-            <Select ref={genderRef} title="Gender">
-                <option>Male</option>
-                <option>Female</option>
-            </Select>
-            <div className="d-flex justify-content-end">
-                <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
-            </div>
-        </form>
+        <ReRenderer rerender={renderer}>
+            <form onSubmit={saveCustomer}>
+                <div className="d-flex align-items-center text-nowrap w-100 mt-3">
+                    <div className="fw-bold w-100">{!!params?.customerId ? 'Update Customer' : 'Create Customer'}</div>
+                    {!!params?.customerId ? <button onClick={()=>navigate(routes.inv().nested().createCustomer())} className="d-flex align-items-center btn btn-sm btn-light text-primary">New Customer<IoMdAdd className="ms-2"/></button> : null}
+                </div>
+                <hr></hr>
+                {errors ? <div className="text-danger">{errors}</div> : null}
+                <Input ref={nameRef} title="Name" />
+                <Input ref={emailRef} title="Email" />
+                <Input ref={phoneRef} title="Phone" />
+                <Select ref={genderRef} title="Gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </Select>
+                <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
+                </div>
+            </form>
+        </ReRenderer>
     )
 }

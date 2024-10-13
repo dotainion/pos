@@ -47,6 +47,10 @@ class Collector{
         return !empty($this->collected);
     }
 
+    public function isEmpty():bool{
+        return !$this->hasItem();
+    }
+
     public function idArray():array{
         $idArray = [];
         foreach($this->list() as $item){

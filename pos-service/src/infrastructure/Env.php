@@ -1,8 +1,6 @@
 <?php
 namespace src\infrastructure;
 
-use InvalidArgumentException;
-
 class Env{
     protected array $messages = [];
 
@@ -59,11 +57,8 @@ class Env{
 
     public static function headers($key=null){
         $headers = getallheaders();
-        if($key === null){
+        if($key === null || !isset($headers[$key])){
             return $headers;
-        }
-        if(!isset($headers[$key])){
-            throw new InvalidArgumentException('"'.$key.'" not in headers.');
         }
         return $headers[$key];
     }

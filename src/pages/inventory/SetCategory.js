@@ -1,5 +1,5 @@
 import { MdCategory } from "react-icons/md";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { routes } from "../../routes/routes";
 import { api } from "../../request/Api";
 import { useEffect, useRef, useState } from "react";
@@ -9,13 +9,17 @@ import { ColarPicker } from "../../widgets/ColarPicker";
 import { Input } from "../../widgets/Input";
 import { Texarea } from "../../widgets/Textarea";
 import { Loader } from "../../components/Loader";
+import { IoMdAdd } from "react-icons/io";
+import { ReRenderer } from "../../components/ReRenderer";
 
 export const SetCategory = () =>{
     const [errors, setErrors] = useState();
     const [category, setCategory] = useState();
+    const [rerender, setRerender] = useState();
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+    const location = useLocation();
     const params = useParams();
 
     const nameRef = useRef()
@@ -43,6 +47,11 @@ export const SetCategory = () =>{
         });
     }
 
+    const renderer = (state) =>{
+        setCategory(null);
+        setRerender(state);
+    }
+
     useEffect(()=>{
         if(!params?.categoryId){
             setLoading(false);
@@ -57,7 +66,7 @@ export const SetCategory = () =>{
         }).finally(()=>{
             setLoading(false);
         });
-    }, [params]);
+    }, [rerender]);
 
     useEffect(()=>{
         if(!category) return;
@@ -69,22 +78,25 @@ export const SetCategory = () =>{
     if(loading) return <Loader/>;
 
     return(
-        <form onSubmit={saveCategory}>
-            <div className="d-flex align-items-center text-nowrap w-100 mt-3">
-                <div className="fw-bold w-100">{!!params?.categoryId ? 'Update Category' : 'Create Category'}</div>
-                <button onClick={()=>navigate(routes.inv().nested().categories())} className="d-flex align-items-center btn btn-sm btn-light text-primary" type="button">Categories<MdCategory className="ms-2"/></button>
-            </div>
-            <hr></hr>
-            {errors ? <div className="text-danger">{errors}</div> : null}
-            <Input ref={nameRef} title="Name" />
-            <Texarea ref={descriptionRef} title="Description"/>
-            <Switch ref={inactiveRef} onLabel="Active" offLabel="Inactive" defaultChecked={true}/>
-            <hr></hr>
-            <ColarPicker ref={colorRef}/>
-            <hr></hr>
-            <div className="d-flex justify-content-end">
-                <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
-            </div>
-        </form>
+        <ReRenderer rerender={renderer}>
+            <form onSubmit={saveCategory}>
+                <div className="d-flex align-items-center text-nowrap w-100 mt-3">
+                    <div className="fw-bold w-100">{!!params?.categoryId ? 'Update Category' : 'Create Category'}</div>
+                    {!!params?.customerId ? <button onClick={()=>navigate(routes.inv().nested().createCategory())} className="d-flex align-items-center btn btn-sm btn-light text-primary" type="button">New Category<IoMdAdd className="ms-2"/></button> : null}
+                    <button onClick={()=>navigate(routes.inv().nested().categories())} className="d-flex align-items-center btn btn-sm btn-light text-primary ms-2" type="button">Categories<MdCategory className="ms-2"/></button>
+                </div>
+                <hr></hr>
+                {errors ? <div className="text-danger">{errors}</div> : null}
+                <Input ref={nameRef} title="Name" />
+                <Texarea ref={descriptionRef} title="Description"/>
+                <Switch ref={inactiveRef} onLabel="Active" offLabel="Inactive" defaultChecked={true}/>
+                <hr></hr>
+                <ColarPicker ref={colorRef}/>
+                <hr></hr>
+                <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-sm btn-dark px-4">Save</button>
+                </div>
+            </form>
+        </ReRenderer>
     )
 }

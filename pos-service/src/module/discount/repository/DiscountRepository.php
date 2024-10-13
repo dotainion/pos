@@ -16,23 +16,23 @@ class DiscountRepository extends Repository{
     
     public function create(Discount $discount):void{
         $this->insert('discount')        
-            ->add('id', $this->uuid($discount->id()))
-            ->add('name', $discount->name())
-            ->add('type', $discount->type())
-            ->add('value', $discount->value())
-            ->add('isTaxable', $discount->isTaxable())
-            ->add('description', $discount->description());
+            ->column('id', $this->uuid($discount->id()))
+            ->column('name', $discount->name())
+            ->column('type', $discount->type())
+            ->column('value', $discount->value())
+            ->column('isTaxable', $discount->isTaxable())
+            ->column('description', $discount->description());
         $this->execute();
     }
     
     public function edit(Discount $discount):void{
         $this->update('discount') 
-            ->set('name', $discount->name())
-            ->set('type', $discount->type())
-            ->set('value', $discount->value())
-            ->set('isTaxable', $discount->isTaxable())
-            ->set('description', $discount->description())
-            ->where('id', $this->uuid($discount->id()));
+            ->column('name', $discount->name())
+            ->column('type', $discount->type())
+            ->column('value', $discount->value())
+            ->column('isTaxable', $discount->isTaxable())
+            ->column('description', $discount->description())
+            ->where()->eq('id', $this->uuid($discount->id()));
         $this->execute();
     }
     
@@ -40,14 +40,12 @@ class DiscountRepository extends Repository{
         $this->select('discount');
 
         if(isset($where['id'])){
-            $this->where('id', $this->uuid($where['id']));
+            $this->where()->eq('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->like('name', $where['name']);
+            $this->where()->like('name', $where['name']);
         }
-        if(isset($where['limit'])){
-            $this->limit($where['limit']);
-        }
+        $this->pagination()->set($where);
         $this->execute();
         return $this->factory->map(
             $this->results()

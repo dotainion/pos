@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { ParseError } from "../../utils/ParseError";
 import { useAuth } from "../../providers/AuthProvider";
+import { closeAuthNotification } from "../../information/AuthNotification";
 
 export const SignIn = () =>{
     const { signIn } = useAuth();

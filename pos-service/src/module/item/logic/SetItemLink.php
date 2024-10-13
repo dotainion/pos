@@ -18,6 +18,7 @@ class SetItemLink{
             'itemId' => $itemLink->itemId()
         ]);
         if($collector->hasItem()){
+            $this->repo->edit($itemLink);
             return;
         }
         $this->repo->create($itemLink);

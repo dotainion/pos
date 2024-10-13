@@ -3,6 +3,7 @@ namespace src\router;
 
 use InvalidArgumentException;
 use src\database\Repository;
+use src\schema\Table;
 use src\infrastructure\Https;
 use src\module\category\action\ListCategoriesAction;
 use src\module\category\action\SetCategoryAction;
@@ -10,6 +11,8 @@ use src\module\customer\action\ListCustomersAction;
 use src\module\customer\action\SetCustomerAction;
 use src\module\discount\action\ListDiscountsAction;
 use src\module\discount\action\SetDiscountAction;
+use src\module\image\action\DeleteImageAction;
+use src\module\image\action\UploadImageAction;
 use src\module\item\action\ListItemsAction;
 use src\module\item\action\SetItemAction;
 use src\module\login\action\FetchSessionAction;
@@ -21,6 +24,8 @@ use src\module\login\action\UpdateCredentialAction;
 use src\module\login\action\UpdateCredentialByTokenAction;
 use src\module\order\action\ListOrdersAction;
 use src\module\order\action\SetOrderAction;
+use src\module\tax\action\ListTaxesAction;
+use src\module\tax\action\SetTaxAction;
 use src\module\user\action\CreateGoogleUserAction;
 use src\module\user\action\CreateUserAction;
 use src\module\user\action\EditUserAction;
@@ -56,10 +61,6 @@ class Router{
         });*/
 
         $this->request->route('/test', function ($req){
-            /*$query = new Repository();
-            $query->query('');
-            $query->query('');
-            var_dump('None...');*/
             (new CreateUserService())->process(
                 'John', 
                 'Wick', 
@@ -169,6 +170,22 @@ class Router{
 
         $this->request->route('/list/orders', function ($req){
             return new ListOrdersAction();
+        });
+
+        $this->request->route('/set/tax', function ($req){
+            return new SetTaxAction();
+        });
+
+        $this->request->route('/list/taxes', function ($req){
+            return new ListTaxesAction();
+        });
+
+        $this->request->route('/upload/image', function ($req){
+            return new UploadImageAction();
+        });
+
+        $this->request->route('/delete/image', function ($req){
+            return new DeleteImageAction();
         });
     }
 

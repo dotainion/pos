@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useRef } from "react";
 import $ from "jquery";
 
-export const Input = forwardRef(({type, title, placeholder}, ref) =>{
+export const Input = forwardRef(({type, title, name, placeholder, min}, ref) =>{
     const inputRef = useRef();
     const titleRef = useRef();
 
@@ -13,9 +13,9 @@ export const Input = forwardRef(({type, title, placeholder}, ref) =>{
     }, []);
 
     return(
-        <div className="position-relative my-3">
-            <div ref={titleRef} className="bg-white position-absolute top-0 start-0 small ms-2" style={{marginTop: '-11px', display: 'none'}}>{title}</div>
-            <input ref={ref || inputRef} className="form-control" type={type} placeholder={placeholder || title}/>
+        <div className="position-relative my-4">
+            <div ref={titleRef} className="bg-white position-absolute top-0 start-0 small ms-2 z-index-1" style={{marginTop: '-11px', display: 'none'}}>{title}</div>
+            <input ref={ref || inputRef} className="form-control" name={name} type={type} min={min} placeholder={placeholder || title}/>
         </div>
     )
 })

@@ -10,33 +10,25 @@ use src\infrastructure\IObjects;
 class Image implements IObjects
 {
     protected Id $id;
-    protected Id $productId;
-    protected bool $default;
+    protected Id $itemId;
     protected string $name;
-    protected ?string $uniqueName;
-    protected string $image;
     protected string $extention;
-    protected bool $isDocument;
 
     public function __construct(){
         $this->id = new Id();
-        $this->productId = new Id();
+        $this->itemId = new Id();
     }
 
     public function id():IId{
         return $this->id;
     }
 
-    public function productId():IId{
-        return $this->productId;
+    public function itemId():IId{
+        return $this->itemId;
     }
 
     public function image():string{
-        return Env::imageDomain().'/files/'.$this->fqFileName();
-    }
-
-    public function default():bool{
-        return $this->default;
+        return Env::imageDomain().'/pos-files/'.$this->fqFileName();
     }
 
     public function name():string{
@@ -44,23 +36,15 @@ class Image implements IObjects
     }
 
     public function fqFileName():string{
-        return $this->uniqueName().'.'.$this->extention();
-    }
-
-    public function uniqueName():?string{
-        return $this->uniqueName;
+        return $this->id().'.'.$this->extention();
     }
 
     public function extention():string{
         return $this->extention;
     }
 
-    public function isDocument():bool{
-        return $this->isDocument;
-    }
-
     public function size():string{
-        $bytes = filesize(Env::rootDir().'/files/'.$this->fqFileName());
+        $bytes = filesize(Env::rootDir().'/pos-files/'.$this->fqFileName());
         if($bytes >= 1073741824){
             $bytes = number_format($bytes / 1073741824, 2) . ' GB';
         }elseif($bytes >= 1048576){
@@ -81,8 +65,8 @@ class Image implements IObjects
         $this->id->set($id);
     }
 
-    public function setProductId(string $productId):void{
-        $this->productId->set($productId);
+    public function setItemId(string $itemId):void{
+        $this->itemId->set($itemId);
     }
 
     public function setName(string $name):void{
@@ -90,20 +74,8 @@ class Image implements IObjects
         $this->name = $name;
     }
 
-    public function setDefault(bool $default):void{
-        $this->default = $default;
-    }
-
-    public function setUniqueName(?string $uniqueName):void{
-        $this->uniqueName = $uniqueName;
-    }
-
     public function setExtention(string $extention):void{
         $this->extention = $extention;
-    }
-
-    public function setIsDocument(bool $isDocument):void{
-        $this->isDocument = $isDocument;
     }
 }
 

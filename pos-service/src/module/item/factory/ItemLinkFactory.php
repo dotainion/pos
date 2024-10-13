@@ -15,6 +15,11 @@ class ItemLinkFactory extends Collector{
         $itemLink = new ItemLink();
         $itemLink->setParentItemId($this->uuid($record['parentItemId']));
         $itemLink->setItemId($this->uuid($record['itemId']));
+        $itemLink->setAmount((int)$record['amount']);
+        $itemLink->setOptional((bool)$record['optional']);
+        $itemLink->setPriceIncluded((bool)$record['priceIncluded']);
+        $itemLink->setTaxInclusive((bool)$record['taxInclusive']);
+        $itemLink->setIncreaseQuantity((bool)$record['increaseQuantity']);
         return $itemLink;
     }
 }

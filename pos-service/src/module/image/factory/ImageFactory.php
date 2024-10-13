@@ -12,14 +12,11 @@ class ImageFactory extends Collector{
     }
 
     public function mapResult($record):Image{
-        $product = new Image();
-        $product->setId($this->uuid($record['id']));
-        $product->setProductId($this->uuid($record['productId']));
-        $product->setDefault(((bool)$record['default'])??'');
-        $product->setName($record['name']);
-        $product->setUniqueName($record['uniqueName']);
-        $product->setExtention($record['ext']);
-        $product->setIsDocument($record['isDocument']);
-        return $product;
+        $image = new Image();
+        $image->setId($this->uuid($record['id']));
+        $image->setItemId($this->uuid($record['itemId']));
+        $image->setName($record['name']);
+        $image->setExtention($record['extention']);
+        return $image;
     }
 }

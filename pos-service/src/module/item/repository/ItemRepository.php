@@ -16,29 +16,33 @@ class ItemRepository extends Repository{
     
     public function create(Item $item):void{
         $this->insert('item')        
-            ->add('id', $this->uuid($item->id()))
-            ->add('name', $item->name())
-            ->add('categoryId', $this->uuid($item->categoryId()))
-            ->add('amount', $item->amount())
-            ->add('cost', $item->cost())
-            ->add('favorite', $item->favorite())
-            ->add('isTaxable', $item->isTaxable())
-            ->add('quantity', $item->quantity())
-            ->add('description', $item->description());
+            ->column('id', $this->uuid($item->id()))
+            ->column('name', $item->name())
+            ->column('categoryId', $this->uuid($item->categoryId()))
+            ->column('amount', $item->amount())
+            ->column('cost', $item->cost())
+            ->column('favorite', $item->favorite())
+            ->column('isTaxable', $item->isTaxable())
+            ->column('quantity', $item->quantity())
+            ->column('description', $item->description())
+            ->column('active', $item->active())
+            ->column('inclusive', $item->inclusive());
         $this->execute();
     }
     
     public function edit(Item $item):void{
         $this->update('item') 
-            ->set('name', $item->name())
-            ->set('categoryId', $this->uuid($item->categoryId()))
-            ->set('amount', $item->amount())
-            ->set('cost', $item->cost())
-            ->set('favorite', $item->favorite())
-            ->set('isTaxable', $item->isTaxable())
-            ->set('quantity', $item->quantity())
-            ->set('description', $item->description())
-            ->where('id', $this->uuid($item->id()));
+            ->column('name', $item->name())
+            ->column('categoryId', $this->uuid($item->categoryId()))
+            ->column('amount', $item->amount())
+            ->column('cost', $item->cost())
+            ->column('favorite', $item->favorite())
+            ->column('isTaxable', $item->isTaxable())
+            ->column('quantity', $item->quantity())
+            ->column('description', $item->description())
+            ->column('active', $item->active())
+            ->column('inclusive', $item->inclusive())
+            ->where()->eq('id', $this->uuid($item->id()));
         $this->execute();
     }
     
@@ -49,17 +53,21 @@ class ItemRepository extends Repository{
             $this->where('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
-            $this->like('name', $where['name']);
+            $this->where()->like('name', $where['name']);
+        }
+        if(isset($where['active'])){
+            $this->where()->eq('active', (int)$where['active']);
+        }
+        if(isset($where['inclusive'])){
+            $this->where()->eq('inclusive', (int)$where['inclusive']);
         }
         if(isset($where['favorite'])){
-            $this->where('favorite', (int)$where['favorite']);
+            $this->where()->eq('favorite', (int)$where['favorite']);
         }
         if(isset($where['categoryId'])){
-            $this->where('categoryId', $this->uuid($where['categoryId']));
+            $this->where()->eq('categoryId', $this->uuid($where['categoryId']));
         }
-        if(isset($where['limit'])){
-            $this->limit($where['limit']);
-        }
+        $this->pagination()->set($where);
         $this->execute();
         return $this->factory->map(
             $this->results()

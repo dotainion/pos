@@ -9,6 +9,7 @@ import { Orders } from "../pages/pointOfSale/Orders";
 import { PosProvider } from "../providers/PosProvider";
 import { useAuth } from "../providers/AuthProvider";
 import { SettingsRouter } from "./SettingsRouter";
+import { Test } from "../test/Test";
 
 export const AccessRouter = () =>{
     const { isAuthenticated } = useAuth();
@@ -26,6 +27,7 @@ export const AccessRouter = () =>{
                     <Route path={routes.order().orders()} element={<Orders/>} />
                     <Route path={routes.pos().default()} element={<PointOfSale/>} />
                     <Route path={routes.setting().default()} element={<SettingsRouter/>} />
+                    <Route path={'/test'} element={<Test/>} />
                     <Route path={'*'} element={<Navigate to={routes.pos().default()}/>} />
                 </Routes>
             </Layout>

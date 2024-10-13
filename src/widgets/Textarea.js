@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useRef } from "react";
 import $ from "jquery";
 
-export const Texarea = forwardRef(({title, placeholder}, ref) =>{
+export const Texarea = forwardRef(({title, name, placeholder}, ref) =>{
     const texareaRef = useRef();
     const titleRef = useRef();
 
@@ -13,9 +13,9 @@ export const Texarea = forwardRef(({title, placeholder}, ref) =>{
     }, []);
 
     return(
-        <div className="position-relative my-3">
-            <div ref={titleRef} className="bg-white position-absolute top-0 start-0 small ms-2" style={{marginTop: '-11px', display: 'none'}}>{title}</div>
-            <textarea ref={ref || texareaRef} className="form-control" placeholder={placeholder || title}/>
+        <div className="position-relative my-4">
+            <div ref={titleRef} className="bg-white position-absolute top-0 start-0 small ms-2 z-index-1" style={{marginTop: '-11px', display: 'none'}}>{title}</div>
+            <textarea ref={ref || texareaRef} className="form-control" name={name} placeholder={placeholder || title}/>
         </div>
     )
 })

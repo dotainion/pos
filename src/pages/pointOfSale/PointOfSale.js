@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import $ from "jquery";
 import { PointOfSaleRouter } from "../../routes/PointOfSaleRouter";
-import { Checkout } from "./components/Checkout";
+import { Cart } from "./components/Cart";
 import { usePos } from "../../providers/PosProvider";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
@@ -103,7 +103,7 @@ export const PointOfSale = () =>{
                             <button onClick={showItems} className="btn btn-sm btn-light border shadow-sm mx-1">Search items</button>
                             <button className="btn btn-sm btn-secondary border shadow-sm mx-1">Checkout</button>
                         </div>
-                        <Checkout/>
+                        <Cart/>
                     </div>
                 </div>
             }

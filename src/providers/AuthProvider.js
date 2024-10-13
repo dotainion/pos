@@ -15,6 +15,11 @@ export const AuthProvider = ({children}) =>{
     const navigate = useNavigate();
     const location = useLocation();
 
+    const resetAuth = () =>{
+        setUser(null);
+        setIsAuthenticated(false);
+    }
+
     const signIn = (email, password, callback) =>{
         api.auth.signIn(email, password).then((response)=>{
             token.set(response.data.data[0].attributes.token);
@@ -23,8 +28,7 @@ export const AuthProvider = ({children}) =>{
             setIsAuthenticated(true);
             callback({success: response});
         }).catch((error)=>{
-            setUser(null);
-            setIsAuthenticated(false);
+            resetAuth();
             callback({error});
         });
     }
@@ -32,12 +36,10 @@ export const AuthProvider = ({children}) =>{
     const signOut = () =>{
         api.auth.logout().then((response)=>{
             token.set(null);
-            setUser(null);
-            setIsAuthenticated(false);
+            resetAuth();
         }).catch((error)=>{
             token.set(null);
-            setUser(null);
-            setIsAuthenticated(false);
+            resetAuth();
         });
     }
 
@@ -46,8 +48,7 @@ export const AuthProvider = ({children}) =>{
             setUser(response.data.data[0]);
             setIsAuthenticated(true);
         }).catch((error)=>{
-            setUser(null);
-            setIsAuthenticated(false);
+            resetAuth();
         }).finally(()=>{
             setLoading(false);
         });
@@ -58,12 +59,19 @@ export const AuthProvider = ({children}) =>{
         isAuthenticated,
         signIn,
         signOut,
+        resetAuth
     }
 
     return(
         <Context.Provider value={value}>
-            {loading ? null : children}
-            <AuthNotification/>
+            {
+                loading 
+                ? null 
+                : <>
+                    {children}
+                    <AuthNotification/>
+                </>
+            }
         </Context.Provider>
     )
 }

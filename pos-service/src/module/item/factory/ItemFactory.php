@@ -22,6 +22,8 @@ class ItemFactory extends Collector{
         $item->setQuantity((int)$record['quantity']);
         $item->setFavorite((bool)$record['favorite']);
         $item->setDescription((string)$record['description']);
+        $item->setActive((bool)$record['active']);
+        $item->setInclusive((bool)$record['inclusive']);
         return $item;
     }
 }

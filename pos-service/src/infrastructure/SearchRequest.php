@@ -25,6 +25,10 @@ class SearchRequest extends Request{
         return $this->get('limit');
     }
 
+    private function active():?bool{
+        return $this->get('active');
+    }
+
     private function inactive():?bool{
         return $this->get('inactive');
     }
@@ -47,10 +51,6 @@ class SearchRequest extends Request{
 
     private function canceled():?bool{
         return $this->get('canceled');
-    }
-
-    private function draft():?bool{
-        return $this->get('draft');
     }
 
     public function favorite():?bool{

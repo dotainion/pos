@@ -1,6 +1,7 @@
 <?php
 namespace src\module\customer\objects;
 
+use src\infrastructure\Assert;
 use src\infrastructure\Collector;
 use src\infrastructure\DateHelper;
 use src\infrastructure\Email;
@@ -10,7 +11,7 @@ use src\infrastructure\IObjects;
 class Customer  implements IObjects{
     protected Id $id;
     protected string $name;
-    protected Email $email;
+    protected ?Email $email = null;
     protected string $phone;
     protected string $gender;
     protected bool $hide;
@@ -19,7 +20,6 @@ class Customer  implements IObjects{
 
     public function __construct(){
         $this->id = new Id();
-        $this->email = new Email();
         $this->date = new DateHelper();
         $this->orders = new Collector();
     }
@@ -40,8 +40,8 @@ class Customer  implements IObjects{
         return $this->name;
     }
 
-    public function email():string{
-        return $this->email->toString();
+    public function email():?string{
+        return $this->email;
     }
 
     public function hide():bool{
@@ -61,6 +61,7 @@ class Customer  implements IObjects{
     }
     
     public function setName(string $name):void{
+        Assert::stringNotEmpty($name, 'Name is required.');
         $this->name = $name;
     }
 
