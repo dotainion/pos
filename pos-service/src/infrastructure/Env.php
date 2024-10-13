@@ -57,8 +57,11 @@ class Env{
 
     public static function headers($key=null){
         $headers = getallheaders();
-        if($key === null || !isset($headers[$key])){
+        if($key === null){
             return $headers;
+        }
+        if(!isset($headers[$key])){
+            return null;
         }
         return $headers[$key];
     }
