@@ -3,6 +3,11 @@ namespace src\database;
 
 class Column {
     protected array $columns = [];
+    protected Table $table;
+
+    public function __construct(Table $table){
+        $this->table = $table;
+    }
 
     public function column($name, $value):self{
         if (is_null($value)) {
@@ -30,5 +35,9 @@ class Column {
 
     public function values():string{
         return implode(", ", array_map(fn($value) => $value, array_values($this->columns)));
+    }
+
+    public function cursor():Table{
+        return $this->table;
     }
 }

@@ -74,4 +74,8 @@ class Where {
         }
         return ' WHERE ' . implode(' AND ', $this->conditions);
     }
+
+    public function cursor():Table{
+        return $this->table;
+    }
 }

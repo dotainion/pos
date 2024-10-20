@@ -7,8 +7,10 @@ class Pagination{
     protected string $limit = '';
     protected string $offset = '';
     protected Request $request;
+    protected Table $table;
 
-	public function __construct(){
+	public function __construct(Table $table){
+        $this->table = $table;
 		$this->request = new Request();
 	}
 
@@ -44,5 +46,9 @@ class Pagination{
 
     public function get():string{
         return $this->limit . $this->offset;
+    }
+
+    public function cursor():Table{
+        return $this->table;
     }
 }

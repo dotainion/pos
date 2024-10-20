@@ -5,9 +5,11 @@
 /.pnp
 /pos
 /pos-service.zip
+/.env
 pos-service.zip
 pos.zip
 .pnp.js
+.env
 
 # testing
 /coverage

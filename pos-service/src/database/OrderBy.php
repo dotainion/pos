@@ -33,4 +33,8 @@ class OrderBy{
     public function get():string{
         return $this->orderBy;
     }
+
+    public function cursor():Table{
+        return $this->table;
+    }
 }
