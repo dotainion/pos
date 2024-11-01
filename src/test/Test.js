@@ -1,3 +1,4 @@
+import { SetUser } from "../pages/settings/SetUser";
 import { api } from "../request/Api";
 import { ParseError } from "../utils/ParseError";
 
@@ -13,8 +14,7 @@ export const Test = () =>{
 
     return(
         <div className="container">
-            <h1>Playground</h1>
-            <button onClick={test}>Click Me</button>
+            <SetUser/>
         </div>
     )
 }

@@ -64,14 +64,12 @@ export const AuthProvider = ({children}) =>{
 
     return(
         <Context.Provider value={value}>
-            {
-                loading 
-                ? null 
-                : <>
+            {loading ? null : (
+                <>
                     {children}
                     <AuthNotification/>
                 </>
-            }
+            )}
         </Context.Provider>
     )
 }

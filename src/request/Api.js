@@ -12,6 +12,9 @@ import { Order } from "./Order";
 import { openAuthNotification, closeAuthNotification } from "../information/AuthNotification";
 import { Tax } from "./Tax";
 import { Image } from "./Image";
+import { Users } from "./Users";
+import { Permission } from "./Permission";
+import { Address } from "./Address";
 
 export class Api{
     baseURL;
@@ -34,6 +37,9 @@ export class Api{
         this.order = new Order(this);
         this.tax = new Tax(this);
         this.image = new Image(this);
+        this.user = new Users(this);
+        this.permission = new Permission(this);
+        this.address = new Address(this);
     }
 
     initialize(){

@@ -2,13 +2,9 @@
 namespace src\schema;
 
 use Exception;
+use permission\schema\Schema as SqlSchema;
 
-class Schema{
-    protected $sql = null;
-
-    public function __construct(){
-        $this->sql = new Table();
-    }
+class Schema extends SqlSchema{
 
     public function user(){
         $this->sql->create('user')

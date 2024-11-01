@@ -3,8 +3,11 @@ import { SettingsRouter } from "./SettingsRouter";
 class Settings{
     _nested = '';
     default = () => '/setting/*';
-    options = () => this._nested + 'options';
     taxSetting = () => this._nested + 'tax';
+    createUser = () => this._nested + 'create/user';
+    updateUser = (userId=':userId') => this._nested + 'update/user/' + userId;
+    users = () => this._nested + 'users';
+    permission = (userId=':userId') => this._nested + 'permission/' + userId;
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;

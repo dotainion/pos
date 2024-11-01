@@ -34,7 +34,7 @@ export const NavGrid = () =>{
         },{
             title: 'Settings',
             icon: IoSettingsOutline,
-            onClick: ()=> navigate(routes.setting().nested().options()),
+            onClick: ()=> navigate(routes.setting().nested().users()),
             description: 'Displays real-time alerts and updates about system activities and important events.'
         },
     ];

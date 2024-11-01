@@ -19,7 +19,7 @@ export class Calculation {
             }else{
                 nonTaxableTotalAmount += total;
             }
-            orderLine.addons.forEach((addon)=>{
+            orderLine?.addons?.forEach?.((addon)=>{
                 if(addon.attributes.item.attributes.itemLink.attributes.priceIncluded) return;
                 const total = orderLine.attributes.item.attributes.amount * addon.attributes.quantity;
                 if(addon.attributes.item.attributes.isTaxable){

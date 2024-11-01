@@ -73,7 +73,7 @@ class Env{
     }
     
     public static function parseEnvFile() {
-        $filePath = self::rootDir() . '/.env';
+        $filePath = __DIR__ . '/../../.env';
         if (!file_exists($filePath)) {
             throw new Exception("The .env file does not exist.");
         }
@@ -82,7 +82,6 @@ class Env{
         $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
         foreach ($lines as $line) {
-            $line = strtok($line, '#');
             if (trim($line) === '') {
                 continue;
             }

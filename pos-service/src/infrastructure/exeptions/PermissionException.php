@@ -1,8 +1,8 @@
 <?php
 namespace src\infrastructure\exeptions;
 
-use Exception;
+use src\infrastructure\PermissionException as InfrastructurePermissionException;
 
-class PermissionException extends Exception{
+class PermissionException extends InfrastructurePermissionException{
 
 }

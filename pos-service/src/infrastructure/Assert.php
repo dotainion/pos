@@ -2,7 +2,6 @@
 namespace src\infrastructure;
 
 use InvalidArgumentException;
-use src\database\Repository;
 use src\security\ValidatePassword;
 
 class Assert extends Repository{

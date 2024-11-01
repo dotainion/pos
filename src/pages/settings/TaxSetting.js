@@ -99,7 +99,7 @@ export const TaxSetting = () =>{
 
     return (
         <div className="container mt-4">
-            <h4>Tax Rates Management</h4>
+            <h4 className="text-center mb-4">Tax Rates Management</h4>
             <button onClick={()=>setIsModalOpen(true)} className="btn btn-sm btn-primary">Add Tax Rate</button>
 
             <hr></hr>

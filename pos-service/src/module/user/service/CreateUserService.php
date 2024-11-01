@@ -1,6 +1,7 @@
 <?php
 namespace src\module\user\service;
 
+use permission\module\permission\logic\SavePermission;
 use src\infrastructure\Assert;
 use src\infrastructure\DateHelper;
 use src\infrastructure\Id;

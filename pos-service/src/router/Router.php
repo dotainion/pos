@@ -2,9 +2,10 @@
 namespace src\router;
 
 use InvalidArgumentException;
-use src\database\Repository;
-use src\schema\Table;
+use permission\module\permission\logic\SavePermission;
 use src\infrastructure\Https;
+use src\infrastructure\Repository;
+use src\module\admin\service\AdminService;
 use src\module\category\action\ListCategoriesAction;
 use src\module\category\action\SetCategoryAction;
 use src\module\customer\action\ListCustomersAction;
@@ -24,6 +25,8 @@ use src\module\login\action\UpdateCredentialAction;
 use src\module\login\action\UpdateCredentialByTokenAction;
 use src\module\order\action\ListOrdersAction;
 use src\module\order\action\SetOrderAction;
+use src\module\permissions\action\ListPermissionsAction;
+use src\module\permissions\action\SetPermissionAction;
 use src\module\tax\action\ListTaxesAction;
 use src\module\tax\action\SetTaxAction;
 use src\module\user\action\CreateGoogleUserAction;
@@ -36,6 +39,7 @@ use src\module\user\action\FetchAddressAction;
 use src\module\user\action\SearchUsersAction;
 use src\module\user\action\SetAddressAction;
 use src\module\user\service\CreateUserService;
+use Throwable;
 
 class Router{
     protected Https $request;
@@ -61,15 +65,13 @@ class Router{
         });*/
 
         $this->request->route('/test', function ($req){
-            (new CreateUserService())->process(
-                'John', 
-                'Wick', 
-                'example@example.com', 
-                '', 
-                '', 
-                'User1234#', 
-                'User1234#'
-            );
+            /*error_reporting(E_ALL);
+            ini_set('display_errors', 1);*/
+        });
+
+        $this->request->route('/admin', function ($req){
+            (new AdminService())->process();
+            var_dump('Admin added...');
         });
 
         $this->request->route('/signin', function ($req){
@@ -186,6 +188,14 @@ class Router{
 
         $this->request->route('/delete/image', function ($req){
             return new DeleteImageAction();
+        });
+
+        $this->request->route('/set/permission', function ($req){
+            return new SetPermissionAction();
+        });
+
+        $this->request->route('/list/permission', function ($req){
+            return new ListPermissionsAction();
         });
     }
 

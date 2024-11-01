@@ -3,6 +3,7 @@ namespace src\infrastructure;
 
 use Exception;
 use InvalidArgumentException;
+use permission\infrastructure\PermissionException;
 use src\infrastructure\exeptions\InvalidRequirementException;
 use src\infrastructure\exeptions\NoResultsException;
 use src\infrastructure\exeptions\NotAuthenticatedException;
@@ -108,6 +109,9 @@ class StatusCode{
             $this->setCode($this->NOT_FOUND);
             $this->setMessage($ex->getMessage());
         }catch (TokenExpiredException $ex){
+            $this->setCode($this->FORBIDDEN);
+            $this->setMessage($ex->getMessage());
+        }catch (PermissionException $ex){
             $this->setCode($this->FORBIDDEN);
             $this->setMessage($ex->getMessage());
         }catch (Exception $ex){

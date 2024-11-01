@@ -2,6 +2,7 @@
 namespace src\infrastructure;
 
 use Exception;
+use permission\database\Permission;
 use src\security\SecurityManager;
 use src\infrastructure\exeptions\NoResultsException;
 use Throwable;
@@ -17,6 +18,7 @@ class Service extends Request{
 
     public function __construct(bool $authCheck=true){
         $this->__REQUEST__();
+        Permission::setRequirePermission($authCheck);
         $this->securityManager = new SecurityManager();
         $this->meta = new Collector();
         $this->collector = new Collector();

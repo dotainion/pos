@@ -1,17 +1,27 @@
 <?php
-namespace src\module\permission\objects;
+namespace src\module\permissions\objects;
 
 use src\infrastructure\Id;
+use src\infrastructure\IObjects;
 
-class Permission implements IPermission{
+class Permission implements IObjects{
     protected Id $id;
+    protected string $table;
     protected bool $read;
     protected bool $write;
     protected bool $edit;
     protected bool $delete;
 
-    public function __construct(string $id, bool $read, bool $write, bool $edit, bool $delete){
+    public function __construct(
+        string $id, 
+        string $table, 
+        bool $read, 
+        bool $write, 
+        bool $edit, 
+        bool $delete
+    ){
         $this->id = new Id($id);
+        $this->table = $table;
         $this->read = $read;
         $this->write = $write;
         $this->edit = $edit;
@@ -21,6 +31,11 @@ class Permission implements IPermission{
     public function id():Id{
         return $this->id;
     }
+
+    public function table():string{
+        return $this->table;
+    }
+
 
     public function read():bool{
         return $this->read;

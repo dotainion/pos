@@ -12,6 +12,10 @@ export const SettingsLayout = ({children}) =>{
             title: 'Tax Settings',
             icon: GrMoney,
             onClick: ()=> navigate(routes.setting().taxSetting())
+        },{
+            title: 'Users',
+            icon: GrMoney,
+            onClick: ()=> navigate(routes.setting().users())
         },
     ];
 

@@ -1,7 +1,7 @@
 <?php
 namespace src\module\discount\repository;
 
-use src\database\Repository;
+use src\infrastructure\Repository;
 use src\infrastructure\Collector;
 use src\module\discount\objects\Discount;
 use src\module\discount\factory\DiscountFactory;

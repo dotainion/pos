@@ -1,7 +1,7 @@
 <?php
 namespace src\module\order\repository;
 
-use src\database\Repository;
+use src\infrastructure\Repository;
 use src\infrastructure\Collector;
 use src\module\order\factory\AddonFactory;
 use src\module\order\objects\Addon;

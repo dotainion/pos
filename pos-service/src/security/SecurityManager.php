@@ -15,7 +15,6 @@ class SecurityManager{
 
     use PasswordTrait;
 
-    protected string $SESSION_KEY = 'session-key';
     protected Env $env;
     protected Login $login;
     protected Logout $logout;
@@ -63,7 +62,7 @@ class SecurityManager{
     }
 
     public function hasSession(): bool{
-        return (array_key_exists($this->SESSION_KEY, $_SESSION) && unserialize($_SESSION[$this->SESSION_KEY]) !== false);
+        return (array_key_exists(Session::key(), $_SESSION) && unserialize($_SESSION[Session::key()]) !== false);
     }
 
     public function hasValidAccessToken():bool{
@@ -88,23 +87,14 @@ class SecurityManager{
 
     public function user():IUser{
         $this->assertUserAccess();
-        return $this->session()->user();
-    }
-
-    public function session():?ICredential{
-        $session = unserialize($_SESSION[$this->SESSION_KEY]);
-        if(!$session instanceof ICredential){
-            return null;
-        }
-        return $session;
+        return Session::user();
     }
 
     public function isLoggedIn():bool{
         if($this->hasValidAccessToken()){
             return true;
         }
-        $session = $this->session();
-        if(!$session instanceof ICredential || !$session->token()){
+        if(!Session::session() instanceof ICredential || !Session::session()->token()){
             throw new NotAuthenticatedException('You are not logged in.');
         }
         return true;
@@ -118,21 +108,21 @@ class SecurityManager{
     }
 
     public function startSession(ICredential $user){
-        $_SESSION[$this->SESSION_KEY] = serialize($user);
+        $_SESSION[Session::key()] = serialize($user);
     }
 
     public function logout(){
         $this->logout->logout($this->user()->id());
-        unset($_SESSION[$this->SESSION_KEY]);
+        unset($_SESSION[Session::key()]);
         session_destroy();
     }
 
     public function authenticated(Token $token):bool{
         //this is use for service like fetch session
-        if($this->hasSession() && $this->session()->token()->toString() === $token->toString() || $this->hasValidAccessToken()){
+        if($this->hasSession() &&  Session::session()->token()->toString() === $token->toString() || $this->hasValidAccessToken()){
             $this->assertUserAccess();
             return true;
         }
-        throw new NotAuthenticatedException('Your are not authenticted.');
+        throw new NotAuthenticatedException('You are not authenticated.');
     }
 }

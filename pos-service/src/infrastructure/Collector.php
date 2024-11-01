@@ -67,6 +67,16 @@ class Collector{
         return $attrArray;
     }
 
+    public function filter($attr, $value):Collector{
+        $collector = new Collector();
+        foreach($this->list() as $item){
+            if($item->$attr() === $value){
+                $collector->add($item);
+            }
+        }
+        return $collector;
+    }
+
     public function assertHasItem(string $message='No results'):bool{
         if(!$this->hasItem()){
             throw new NoResultsException($message);

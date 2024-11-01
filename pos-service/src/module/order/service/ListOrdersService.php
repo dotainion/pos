@@ -1,6 +1,7 @@
 <?php
 namespace src\module\order\service;
 
+use src\infrastructure\SearchRequest;
 use src\infrastructure\Service;
 use src\module\order\logic\AppendOrderRequirements;
 use src\module\order\logic\ListOrders;
@@ -15,7 +16,7 @@ class ListOrdersService extends Service{
         $this->requirements = new AppendOrderRequirements();
     }
     
-    public function process($searchRequest){
+    public function process(SearchRequest $searchRequest){
         $collector = $this->orders->bySearchRequest($searchRequest);
         $collector->assertHasItem('No orders found.');
 
