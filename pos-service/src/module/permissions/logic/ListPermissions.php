@@ -2,7 +2,7 @@
 namespace src\module\permissions\service;
 
 use permission\infrastructure\SqlId;
-use permission\module\permission\logic\ListPermission;
+use permission\permission\logic\ListPermission;
 use src\infrastructure\Collector;
 use src\infrastructure\Id;
 use src\infrastructure\SearchRequest;

@@ -1,7 +1,7 @@
 <?php
 namespace src\module\permissions\service;
 
-use permission\module\permission\logic\SavePermission;
+use permission\permission\logic\SavePermission;
 use src\infrastructure\Service;
 use src\module\permissions\objects\Permission;
 

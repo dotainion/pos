@@ -72,12 +72,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/query-permission.git",
-                "reference": "0be60b55e1d72be6975a4c3deec0ccc0b1704020"
+                "reference": "dbafc5a4c15542bd23d6c3f82eb9cc8113433587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/0be60b55e1d72be6975a4c3deec0ccc0b1704020",
-                "reference": "0be60b55e1d72be6975a4c3deec0ccc0b1704020",
+                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/dbafc5a4c15542bd23d6c3f82eb9cc8113433587",
+                "reference": "dbafc5a4c15542bd23d6c3f82eb9cc8113433587",
                 "shasum": ""
             },
             "require": {
@@ -104,7 +104,7 @@
                 "issues": "https://github.com/dotainion/query-permission/issues",
                 "source": "https://github.com/dotainion/query-permission/tree/v1.0.0"
             },
-            "time": "2024-10-23T11:34:32+00:00"
+            "time": "2024-11-01T06:11:12+00:00"
         },
         {
             "name": "kyegil/mysqli-connection",

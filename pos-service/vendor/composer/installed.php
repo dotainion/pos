@@ -3,7 +3,7 @@
         'name' => 'rhea/ccawebsiteservice',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5f85d7646710256cf76337487102545f657e54cb',
+        'reference' => '95eee56c1d6d0115301c924161a72929996f5d96',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'dotainion/query-permission' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
-            'reference' => '0be60b55e1d72be6975a4c3deec0ccc0b1704020',
+            'reference' => 'dbafc5a4c15542bd23d6c3f82eb9cc8113433587',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dotainion/query-permission',
             'aliases' => array(),
@@ -67,7 +67,7 @@
         'rhea/ccawebsiteservice' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5f85d7646710256cf76337487102545f657e54cb',
+            'reference' => '95eee56c1d6d0115301c924161a72929996f5d96',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
