@@ -1,12 +1,12 @@
 <?php
 namespace src\module\customer\objects;
 
-use src\infrastructure\Assert;
-use src\infrastructure\Collector;
-use src\infrastructure\DateHelper;
-use src\infrastructure\Email;
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Assert;
+use tools\infrastructure\Collector;
+use tools\infrastructure\DateHelper;
+use tools\infrastructure\Email;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 
 class Customer  implements IObjects{
     protected Id $id;

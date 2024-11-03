@@ -1,7 +1,7 @@
 <?php
 namespace src\module\item\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\module\item\objects\ItemLink;
 use src\module\item\repository\ItemLinkRepository;
 

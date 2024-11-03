@@ -1,7 +1,7 @@
 <?php
 namespace src\module\item\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\module\category\logic\ListCategories;
 use src\module\image\logic\ListImage;
 use src\module\item\logic\ListItems;

@@ -1,8 +1,8 @@
 <?php
 namespace src\module\order\logic;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Id;
 use src\module\order\objects\OrderLine;
 use src\module\order\repository\OrderLineRepository;
 

@@ -1,10 +1,10 @@
 <?php
 namespace src\module\category\action;
 
-use src\infrastructure\IAction;
-use src\infrastructure\Request;
 use src\infrastructure\SearchRequest;
 use src\module\category\service\ListCategoriesService;
+use tools\infrastructure\IAction;
+use tools\infrastructure\Request;
 
 class ListCategoriesAction extends Request implements IAction{
     protected $service;

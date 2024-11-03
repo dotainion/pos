@@ -1,8 +1,8 @@
 <?php
 namespace src\module\tax\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 use src\module\tax\objects\Tax;
 
 class TaxFactory extends Collector{

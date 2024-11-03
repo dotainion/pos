@@ -1,7 +1,7 @@
 <?php
 namespace src\module\discount\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\infrastructure\SearchRequest;
 use src\module\discount\repository\DiscountRepository;
 

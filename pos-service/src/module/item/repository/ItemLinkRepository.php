@@ -1,8 +1,8 @@
 <?php
 namespace src\module\item\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\item\factory\ItemLinkFactory;
 use src\module\item\objects\ItemLink;
 

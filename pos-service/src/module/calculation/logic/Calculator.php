@@ -1,7 +1,6 @@
 <?php
 namespace src\module\calculation\logic;
 
-use src\infrastructure\Collector;
 use src\module\calculation\factory\AmountFactory;
 use src\module\calculation\objects\Amount;
 use src\module\discount\objects\Discount;
@@ -9,7 +8,7 @@ use src\module\discount\objects\TypeValue;
 use src\module\item\objects\Item;
 use src\module\order\objects\Order;
 use src\module\tax\logic\ListTaxes;
-use src\module\tax\objects\Tax;
+use tools\infrastructure\Collector;
 
 class Calculator{
     protected Amount $amount;

@@ -1,7 +1,7 @@
 <?php
 namespace src\module\discount\service;
 
-use src\infrastructure\Id;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\discount\logic\SetDiscount;
 use src\module\discount\factory\DiscountFactory;

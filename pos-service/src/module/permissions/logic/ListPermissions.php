@@ -3,8 +3,8 @@ namespace src\module\permissions\service;
 
 use permission\infrastructure\SqlId;
 use permission\permission\logic\ListPermission;
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
+use permission\infrastructure\Collector;
+use tools\infrastructure\Id;
 use src\infrastructure\SearchRequest;
 
 class ListPermissions{
@@ -14,7 +14,7 @@ class ListPermissions{
         $this->permission = new ListPermission();
     }
     
-    public function permission(SearchRequest $searchRequest){
+    public function permission(SearchRequest $searchRequest):Collector{
         $where = $searchRequest->where();
         if(!isset($where['id']) || !(new Id())->isValid($where['id'])){
             return new Collector();

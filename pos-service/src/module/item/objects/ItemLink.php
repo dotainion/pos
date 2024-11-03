@@ -1,8 +1,8 @@
 <?php
 namespace src\module\item\objects;
 
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 
 class ItemLink implements IObjects{
     protected Id $parentItemId;

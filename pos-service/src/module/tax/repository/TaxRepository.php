@@ -1,8 +1,8 @@
 <?php
 namespace src\module\tax\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\tax\factory\TaxFactory;
 use src\module\tax\objects\Tax;
 

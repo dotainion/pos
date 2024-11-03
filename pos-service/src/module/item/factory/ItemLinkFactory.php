@@ -1,8 +1,8 @@
 <?php
 namespace src\module\item\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 use src\module\item\objects\ItemLink;
 
 class ItemLinkFactory extends Collector{

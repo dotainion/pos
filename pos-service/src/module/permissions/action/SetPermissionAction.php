@@ -1,8 +1,8 @@
 <?php
 namespace src\module\permissions\action;
 
-use src\infrastructure\IAction;
-use src\infrastructure\Request;
+use tools\infrastructure\IAction;
+use tools\infrastructure\Request;
 use src\module\permissions\service\SetPermissionService;
 
 class SetPermissionAction extends Request implements IAction{

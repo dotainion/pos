@@ -1,8 +1,8 @@
 <?php
 namespace src\module\item\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\item\factory\ItemFactory;
 use src\module\item\objects\Item;
 
@@ -50,7 +50,7 @@ class ItemRepository extends Repository{
         $this->select('item');
 
         if(isset($where['id'])){
-            $this->where('id', $this->uuid($where['id']));
+            $this->where()->eq('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
             $this->where()->like('name', $where['name']);

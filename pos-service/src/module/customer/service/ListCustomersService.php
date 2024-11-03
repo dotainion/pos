@@ -1,7 +1,8 @@
 <?php
 namespace src\module\customer\service;
 
-use src\infrastructure\Collector;
+use src\infrastructure\SearchRequest;
+use tools\infrastructure\Collector;
 use src\infrastructure\Service;
 use src\module\customer\logic\ListCustomers;
 use src\module\order\logic\ListOrders;
@@ -16,7 +17,7 @@ class ListCustomersService extends Service{
         $this->categories = new ListCustomers();
     }
     
-    public function process($searchRequest){
+    public function process(SearchRequest $searchRequest){
         $collector = $this->categories->bySearchRequest($searchRequest);
         $collector->assertHasItem('No customer found.');
 

@@ -3,6 +3,7 @@ namespace src\module\category\service;
 
 use src\infrastructure\Service;
 use src\module\category\logic\ListCategories;
+use src\infrastructure\SearchRequest;
 
 class ListCategoriesService extends Service{
     protected ListCategories $categories;
@@ -12,7 +13,7 @@ class ListCategoriesService extends Service{
         $this->categories = new ListCategories();
     }
     
-    public function process($searchRequest){
+    public function process(SearchRequest $searchRequest){
         $collector = $this->categories->bySearchRequest($searchRequest);
         $collector->assertHasItem('No category found.');
 

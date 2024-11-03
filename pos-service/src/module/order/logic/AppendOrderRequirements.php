@@ -1,7 +1,7 @@
 <?php
 namespace src\module\order\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\module\calculation\logic\Calculator;
 use src\module\customer\logic\ListCustomers;
 use src\module\discount\logic\ListDiscounts;

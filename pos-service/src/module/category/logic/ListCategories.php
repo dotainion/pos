@@ -1,9 +1,9 @@
 <?php
 namespace src\module\category\logic;
 
-use src\infrastructure\Collector;
 use src\infrastructure\SearchRequest;
 use src\module\category\repository\CategoryRepository;
+use tools\infrastructure\Collector;
 
 class ListCategories{
     protected CategoryRepository $repo;

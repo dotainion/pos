@@ -1,8 +1,8 @@
 <?php
 namespace src\module\item\logic;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Id;
 use src\module\item\repository\ItemLinkRepository;
 
 class ListItemLinks{

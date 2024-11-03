@@ -1,9 +1,9 @@
 <?php
 namespace src\module\item\service;
 
-use src\infrastructure\Assert;
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
+use tools\infrastructure\Assert;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\item\factory\ItemFactory;
 use src\module\item\factory\ItemLinkFactory;

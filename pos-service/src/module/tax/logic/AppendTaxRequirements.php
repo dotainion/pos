@@ -1,7 +1,7 @@
 <?php
 namespace src\module\tax\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\module\category\logic\ListCategories;
 use src\module\tax\repository\TaxRepository;
 

@@ -1,9 +1,9 @@
 <?php
 namespace src\module\tax\objects;
 
-use src\infrastructure\DateHelper;
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\DateHelper;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 use src\module\category\objects\Category;
 
 class Tax implements IObjects{

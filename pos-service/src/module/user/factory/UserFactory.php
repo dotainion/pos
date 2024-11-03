@@ -1,13 +1,13 @@
 <?php
 namespace src\module\user\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
-use src\infrastructure\Id;
-use src\infrastructure\IUser;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
+use tools\infrastructure\IUser;
 use src\module\user\objects\User;
+use tools\infrastructure\IFactory;
 
-class UserFactory extends Collector{
+class UserFactory extends Collector implements IFactory{
     use Factory;
 
     protected $factory;

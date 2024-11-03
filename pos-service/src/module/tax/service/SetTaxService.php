@@ -1,10 +1,9 @@
 <?php
 namespace src\module\tax\service;
 
-use src\infrastructure\Assert;
-use src\infrastructure\Collector;
-use src\infrastructure\DateHelper;
-use src\infrastructure\Id;
+use tools\infrastructure\Collector;
+use tools\infrastructure\DateHelper;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\tax\logic\SetTax;
 use src\module\tax\factory\TaxFactory;

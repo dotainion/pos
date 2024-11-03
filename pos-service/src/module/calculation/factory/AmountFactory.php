@@ -1,9 +1,9 @@
 <?php
 namespace src\module\calculation\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
 use src\module\calculation\objects\Amount;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 
 class AmountFactory extends Collector{
     use Factory;

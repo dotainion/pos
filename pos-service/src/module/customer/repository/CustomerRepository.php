@@ -1,8 +1,8 @@
 <?php
 namespace src\module\customer\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\customer\factory\CustomerFactory;
 use src\module\customer\objects\Customer;
 
@@ -42,7 +42,7 @@ class CustomerRepository extends Repository{
         $this->select('customer');
 
         if(isset($where['id'])){
-            $this->where('id', $this->uuid($where['id']));
+            $this->where()->eq('id', $this->uuid($where['id']));
         }
         if(isset($where['name'])){
             $this->where()->like('name', $where['name']);

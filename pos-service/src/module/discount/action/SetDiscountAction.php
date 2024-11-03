@@ -1,8 +1,8 @@
 <?php
 namespace src\module\discount\action;
 
-use src\infrastructure\IAction;
-use src\infrastructure\Request;
+use tools\infrastructure\IAction;
+use tools\infrastructure\Request;
 use src\module\discount\service\SetDiscountService;
 
 class SetDiscountAction extends Request implements IAction{

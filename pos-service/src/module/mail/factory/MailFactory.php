@@ -1,10 +1,9 @@
 <?php
 namespace src\module\mail\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
-use src\module\bank\objects\Bank;
-use src\module\mail\objects\Mail;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
+use tools\module\mail\objects\Mail;
 
 class MailFactory extends Collector{
     use Factory;
@@ -13,10 +12,10 @@ class MailFactory extends Collector{
     }
     
     public function mapResult($record):Mail{
-        $bank = new Mail();
-        $bank->setId($this->uuid($record['id']));
-        $bank->setSubject($record['subject']);
-        $bank->setBody($record['body']);
-        return $bank;
+        $mail = new Mail();
+        $mail->setId($this->uuid($record['id']));
+        $mail->setSubject($record['subject']);
+        $mail->setBody($record['body']);
+        return $mail;
     }
 }

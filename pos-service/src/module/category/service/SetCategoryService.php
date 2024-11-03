@@ -1,7 +1,7 @@
 <?php
 namespace src\module\category\service;
 
-use src\infrastructure\Id;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\category\factory\CategoryFactory;
 use src\module\category\logic\SetCategory;

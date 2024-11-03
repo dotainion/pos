@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/query-permission.git",
-                "reference": "dbafc5a4c15542bd23d6c3f82eb9cc8113433587"
+                "reference": "0ba29dac9337683eb893056c64c8099cc2a0af3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/dbafc5a4c15542bd23d6c3f82eb9cc8113433587",
-                "reference": "dbafc5a4c15542bd23d6c3f82eb9cc8113433587",
+                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/0ba29dac9337683eb893056c64c8099cc2a0af3d",
+                "reference": "0ba29dac9337683eb893056c64c8099cc2a0af3d",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "php": ">=7.0",
                 "ramsey/uuid": "^4.2"
             },
-            "time": "2024-11-01T06:11:12+00:00",
+            "time": "2024-11-03T06:24:34+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -105,6 +105,50 @@
                 "source": "https://github.com/dotainion/query-permission/tree/v1.0.0"
             },
             "install-path": "../dotainion/query-permission"
+        },
+        {
+            "name": "dotainion/security-tools",
+            "version": "v1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dotainion/security-and-tools.git",
+                "reference": "69b7bbc56883b4a546fb3dd86b2691e547c40d0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/69b7bbc56883b4a546fb3dd86b2691e547c40d0f",
+                "reference": "69b7bbc56883b4a546fb3dd86b2691e547c40d0f",
+                "shasum": ""
+            },
+            "require": {
+                "dotainion/query-permission": "^1.0",
+                "kyegil/mysqli-connection": "^1.3",
+                "phpmailer/phpmailer": "^6.8",
+                "ramsey/uuid": "^4.2",
+                "stripe/stripe-php": "^13.8"
+            },
+            "time": "2024-11-03T07:25:08+00:00",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "tools/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "dotainion",
+                    "email": "58013018+dotainion@users.noreply.github.com"
+                }
+            ],
+            "description": "A package for managing login and other tools",
+            "support": {
+                "issues": "https://github.com/dotainion/security-and-tools/issues",
+                "source": "https://github.com/dotainion/security-and-tools/tree/v1.0.0"
+            },
+            "install-path": "../dotainion/security-tools"
         },
         {
             "name": "kyegil/mysqli-connection",

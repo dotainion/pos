@@ -2,9 +2,9 @@
 namespace src\module\image\logic;
 
 use InvalidArgumentException;
-use src\infrastructure\Collector;
-use src\infrastructure\Env;
-use src\infrastructure\Id;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Env;
+use tools\infrastructure\Id;
 use src\module\image\objects\Image;
 use src\module\image\repository\ImageRepository;
 

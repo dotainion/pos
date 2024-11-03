@@ -1,8 +1,8 @@
 <?php
 namespace src\module\category\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\category\factory\CategoryFactory;
 use src\module\category\objects\Category;
 

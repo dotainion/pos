@@ -1,8 +1,8 @@
 <?php
 namespace src\module\discount\objects;
 
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 
 class Discount  implements IObjects{
     protected Id $id;

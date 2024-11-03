@@ -1,8 +1,8 @@
 <?php
 namespace src\module\calculation\objects;
 
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 
 class Amount  implements IObjects{
     protected Id $id;

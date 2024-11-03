@@ -1,8 +1,8 @@
 <?php
 namespace src\module\order\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 use src\module\order\objects\Order;
 
 class OrderFactory extends Collector{

@@ -1,9 +1,9 @@
 <?php
 namespace src\module\category\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
 use src\module\category\objects\Category;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 
 class CategoryFactory extends Collector{
     use Factory;

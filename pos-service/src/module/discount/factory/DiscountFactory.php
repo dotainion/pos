@@ -1,8 +1,8 @@
 <?php
 namespace src\module\discount\factory;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Factory;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Factory;
 use src\module\discount\objects\Discount;
 
 class DiscountFactory extends Collector{

@@ -1,7 +1,7 @@
 <?php
 namespace src\module\order\logic;
 
-use src\infrastructure\Collector;
+use tools\infrastructure\Collector;
 use src\module\order\objects\Addon;
 use src\module\order\repository\AddonRepository;
 

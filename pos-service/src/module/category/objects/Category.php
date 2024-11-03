@@ -1,8 +1,8 @@
 <?php
 namespace src\module\category\objects;
 
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 
 class Category  implements IObjects{
     protected Id $id;

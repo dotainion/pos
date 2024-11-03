@@ -1,8 +1,8 @@
 <?php
 namespace src\module\permissions\service;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Id;
 use src\infrastructure\SearchRequest;
 use src\infrastructure\Service;
 use src\module\permissions\objects\Permission;

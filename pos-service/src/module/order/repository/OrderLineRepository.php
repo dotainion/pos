@@ -1,8 +1,8 @@
 <?php
 namespace src\module\order\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\order\factory\OrderLineFactory;
 use src\module\order\objects\OrderLine;
 

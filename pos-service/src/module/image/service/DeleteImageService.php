@@ -2,8 +2,8 @@
 namespace src\module\image\service;
 
 use InvalidArgumentException;
-use src\infrastructure\Assert;
-use src\infrastructure\Id;
+use tools\infrastructure\Assert;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\image\logic\DeleteImages;
 use src\module\image\logic\ListImage;

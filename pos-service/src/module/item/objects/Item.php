@@ -1,9 +1,9 @@
 <?php
 namespace src\module\item\objects;
 
-use src\infrastructure\Collector;
-use src\infrastructure\Id;
-use src\infrastructure\IObjects;
+use tools\infrastructure\Collector;
+use tools\infrastructure\Id;
+use tools\infrastructure\IObjects;
 use src\module\category\objects\Category;
 use src\module\image\objects\Image;
 

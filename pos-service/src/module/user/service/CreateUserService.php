@@ -1,10 +1,9 @@
 <?php
 namespace src\module\user\service;
 
-use permission\module\permission\logic\SavePermission;
-use src\infrastructure\Assert;
-use src\infrastructure\DateHelper;
-use src\infrastructure\Id;
+use tools\infrastructure\Assert;
+use tools\infrastructure\DateHelper;
+use tools\infrastructure\Id;
 use src\infrastructure\Service;
 use src\module\login\service\CreateCredentialService;
 use src\module\user\factory\AddressFactory;

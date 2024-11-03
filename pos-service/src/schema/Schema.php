@@ -2,9 +2,9 @@
 namespace src\schema;
 
 use Exception;
-use permission\schema\Schema as SqlSchema;
+use tools\schema\Schema as ToolsSchema;
 
-class Schema extends SqlSchema{
+class Schema extends ToolsSchema{
 
     public function user(){
         $this->sql->create('user')

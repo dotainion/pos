@@ -2,9 +2,8 @@
 namespace src\router;
 
 use InvalidArgumentException;
-use permission\module\permission\logic\SavePermission;
-use src\infrastructure\Https;
-use src\infrastructure\Repository;
+use tools\infrastructure\Https;
+use tools\infrastructure\Repository;
 use src\module\admin\service\AdminService;
 use src\module\category\action\ListCategoriesAction;
 use src\module\category\action\SetCategoryAction;

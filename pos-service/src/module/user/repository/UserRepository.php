@@ -1,8 +1,8 @@
 <?php
 namespace src\module\user\repository;
 
-use src\infrastructure\Repository;
-use src\infrastructure\Collector;
+use tools\infrastructure\Repository;
+use tools\infrastructure\Collector;
 use src\module\user\factory\UserFactory;
 use src\module\user\objects\User;
 
@@ -50,7 +50,7 @@ class UserRepository extends Repository{
             $this->where()->between('date', $where['from'], $where['to']);
         }
         if(isset($where['id'])){
-            $this->where('id', $this->uuid($where['id']));
+            $this->where()->eq('id', $this->uuid($where['id']));
         }
         if(isset($where['foreignId'])){
             $this->where()->eq('foreignId', $where['foreignId']);
