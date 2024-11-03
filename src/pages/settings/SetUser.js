@@ -110,7 +110,7 @@ export const SetUser = () => {
     if(loading) return <Loader/>
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-4 px-2">
             <h4 className="text-center">User and Address Information</h4>
 
             <div className="row">
