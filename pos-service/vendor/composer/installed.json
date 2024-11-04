@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/query-permission.git",
-                "reference": "5fbbb31c03db4f8ec2bc2fb381343c4bbcfa7cd9"
+                "reference": "1852975d0d1276bb08a41c232ff4e78468d81900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/5fbbb31c03db4f8ec2bc2fb381343c4bbcfa7cd9",
-                "reference": "5fbbb31c03db4f8ec2bc2fb381343c4bbcfa7cd9",
+                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/1852975d0d1276bb08a41c232ff4e78468d81900",
+                "reference": "1852975d0d1276bb08a41c232ff4e78468d81900",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "php": ">=7.0",
                 "ramsey/uuid": "^4.2"
             },
-            "time": "2024-11-03T08:44:16+00:00",
+            "time": "2024-11-04T08:15:33+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "f8fcae4125c17668b928f218fb812f4583484c07"
+                "reference": "111a19258acfad3dcb6e775462f02680e5bf4212"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/f8fcae4125c17668b928f218fb812f4583484c07",
-                "reference": "f8fcae4125c17668b928f218fb812f4583484c07",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/111a19258acfad3dcb6e775462f02680e5bf4212",
+                "reference": "111a19258acfad3dcb6e775462f02680e5bf4212",
                 "shasum": ""
             },
             "require": {
@@ -128,7 +128,7 @@
                 "ramsey/uuid": "^4.2",
                 "stripe/stripe-php": "^13.8"
             },
-            "time": "2024-11-03T07:35:02+00:00",
+            "time": "2024-11-04T07:06:57+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
