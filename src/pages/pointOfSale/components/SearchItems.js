@@ -99,7 +99,7 @@ export const SearchItems = () =>{
                             {
                                 items.length?
                                 items.map((item)=>(                                
-                                    <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-2 col-xxl-2 p-1" key={item.id}>
+                                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 p-1" key={item.id}>
                                         <div onClick={()=>addItem(item)} className="card small position-relative pointer" style={{height: '150px'}}>
                                             <img className="img-fluid darken-image rounded-1 w-100 h-100" src={itemImg} alt=""/>
                                             <div className="position-absolute top-0 end-0">

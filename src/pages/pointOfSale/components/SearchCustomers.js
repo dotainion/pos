@@ -64,7 +64,7 @@ export const SearchCustomers = () =>{
                         {
                             customers.length?
                             customers.map((cus)=>(
-                                <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-2 col-xxl-2 p-1" key={cus.id}>
+                                <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 p-1" key={cus.id}>
                                     <div onClick={()=>selectCustomer(cus)} className="card small pointer position-relative h-100">
                                         <div style={{height: '100px'}}>
                                             <img className="img-fluid rounded-top-1 w-100 h-100" src="https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=" alt=""/>
