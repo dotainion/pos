@@ -3,7 +3,7 @@
         'name' => 'rhea/ccawebsiteservice',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd54b5004ef069c2c5aadf584e91ea3ff1a0f8e45',
+        'reference' => 'af500f91e236f4b29cd328d9ea983b0271dc6e6e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -76,7 +76,7 @@
         'rhea/ccawebsiteservice' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd54b5004ef069c2c5aadf584e91ea3ff1a0f8e45',
+            'reference' => 'af500f91e236f4b29cd328d9ea983b0271dc6e6e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
