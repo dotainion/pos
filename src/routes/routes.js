@@ -21,7 +21,7 @@ class PointOfSale{
     createCustomer = () => this._nested + 'create/customer';
     discounts = () => this._nested + 'search/discounts';
     items = () => this._nested + 'search/items';
-    checkout = () => this._nested + 'checkout';
+    checkout = () => this._nested + 'checkout/*';
     nested = () => {
         this._nested = this.default().replace('*', '');
         return this;

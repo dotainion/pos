@@ -102,9 +102,9 @@ export const Cart = () =>{
                                 {
                                     orderLine.attributes.type === 'item'
                                     ? <>
-                                        <tr>
+                                        <tr className="cart-tr">
                                             <td className="px-0">
-                                                <div className="d-flex">
+                                                <div className="d-flex w-100 overflow-hidden">
                                                     <div style={{width: '40px', minWidth: '40px', height: '40px'}}>
                                                         <img className="img-fluid rounded-1 w-100 h-100" src={itemImg} alt=""/>
                                                     </div>
@@ -115,10 +115,12 @@ export const Cart = () =>{
                                                 </div>
                                             </td>
                                             <td>
-                                                <input className="form-control bg-light shadow-none py-0 px-1 mx-1 no-input-appearance" onChange={(e)=>setOrderLineQty(orderLine, e.target.value)} value={orderLine.attributes.quantity} style={{width: '50px'}} type="number"/>
+                                                <input className="form-control bg-light shadow-none py-0 px-1 mx-1 mt-3 no-input-appearance" onChange={(e)=>setOrderLineQty(orderLine, e.target.value)} value={orderLine.attributes.quantity} style={{width: '50px'}} type="number"/>
                                             </td>
-                                            <td>${orderLine.attributes.item.attributes.amount}</td>
-                                            <td className="px-0 text-end">
+                                            <td>
+                                                <div className="mt-3">${orderLine.attributes.item.attributes.amount}</div>
+                                            </td>
+                                            <td className="px-0 text-end overlay">
                                                 <div className="dropstart">
                                                     <button className="btn btn-sm btn-light p-0 pb-1" data-bs-toggle="dropdown" aria-expanded="false"><FaEllipsisV className="small"/></button>
                                                     <ul className="dropdown-menu">
@@ -129,7 +131,7 @@ export const Cart = () =>{
                                             </td>
                                         </tr>
                                         {orderLine?.addons?.map?.((addon)=>(
-                                            <tr key={addon.id}>
+                                            <tr className="addons" key={addon.id}>
                                                 <td className="px-0" colSpan={2}>
                                                     <BsDot/>
                                                     {addon.attributes.item.attributes.name}
@@ -145,7 +147,7 @@ export const Cart = () =>{
                                             </tr>
                                         ))}
                                     </>
-                                    : <tr>
+                                    : <tr className="cart-tr">
                                         <td colSpan={2}>
                                             <div className="d-flex">
                                                 <div><MdDiscount className="fs-2"/></div>
@@ -166,7 +168,7 @@ export const Cart = () =>{
                                         </td>
                                     </tr>
                                 }
-                                <tr><td className="border-0" colSpan={4}></td></tr>
+                                <tr className="d-none d-md-block"><td className="border-0" colSpan={4}></td></tr>
                             </Fragment>
                         ))}
                     </tbody>

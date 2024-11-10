@@ -35,9 +35,6 @@ class SetOrderLines{
     }
 
     public function massSet(Collector $links, Id $orderId):void{
-        if($links->isEmpty()){
-            return;
-        }
         $collector = $this->repo->listOrderLinks([
             'orderId' => $orderId
         ]);

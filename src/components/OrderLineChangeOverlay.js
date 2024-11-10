@@ -12,7 +12,7 @@ export const OrderLineChangeOverlay = ({item, show, onClose, onCreate, onUpdate}
 
                         <div className="row justify-content-center px-2">
                             <button onClick={()=>onCreate(onClose())} className="col btn btn-sm py-3 btn-outline-success">Add new item</button>
-                            <button onClick={()=>onUpdate(onClose())} className="col btn btn-sm py-3 btn-outline-primary mx-2">Update existing item</button>
+                            <button onClick={()=>onUpdate(onClose())} className="col btn btn-sm py-3 btn-outline-primary mx-2">Click the vertical ellipsis to edit the bundle item</button>
                             <button onClick={onClose} className="col btn btn-sm py-3 btn-outline-secondary">Cancele</button>
                         </div>
                     </div>

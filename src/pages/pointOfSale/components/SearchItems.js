@@ -10,6 +10,7 @@ import { Loader } from "../../../components/Loader";
 import { v4 as uuidv4 } from 'uuid';
 import { OrderLineChangeOverlay } from "../../../components/OrderLineChangeOverlay";
 import { AddonPicker } from "../../../components/AddonPicker";
+import { ListBundleItemsToUpdate } from "../../../components/ListBundleItemsToUpdate";
 
 export const SearchItems = () =>{
     const { addToCart, cartOrderLines } = usePos();
@@ -136,6 +137,9 @@ export const SearchItems = () =>{
                 onClose={()=>setSelectorOverlay(false)}
                 onCreate={()=>createItem()}
                 onUpdate={()=>null}
+            />
+            <ListBundleItemsToUpdate
+                show={false}
             />
         </>
     )

@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "ec904f005e5b40d6530b267fb1f9aa0b4a11a488"
+                "reference": "e5e5da4da24563d04e1bcb33ae66c18375e2ab13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/ec904f005e5b40d6530b267fb1f9aa0b4a11a488",
-                "reference": "ec904f005e5b40d6530b267fb1f9aa0b4a11a488",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/e5e5da4da24563d04e1bcb33ae66c18375e2ab13",
+                "reference": "e5e5da4da24563d04e1bcb33ae66c18375e2ab13",
                 "shasum": ""
             },
             "require": {
@@ -128,7 +128,7 @@
                 "ramsey/uuid": "^4.2",
                 "stripe/stripe-php": "^13.8"
             },
-            "time": "2024-11-04T07:47:42+00:00",
+            "time": "2024-11-04T11:07:46+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -463,17 +463,17 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v13.8.0",
-            "version_normalized": "13.8.0.0",
+            "version": "v16.2.0",
+            "version_normalized": "16.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "577d64a3fdc92ba2915263299a69136a2813f4a3"
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/577d64a3fdc92ba2915263299a69136a2813f4a3",
-                "reference": "577d64a3fdc92ba2915263299a69136a2813f4a3",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/813ae4961755af28a13bda451689f7a6ed6498cb",
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb",
                 "shasum": ""
             },
             "require": {
@@ -487,7 +487,7 @@
                 "phpstan/phpstan": "^1.2",
                 "phpunit/phpunit": "^5.7 || ^9.0"
             },
-            "time": "2024-01-04T19:52:48+00:00",
+            "time": "2024-10-29T21:15:53+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -519,7 +519,7 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v13.8.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v16.2.0"
             },
             "install-path": "../stripe/stripe-php"
         },

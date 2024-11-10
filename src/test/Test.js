@@ -1,20 +1,17 @@
-import { SetUser } from "../pages/settings/SetUser";
-import { api } from "../request/Api";
-import { ParseError } from "../utils/ParseError";
+import React, { useEffect } from "react";
+import $ from "jquery";
 
-export const Test = () =>{
+export const Test = () => {
 
-    const test = () =>{
-        api.item.list({limit: 100}).then((response)=>{
-            console.log(response.data.data);
-        }).catch((error)=>{
-            console.log(new ParseError().message(error));
-        });
-    }
+    useEffect(() => {
+        
+    }, []);
 
-    return(
+    return (
         <div className="container">
-            <SetUser/>
+            
         </div>
-    )
-}
+    );
+};
+
+export default Test;

@@ -171,6 +171,34 @@ hr{
   .w-md-100{
     width: 100% !important;
   }
+
+  .cart-tr{
+    padding: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cart-tr input{
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .cart-tr td{
+    padding: 0 !important;
+  }
+
+  .cart-tr .overlay{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: auto !important;
+  }
+
+  .addons{
+    border-top: none !important;
+  }
 }
 
 @media screen and (max-width:575px){
@@ -184,3 +212,4 @@ hr{
     max-width: 100% !important;
   }
 }
+

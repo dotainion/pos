@@ -5,9 +5,17 @@ import { ParseError } from "../../utils/ParseError";
 import { useParams } from "react-router-dom";
 import { Loader } from "../../components/Loader";
 import { Select } from "../../widgets/Select";
+import { useAuth } from "../../providers/AuthProvider";
+import { GrPowerReset } from "react-icons/gr";
+import { FaRegEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 export const SetUser = () => {
+    const { user } = useAuth();
+
     const [errors, setErrors] = useState();
+    const [visiblePassword, setVisiblePassword] = useState(false);
+    const [showChangePassword, setShowChangePassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const params = useParams();
@@ -67,6 +75,24 @@ export const SetUser = () => {
         submitUser();
         submitAddress();
     }
+    
+    function generateUniquePassword() {
+        const [upper, lower] = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'];
+        const [numbers, chars] = ['0123456789', '!@#$%^&*()_+[]{}|;:,.<>?']
+        const all = upper + lower + numbers + chars;
+    
+        const length = 8;
+        let password = '';
+        password += upper[Math.floor(Math.random() * upper.length)];
+        password += lower[Math.floor(Math.random() * lower.length)];
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+        password += chars[Math.floor(Math.random() * chars.length)];
+    
+        for (let i = 4; i < length; i++) {
+            password += all[Math.floor(Math.random() * all.length)];
+        }
+        passwordRef.current.value = password.split('').sort(() => 0.5 - Math.random()).join('');
+    }
 
     useEffect(()=>{
         userIdRef.current = {value: null};
@@ -110,50 +136,55 @@ export const SetUser = () => {
     if(loading) return <Loader/>
 
     return (
-        <div className="container mt-4 px-2">
+        <div className="container mt-4">
             <h4 className="text-center">User and Address Information</h4>
 
-            <div className="row">
-                <div className="card bg-light mt-4">
-                    <div className="card-body">
-                        <div className="fw-bold text-secondary">User</div>
-                        <hr className="mt-0"></hr>
-                        <Input ref={firstNameRef} title="First Name"/>
-                        <Input ref={lastNameRef} title="Last Name"/>
-                        <Input ref={emailRef} title="Email"/>
-                        <Input ref={phoneNumberRef} title="Phone Number"/>
-                        <Select ref={genderRef} title="Gender">
-                            <option value="" hidden>Select a gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                        </Select>
+            <div className="row px-2">
+                <div className="col-md-6">
+                    <div className="card mt-4">
+                        <div className="card-header">User</div>
+                        <div className="card-body">
+                            <Input ref={firstNameRef} title="First Name"/>
+                            <Input ref={lastNameRef} title="Last Name"/>
+                            <Input ref={emailRef} title="Email"/>
+                            <Input ref={phoneNumberRef} title="Phone Number"/>
+                            <Select ref={genderRef} title="Gender">
+                                <option value="" hidden>Select a gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </Select>
+                        </div>
                     </div>
                 </div>
 
-                <div className="card bg-light mt-4">
-                    <div className="card-body">
-                        <div className="fw-bold text-secondary">Address</div>
-                        <hr className="mt-0"></hr>
-                        <Input ref={countryRef} title="Country"/>
-                        <Input ref={stateRef} title="State"/>
-                        <Input ref={addressRef} title="Address"/>
-                        <Input ref={aptRef} title="Apartment/Suite"/>
-                        <Input ref={zipRef} title="Zip Code"/>
+                <div className="col-md-6">
+                    <div className="card mt-4">
+                        <div className="card-header">Address</div>
+                        <div className="card-body">
+                            <Input ref={countryRef} title="Country"/>
+                            <Input ref={stateRef} title="State"/>
+                            <Input ref={addressRef} title="Address"/>
+                            <Input ref={aptRef} title="Apartment/Suite"/>
+                            <Input ref={zipRef} title="Zip Code"/>
+                        </div>
                     </div>
                 </div>
 
-                <div className="card bg-light mt-4">
-                    <div className="card-body">
-                        <div className="fw-bold text-secondary">Password</div>
-                        <hr className="mt-0"></hr>
-                        {
-                            params?.userId 
-                            ? <>
-                                <button className="btn btn-sm btn-primary me-2">Send reset password</button>
-                                <button className="btn btn-sm btn-primary">Change password</button>
-                            </>
-                            : <Input ref={passwordRef} title="Password" type="password"/>
-                        }
+                <div className="col-md-6">
+                    <div className="card mt-4">
+                        <div className="card-header">Password</div>
+                        <div className="card-body">
+                            {user?.id === params?.userId && <button onClick={()=>setShowChangePassword(true)} className="btn btn-sm btn-primary me-2">Change password</button>}
+                            {user?.id !== params?.userId && params?.userId && <button className="btn btn-sm btn-secondary me-2">Send reset password</button>}
+                            {
+                                showChangePassword || !params?.userId &&
+                                <div className="input-group">
+                                    <Input ref={passwordRef} className="rounded-end-0" title="Password" type={visiblePassword ? "text" : "password"}/>
+                                    <button onClick={()=>setVisiblePassword(!visiblePassword)} className="input-group-text my-4">{visiblePassword ? <FaRegEye/> : <FaEyeSlash/>}</button>
+                                    <button onClick={generateUniquePassword} className="input-group-text my-4"><GrPowerReset/></button>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

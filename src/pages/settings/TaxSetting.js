@@ -112,7 +112,7 @@ export const TaxSetting = () =>{
                                 <h5 className="mb-0">{tax.attributes.name}</h5>
                                 <div className="dropdown">
                                     <button className="btn btn-secondary btn-close" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                    <ul class="dropdown-menu z-index-2">
+                                    <ul className="dropdown-menu z-index-2">
                                         <li><a onClick={()=>onDelete(tax)} className="dropdown-item text-danger" href="#">Confirm Delete</a></li>
                                     </ul>
                                 </div>

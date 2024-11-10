@@ -155,22 +155,18 @@ export const BundleItems = () =>{
 }
 
 const ItemRow = ({item, onSelect}) =>{
-    const trRef = useRef();
-    const checkRef = useRef();
+    const [checked, setChecked] = useState(false);
 
-    useEffect(()=>{
-        $(trRef.current).off('click').on('click', (e)=>{
-            if(e.target === checkRef.current) return;
-            if(checkRef.current.checked) checkRef.current.checked = false;
-            else checkRef.current.checked = true;
-            onSelect?.(item, checkRef.current.checked);
-        });
-    }, []);
+    const onSubmit = () =>{
+        const currentChecked = !checked;
+        setChecked(currentChecked);
+        onSelect?.(item, currentChecked);
+    }
 
     return(
-        <tr ref={trRef} className="pointer">
+        <tr className="pointer" onClick={()=>onSubmit()}>
             <td className="td-s px-0">
-                <input ref={checkRef} className="round my-2 mx-0" type="checkbox" data-item-id={item.id}/>
+                <input className="round my-2 mx-0" type="checkbox" onChange={()=>{}} checked={checked} data-item-id={item.id}/>
             </td>
             <td>
                 <div className="d-flex align-items-center">
@@ -191,7 +187,7 @@ const SelectedItemRow = ({item, removeFromSelection}) =>{
 
     const priceIncludedCondition = () =>{
         if(priceIncluded !== null) return priceIncluded;
-        return item.attributes.itemLink.attributes.priceIncluded
+        return item.attributes.itemLink?.attributes?.priceIncluded
     }
 
     /**
@@ -223,28 +219,28 @@ const SelectedItemRow = ({item, removeFromSelection}) =>{
                 </div>
             </div>
             <div className="form-check form-switch mb-2 my-2">
-                <input className="form-check-input pointer" onChange={(e)=>setPriceIncluded(e.target.checked)} name="priceIncluded" type="checkbox" id={`${item.id}-price`} defaultChecked={item.attributes.itemLink.attributes.priceIncluded}/>
+                <input className="form-check-input pointer" onChange={(e)=>setPriceIncluded(e.target.checked)} name="priceIncluded" type="checkbox" id={`${item.id}-price`} defaultChecked={item.attributes.itemLink?.attributes?.priceIncluded}/>
                 <label className="form-check-label pointer w-100 me-2" htmlFor={`${item.id}-price`}>Price included</label>
                 {
                     !priceIncludedCondition()
                     ? <div>
-                        <input className="form-control" placeholder="Price" name="price" type="number" defaultValue={item.attributes.itemLink.attributes.amount}/>
+                        <input className="form-control" placeholder="Price" name="price" type="number" defaultValue={item.attributes.itemLink?.attributes?.amount}/>
                         <div className="small text-secondary">This item has an individual price, separate from the bundle.</div>
                     </div>
                     : <div className="small text-secondary">The price of this item will be included in the bundle price.</div>
                 }
             </div>
             <div className="form-check form-switch my-2">
-                <input className="form-check-input pointer" name="optionalAddon" type="checkbox" id={`${item.id}-add-on`} defaultChecked={item.attributes.itemLink.attributes.optional}/>
+                <input className="form-check-input pointer" name="optionalAddon" type="checkbox" id={`${item.id}-add-on`} defaultChecked={item.attributes.itemLink?.attributes?.optional}/>
                 <label className="form-check-label pointer w-100 me-2" htmlFor={`${item.id}-add-on`}>Optional Add-On</label>
                 <div className="small text-secondary">Add this item as an optional add-on.</div>
             </div>
             <div className="form-check form-switch my-2">
-                <input className="form-check-input pointer" name="increaseQuantity" type="checkbox" id={`${item.id}-quantity`} defaultChecked={item.attributes.itemLink.attributes.increaseQuantity}/>
+                <input className="form-check-input pointer" name="increaseQuantity" type="checkbox" id={`${item.id}-quantity`} defaultChecked={item.attributes.itemLink?.attributes?.increaseQuantity}/>
                 <label className="form-check-label pointer w-100 me-2" htmlFor={`${item.id}-quantity`}>Allow increase quantity</label>
             </div>
             <div className="form-check form-switch my-2">
-                <input className="form-check-input pointer" name="taxInclusive" type="checkbox" id={`${item.id}-tax`} defaultChecked={item.attributes.itemLink.attributes.taxInclusive}/>
+                <input className="form-check-input pointer" name="taxInclusive" type="checkbox" id={`${item.id}-tax`} defaultChecked={item.attributes.itemLink?.attributes?.taxInclusive}/>
                 <label className="form-check-label pointer w-100 me-2" htmlFor={`${item.id}-tax`}>Inclusive tax</label>
             </div>
             <input name="itemId" value={item.id} onChange={()=>{}} hidden/>

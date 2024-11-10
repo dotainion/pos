@@ -18,6 +18,11 @@ export const Permissions = () => {
         });
     }
 
+    const splitCamelCase = (str) =>{
+        str = str.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+        return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
     useEffect(()=>{
         if(!params?.userId) return;
         let permissionLoading = true;
@@ -65,9 +70,9 @@ export const Permissions = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {permissions.map((permission) => (
-                            <tr key={permission.id}>
-                                <td>{permission.attributes.table.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</td>
+                        {permissions.map((permission, key) => (
+                            <tr key={permission.id + key}>
+                                <th>{splitCamelCase(permission.attributes.table)}</th>
                                 <td><PillPermission onChange={savePermission} permission={permission}/></td>
                             </tr>
                         ))}

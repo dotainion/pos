@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e5dc20b6b0fe30f2c9079ed6a0a3e58",
+    "content-hash": "ce921b821f8a29edc85c0c66706bd2b6",
     "packages": [
         {
             "name": "brick/math",
@@ -112,12 +112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "ec904f005e5b40d6530b267fb1f9aa0b4a11a488"
+                "reference": "048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/ec904f005e5b40d6530b267fb1f9aa0b4a11a488",
-                "reference": "ec904f005e5b40d6530b267fb1f9aa0b4a11a488",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2",
+                "reference": "048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 "kyegil/mysqli-connection": "^1.3",
                 "phpmailer/phpmailer": "^6.8",
                 "ramsey/uuid": "^4.2",
-                "stripe/stripe-php": "^13.8"
+                "stripe/stripe-php": "^16.2"
             },
             "type": "library",
             "autoload": {
@@ -145,7 +145,7 @@
                 "issues": "https://github.com/dotainion/security-and-tools/issues",
                 "source": "https://github.com/dotainion/security-and-tools/tree/v1.0.0"
             },
-            "time": "2024-11-04T07:47:42+00:00"
+            "time": "2024-11-10T08:00:45+00:00"
         },
         {
             "name": "kyegil/mysqli-connection",
@@ -448,16 +448,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v13.8.0",
+            "version": "v16.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "577d64a3fdc92ba2915263299a69136a2813f4a3"
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/577d64a3fdc92ba2915263299a69136a2813f4a3",
-                "reference": "577d64a3fdc92ba2915263299a69136a2813f4a3",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/813ae4961755af28a13bda451689f7a6ed6498cb",
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb",
                 "shasum": ""
             },
             "require": {
@@ -501,9 +501,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v13.8.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v16.2.0"
             },
-            "time": "2024-01-04T19:52:48+00:00"
+            "time": "2024-10-29T21:15:53+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

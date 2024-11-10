@@ -74,6 +74,7 @@ export class Calculation {
             }else{
                 totalTax += taxableAmount * (taxRate / 100);
             }
+            if(!orderLine?.addons?.length) return;
             orderLine.addons.forEach((addon)=>{
                 if(!addon.attributes.item.attributes.isTaxable) return;
                 const taxRate = this.findTaxRate(addon);
