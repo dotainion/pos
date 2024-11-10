@@ -6,14 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
-    'CURLStringFile' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-    'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
-    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'permission\\SqlRepository' => $vendorDir . '/dotainion/query-permission/permission/SqlRepository.php',
     'permission\\database\\Column' => $vendorDir . '/dotainion/query-permission/permission/database/Column.php',
     'permission\\database\\Join' => $vendorDir . '/dotainion/query-permission/permission/database/Join.php',
@@ -227,10 +220,6 @@ return array(
     'tools\\infrastructure\\exeptions\\NotAuthenticatedException' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/exeptions/NotAuthenticatedException.php',
     'tools\\infrastructure\\exeptions\\TokenExpiredException' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/exeptions/TokenExpiredException.php',
     'tools\\infrastructure\\exeptions\\UrlNotFoundException' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/exeptions/UrlNotFoundException.php',
-    'tools\\infrastructure\\payment\\StripeConfig' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/payment/StripeConfig.php',
-    'tools\\infrastructure\\payment\\StripeCustomer' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/payment/StripeCustomer.php',
-    'tools\\infrastructure\\payment\\StripePayment' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/payment/StripePayment.php',
-    'tools\\infrastructure\\payment\\StripePayout' => $vendorDir . '/dotainion/security-tools/tools/infrastructure/payment/StripePayout.php',
     'tools\\module\\login\\factory\\CredentialFactory' => $vendorDir . '/dotainion/security-tools/tools/module/login/factory/CredentialFactory.php',
     'tools\\module\\login\\logic\\CreateCredential' => $vendorDir . '/dotainion/security-tools/tools/module/login/logic/CreateCredential.php',
     'tools\\module\\login\\logic\\UpdateCredential' => $vendorDir . '/dotainion/security-tools/tools/module/login/logic/UpdateCredential.php',
@@ -264,4 +253,6 @@ return array(
     'tools\\security\\Session' => $vendorDir . '/dotainion/security-tools/tools/security/Session.php',
     'tools\\security\\Setup' => $vendorDir . '/dotainion/security-tools/tools/security/Setup.php',
     'tools\\security\\ValidatePassword' => $vendorDir . '/dotainion/security-tools/tools/security/ValidatePassword.php',
+    'tools\\stripe\\StripeCustomer' => $vendorDir . '/dotainion/security-tools/tools/stripe/StripeCustomer.php',
+    'tools\\stripe\\StripePayment' => $vendorDir . '/dotainion/security-tools/tools/stripe/StripePayment.php',
 );

@@ -7,18 +7,12 @@ namespace Composer\Autoload;
 class ComposerStaticInit71120c75292eae0dbbda1b628875a0f1
 {
     public static $files = array (
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php81\\' => 23,
-            'Symfony\\Polyfill\\Php80\\' => 23,
-            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Stripe\\' => 7,
         ),
         'R' => 
@@ -41,18 +35,6 @@ class ComposerStaticInit71120c75292eae0dbbda1b628875a0f1
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php81\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
-        ),
-        'Symfony\\Polyfill\\Php80\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
         'Stripe\\' => 
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
@@ -80,14 +62,7 @@ class ComposerStaticInit71120c75292eae0dbbda1b628875a0f1
     );
 
     public static $classMap = array (
-        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
-        'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'permission\\SqlRepository' => __DIR__ . '/..' . '/dotainion/query-permission/permission/SqlRepository.php',
         'permission\\database\\Column' => __DIR__ . '/..' . '/dotainion/query-permission/permission/database/Column.php',
         'permission\\database\\Join' => __DIR__ . '/..' . '/dotainion/query-permission/permission/database/Join.php',
@@ -301,10 +276,6 @@ class ComposerStaticInit71120c75292eae0dbbda1b628875a0f1
         'tools\\infrastructure\\exeptions\\NotAuthenticatedException' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/exeptions/NotAuthenticatedException.php',
         'tools\\infrastructure\\exeptions\\TokenExpiredException' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/exeptions/TokenExpiredException.php',
         'tools\\infrastructure\\exeptions\\UrlNotFoundException' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/exeptions/UrlNotFoundException.php',
-        'tools\\infrastructure\\payment\\StripeConfig' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/payment/StripeConfig.php',
-        'tools\\infrastructure\\payment\\StripeCustomer' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/payment/StripeCustomer.php',
-        'tools\\infrastructure\\payment\\StripePayment' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/payment/StripePayment.php',
-        'tools\\infrastructure\\payment\\StripePayout' => __DIR__ . '/..' . '/dotainion/security-tools/tools/infrastructure/payment/StripePayout.php',
         'tools\\module\\login\\factory\\CredentialFactory' => __DIR__ . '/..' . '/dotainion/security-tools/tools/module/login/factory/CredentialFactory.php',
         'tools\\module\\login\\logic\\CreateCredential' => __DIR__ . '/..' . '/dotainion/security-tools/tools/module/login/logic/CreateCredential.php',
         'tools\\module\\login\\logic\\UpdateCredential' => __DIR__ . '/..' . '/dotainion/security-tools/tools/module/login/logic/UpdateCredential.php',
@@ -338,6 +309,8 @@ class ComposerStaticInit71120c75292eae0dbbda1b628875a0f1
         'tools\\security\\Session' => __DIR__ . '/..' . '/dotainion/security-tools/tools/security/Session.php',
         'tools\\security\\Setup' => __DIR__ . '/..' . '/dotainion/security-tools/tools/security/Setup.php',
         'tools\\security\\ValidatePassword' => __DIR__ . '/..' . '/dotainion/security-tools/tools/security/ValidatePassword.php',
+        'tools\\stripe\\StripeCustomer' => __DIR__ . '/..' . '/dotainion/security-tools/tools/stripe/StripeCustomer.php',
+        'tools\\stripe\\StripePayment' => __DIR__ . '/..' . '/dotainion/security-tools/tools/stripe/StripePayment.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
