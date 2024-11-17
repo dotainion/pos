@@ -1,6 +1,7 @@
 <?php
 namespace src\router;
 
+use InvalidArgumentException;
 use tools\infrastructure\Https;
 use src\module\admin\service\AdminService;
 use src\module\category\action\ListCategoriesAction;

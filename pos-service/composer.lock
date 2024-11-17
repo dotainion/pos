@@ -112,12 +112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "64253d706297c80b9db638100466aca8bc33ef94"
+                "reference": "3ec492a71d683e43f4104abe479d272c2cde4e5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/64253d706297c80b9db638100466aca8bc33ef94",
-                "reference": "64253d706297c80b9db638100466aca8bc33ef94",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/3ec492a71d683e43f4104abe479d272c2cde4e5d",
+                "reference": "3ec492a71d683e43f4104abe479d272c2cde4e5d",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +145,7 @@
                 "issues": "https://github.com/dotainion/security-and-tools/issues",
                 "source": "https://github.com/dotainion/security-and-tools/tree/v1.0.0"
             },
-            "time": "2024-11-10T23:20:02+00:00"
+            "time": "2024-11-17T06:43:06+00:00"
         },
         {
             "name": "kyegil/mysqli-connection",
