@@ -9,7 +9,7 @@ export const ListBundleItemsToUpdate = ({show, onClose, onSelect}) =>{
     useEffect(()=>{
         const items = [];
         cartOrderLines.forEach((item)=>{
-            if(item.addons.length){
+            if(item.addons?.length){
                 items.push(item);
                 items.push(item);
                 items.push(item);
