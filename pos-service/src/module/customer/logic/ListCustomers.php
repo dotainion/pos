@@ -4,6 +4,7 @@ namespace src\module\customer\logic;
 use tools\infrastructure\Collector;
 use src\infrastructure\SearchRequest;
 use src\module\customer\repository\CustomerRepository;
+use tools\infrastructure\Id;
 
 class ListCustomers{
     protected CustomerRepository $repo;
@@ -21,6 +22,10 @@ class ListCustomers{
 
     public function list():Collector{
         return $this->repo->listCustomers();
+    }
+
+    public function byId(Id $id):Collector{
+        return $this->byIdArray([$id]);
     }
 
     public function byIdArray(array $idArray):Collector{

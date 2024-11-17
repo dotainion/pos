@@ -166,6 +166,7 @@ class Schema extends ToolsSchema{
         $this->sql->create('receiptItem')
             ->column('id')->bindary()
             ->column('receiptId')->bindary()
+            ->column('receiptItemParentId')->bindary(true)
             ->column('itemId')->bindary()
             ->column('name')->string()
             ->column('amount')->string()

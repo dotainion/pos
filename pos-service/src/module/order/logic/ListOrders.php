@@ -4,6 +4,7 @@ namespace src\module\order\logic;
 use tools\infrastructure\Collector;
 use src\infrastructure\SearchRequest;
 use src\module\order\repository\OrderRepository;
+use tools\infrastructure\Id;
 
 class ListOrders{
     protected OrderRepository $repo;
@@ -17,6 +18,12 @@ class ListOrders{
             return new Collector();
         }
         return $this->repo->listOrders($req->where());
+    }
+
+    public function byId(Id $id):Collector{
+        return $this->repo->listOrders([
+            'id' => $id
+        ]);
     }
 
     public function listActive():Collector{

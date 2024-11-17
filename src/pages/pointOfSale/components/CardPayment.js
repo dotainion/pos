@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../../request/Api";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { usePayment } from "../../../providers/PaymentProvider";
+import { usePos } from "../../../providers/PosProvider";
 
 export const CardPayment = () => {
+    const { order, customer } = usePos();
     const { setTendered, customers, change, total, setCustomer } = usePayment();
 
     const [error, setError] = useState(null);
@@ -24,6 +26,8 @@ export const CardPayment = () => {
     // Handle the payment form submission
     const handlePayment = async (e) => {
         e.preventDefault();
+
+        if(!order?.id) return console.log('Order not found.');
 
         // Check if Stripe.js has loaded and Elements are available
         if (!stripe || !elements) {
@@ -44,12 +48,17 @@ export const CardPayment = () => {
 
         try {
             // Call backend to create a PaymentIntent
-            const response = await api.payment.createPaymentIntent({amount: total});
+            const response = await api.payment.createIntent({
+                amount: total,
+                orderId: order.id,
+                userId: customer?.id,
+                currency: '',
+            });
 
-            const { clientSecret } = response.data; // Get the clientSecret from the backend
+            const intent = response.data.data[0]; // Get the clientSecret from the backend
 
             // Confirm the payment with Stripe
-            const { stripError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+            const { stripError, paymentIntent } = await stripe.confirmCardPayment(intent.attributes.clientSecret, {
                 payment_method: {
                     card: cardElement,
                     billing_details: {

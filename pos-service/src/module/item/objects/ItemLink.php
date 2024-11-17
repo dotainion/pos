@@ -7,7 +7,7 @@ use tools\infrastructure\IObjects;
 class ItemLink implements IObjects{
     protected Id $parentItemId;
     protected Id $itemId;
-    protected int $amount;
+    protected float $amount;
     protected bool $optional;
     protected bool $priceIncluded;
     protected bool $taxInclusive;
@@ -42,7 +42,7 @@ class ItemLink implements IObjects{
         return $this->itemId;
     }
 
-    public function amount():?int{
+    public function amount():?float{
         return $this->amount;
     }
 
@@ -58,7 +58,7 @@ class ItemLink implements IObjects{
         $this->itemId->set($itemId);
     }
 
-    public function setAmount(int $amount):void{
+    public function setAmount(float $amount):void{
         $this->amount = $amount;
     }
 

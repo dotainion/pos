@@ -15,6 +15,7 @@ import { Image } from "./Image";
 import { Users } from "./Users";
 import { Permission } from "./Permission";
 import { Address } from "./Address";
+import { Payment } from "./Payment";
 
 export class Api{
     baseURL;
@@ -40,6 +41,7 @@ export class Api{
         this.user = new Users(this);
         this.permission = new Permission(this);
         this.address = new Address(this);
+        this.payment = new Payment(this);
     }
 
     initialize(){

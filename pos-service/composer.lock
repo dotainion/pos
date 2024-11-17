@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce921b821f8a29edc85c0c66706bd2b6",
+    "content-hash": "ac022b9c001a69e38cb2202e3e0e5ec4",
     "packages": [
         {
             "name": "brick/math",
@@ -112,12 +112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2"
+                "reference": "64253d706297c80b9db638100466aca8bc33ef94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2",
-                "reference": "048c32829c5c5c2d6b6c3e9e0bc12717d7b564d2",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/64253d706297c80b9db638100466aca8bc33ef94",
+                "reference": "64253d706297c80b9db638100466aca8bc33ef94",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +145,7 @@
                 "issues": "https://github.com/dotainion/security-and-tools/issues",
                 "source": "https://github.com/dotainion/security-and-tools/tree/v1.0.0"
             },
-            "time": "2024-11-10T08:00:45+00:00"
+            "time": "2024-11-10T23:20:02+00:00"
         },
         {
             "name": "kyegil/mysqli-connection",

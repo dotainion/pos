@@ -5,14 +5,14 @@ use tools\infrastructure\Assert;
 use tools\infrastructure\Collector;
 use tools\infrastructure\DateHelper;
 use tools\infrastructure\Email;
+use tools\infrastructure\ICustomer;
 use tools\infrastructure\Id;
-use tools\infrastructure\IObjects;
 
-class Customer  implements IObjects{
+class Customer  implements ICustomer{
     protected Id $id;
     protected string $name;
     protected ?Email $email = null;
-    protected string $phone;
+    protected ?string $phone;
     protected string $gender;
     protected bool $hide;
     protected DateHelper $date;
@@ -48,7 +48,7 @@ class Customer  implements IObjects{
         return $this->hide;
     }
 
-    public function phone():string{
+    public function phone():?string{
         return $this->phone;
     }
 
