@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac022b9c001a69e38cb2202e3e0e5ec4",
+    "content-hash": "30222f39b9076b6ae2eccb46cc7ff33e",
     "packages": [
         {
             "name": "brick/math",
@@ -112,20 +112,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "3ec492a71d683e43f4104abe479d272c2cde4e5d"
+                "reference": "772b358f87a23bcd1a9c09ab4be3573250e78b9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/3ec492a71d683e43f4104abe479d272c2cde4e5d",
-                "reference": "3ec492a71d683e43f4104abe479d272c2cde4e5d",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/772b358f87a23bcd1a9c09ab4be3573250e78b9e",
+                "reference": "772b358f87a23bcd1a9c09ab4be3573250e78b9e",
                 "shasum": ""
             },
             "require": {
                 "dotainion/query-permission": "^1.0",
                 "kyegil/mysqli-connection": "^1.3",
                 "phpmailer/phpmailer": "^6.8",
-                "ramsey/uuid": "^4.2",
-                "stripe/stripe-php": "^16.2"
+                "ramsey/uuid": "^4.2"
             },
             "type": "library",
             "autoload": {
@@ -145,7 +144,7 @@
                 "issues": "https://github.com/dotainion/security-and-tools/issues",
                 "source": "https://github.com/dotainion/security-and-tools/tree/v1.0.0"
             },
-            "time": "2024-11-17T06:43:06+00:00"
+            "time": "2024-11-23T02:20:35+00:00"
         },
         {
             "name": "kyegil/mysqli-connection",
@@ -443,65 +442,6 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
-        },
-        {
-            "name": "stripe/stripe-php",
-            "version": "v16.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/813ae4961755af28a13bda451689f7a6ed6498cb",
-                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "3.5.0",
-                "phpstan/phpstan": "^1.2",
-                "phpunit/phpunit": "^5.7 || ^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Stripe\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stripe and contributors",
-                    "homepage": "https://github.com/stripe/stripe-php/contributors"
-                }
-            ],
-            "description": "Stripe PHP Library",
-            "homepage": "https://stripe.com/",
-            "keywords": [
-                "api",
-                "payment processing",
-                "stripe"
-            ],
-            "support": {
-                "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v16.2.0"
-            },
-            "time": "2024-10-29T21:15:53+00:00"
         }
     ],
     "packages-dev": [],

@@ -3,7 +3,7 @@
         'name' => 'rhea/ccawebsiteservice',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ade16ded18fda75dbb82b8441af0c17f76ad72a5',
+        'reference' => '91a4cea921bfe81e9b9b6e8db9a5a7e1d36203ae',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'dotainion/security-tools' => array(
             'pretty_version' => 'v1.0.0',
             'version' => '1.0.0.0',
-            'reference' => '3ec492a71d683e43f4104abe479d272c2cde4e5d',
+            'reference' => '772b358f87a23bcd1a9c09ab4be3573250e78b9e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dotainion/security-tools',
             'aliases' => array(),
@@ -76,7 +76,7 @@
         'rhea/ccawebsiteservice' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ade16ded18fda75dbb82b8441af0c17f76ad72a5',
+            'reference' => '91a4cea921bfe81e9b9b6e8db9a5a7e1d36203ae',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -87,15 +87,6 @@
             'replaced' => array(
                 0 => '4.7.6',
             ),
-        ),
-        'stripe/stripe-php' => array(
-            'pretty_version' => 'v16.2.0',
-            'version' => '16.2.0.0',
-            'reference' => '813ae4961755af28a13bda451689f7a6ed6498cb',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../stripe/stripe-php',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
     ),
 );
