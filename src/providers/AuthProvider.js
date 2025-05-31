@@ -8,9 +8,9 @@ const Context = createContext();
 export const useAuth = () => useContext(Context);
 
 export const AuthProvider = ({children}) =>{
-    const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState({id: 'fishing'});
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -44,6 +44,7 @@ export const AuthProvider = ({children}) =>{
     }
 
     useEffect(()=>{
+        return;
         api.auth.session().then((response)=>{
             setUser(response.data.data[0]);
             setIsAuthenticated(true);

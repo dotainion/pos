@@ -4,6 +4,7 @@ namespace src\infrastructure;
 
 use src\module\user\factory\UserFactory;
 use tools\infrastructure\Service as ToolsService;
+use permission\database\Permission;
 use tools\security\Setup;
 
 class Service extends ToolsService{

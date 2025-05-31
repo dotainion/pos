@@ -23,7 +23,7 @@ export const Users = () => {
         });
     }, []);
 
-    if(loading) return <Loader/>
+    if(loading) return <Loader center/>
 
     return (
         <div className="container d-flex flex-column vh-100 pt-3">

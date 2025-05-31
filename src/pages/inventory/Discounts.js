@@ -23,7 +23,7 @@ export const Discounts = () =>{
         });
     }, []);
 
-    if(loading) return <Loader/>;
+    if(loading) return <Loader center/>;
 
     return(
         <>

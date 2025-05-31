@@ -67,7 +67,7 @@ export const Cart = () =>{
         });
     }, [cartOrderLines, taxPercentage, loading]);
 
-    if(loading) return <Loader/>;
+    if(loading) return <Loader center/>;
 
     return(
         <>

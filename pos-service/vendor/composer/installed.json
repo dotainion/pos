@@ -70,21 +70,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/query-permission.git",
-                "reference": "1852975d0d1276bb08a41c232ff4e78468d81900"
+                "reference": "b3817274cb18e71441745dbc3e1be92da852712e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/1852975d0d1276bb08a41c232ff4e78468d81900",
-                "reference": "1852975d0d1276bb08a41c232ff4e78468d81900",
+                "url": "https://api.github.com/repos/dotainion/query-permission/zipball/b3817274cb18e71441745dbc3e1be92da852712e",
+                "reference": "b3817274cb18e71441745dbc3e1be92da852712e",
                 "shasum": ""
             },
             "require": {
                 "ext-mysqli": "*",
                 "kyegil/mysqli-connection": "^1.3",
-                "php": ">=7.0",
                 "ramsey/uuid": "^4.2"
             },
-            "time": "2024-11-04T08:15:33+00:00",
+            "time": "2024-11-23T03:24:36+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -113,12 +112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotainion/security-and-tools.git",
-                "reference": "772b358f87a23bcd1a9c09ab4be3573250e78b9e"
+                "reference": "8f89b6c15a78889dc58a0705950e6785bfe5b1aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/772b358f87a23bcd1a9c09ab4be3573250e78b9e",
-                "reference": "772b358f87a23bcd1a9c09ab4be3573250e78b9e",
+                "url": "https://api.github.com/repos/dotainion/security-and-tools/zipball/8f89b6c15a78889dc58a0705950e6785bfe5b1aa",
+                "reference": "8f89b6c15a78889dc58a0705950e6785bfe5b1aa",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +126,7 @@
                 "phpmailer/phpmailer": "^6.8",
                 "ramsey/uuid": "^4.2"
             },
-            "time": "2024-11-23T02:20:35+00:00",
+            "time": "2024-11-23T04:17:47+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {

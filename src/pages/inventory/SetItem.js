@@ -95,7 +95,7 @@ export const SetItem = () =>{
         descriptionRef.current.value = item.attributes.description;
     }, [item]);
 
-    if(loading) return <Loader/>;
+    if(loading) return <Loader center/>;
 
     /**
      * this an others should listen for tax and throw error if tax not yet setup
